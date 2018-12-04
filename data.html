@@ -1,0 +1,522 @@
+<!-- Legacy MADDIE form as of 04/12/2018 -->
+<!-- Mirror of original at www.drearytales.com/jlhomepage/Data%20Form.html -->
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+BODY {
+	font-family:		calibri;
+	font-size:			14pt;
+	background:			linear-gradient(to bottom, #fff 0%, #ccc 100%);
+	background-attachment: fixed;
+	margin:				0px;
+	}
+H1	{
+	margin-bottom:		0px;
+	size:				22pt;
+	text-align:			center;
+	}
+.screeninfo {
+	background-color:	#aed6f1;
+	width:				calc(800px-40px);
+	border:				2px solid #3498db;
+	border-radius:		10px;
+	padding:			10px;
+	margin-bottom:		10px;
+	text-align:			center;
+	font-weight:		bold;
+	box-shadow:			#666 4px 4px 8px;
+	}
+DIV#capsule {
+	background:			white;
+	width:				800px;
+	padding-left:		10px;
+	padding-right:		10px;
+	box-shadow:			0px 0px 32px #999;
+	}
+DUPE {
+	display:			inline-block;
+	}
+TABLE {
+	border-collapse:	collapse;
+	margin-bottom:		1em;
+	width:				800px;
+	}
+TABLE TABLE {
+	width:				auto;
+	}
+TABLE TABLE.w100 {
+	width:				100%;
+	}
+TH, TD {
+	border:				1px solid black;
+	font-size:			12pt;
+	font-weight:		normal;
+	padding:			0.30em;
+	padding-left:		0.67em;
+	padding-right:		0.67em;
+	}
+TH {
+	background-color:	#cccccc;
+	}
+INPUT, TEXTAREA, SELECT {
+	background-color:	white;
+	border:				1px solid black;
+	color:				black;
+	overflow:			hidden;
+	font-family:		inherit;
+	font-size:			12pt;
+	font-weight:		normal;
+	width:				100%;
+	}
+SELECT, INPUT {
+	background-color:	#aed6f1;
+	transition:	background-color 0.25s linear;
+	}
+INPUT[readonly] {
+	background-color:	#ffffff;
+	color:				#666;
+	}
+SELECT.done, INPUT.done {
+	background-color:	#ffffff;
+	}
+SELECT OPTION {
+	background-color:	white;
+	}
+INPUT[type="checkbox"] {
+	background-color:	#ffffff;
+	transform:			scale(2.5);
+	}
+.small {
+	font-size:			10pt;
+	}
+.vsmall {
+	font-size:			8pt;
+	}
+.big {
+	font-size:			18pt;
+	}
+.reallybig {
+	font-size:			24pt;
+	}
+.center {
+	text-align:			center;
+	}
+DIV#pophelp {
+	position:			fixed;
+	max-width:			25%;
+	width:				auto;
+	height:				auto;
+	background-color:	#F3F781;
+	border:				2px solid black;
+	font-size:			12pt;
+	font-weight:		normal;
+	padding:			4px;
+	display:			none;
+	z-index:			99;
+	}
+.avoidbreak {
+	page-break-inside:	avoid;
+	}
+.nobum {
+	margin-bottom: 0px;
+	}
+.hot {
+	background-color:	red;
+	color:				yellow;
+	}
+@media print {
+	BODY { background:white!important; }
+	DIV#pophelp { display:none!important; }
+	.noprint { display:none!important; }
+	SELECT { background-color:white!important; }
+	.screeninfo { display:none!important; }
+	.hot {
+		background-color:	initial;
+		color:				initial;
+		}
+	.slip {
+    		page-break-before: always;
+		}
+	}
+SPAN.tagme {
+	font-size:			1.5em;
+	display:			inline-block;
+	margin-left:		0.5em;
+	padding-right:		1em;
+	padding-left:		1em;
+	background:			-moz-radial-gradient(center, ellipse contain, white 80%, #eee 90%, white 100%);
+	}
+.nob, .nob TD { border:none!important; }
+IFRAME {
+	width:				100%;
+	height:				100%;
+	border:				0px;
+	overflow:			visible;
+	}
+</style>
+<script type="text/javascript">
+function switching(name) {
+	var i = 1;
+	var e = document.getElementById(name+i);
+	while ((e!=null) && (typeof(e)!="undefined")) {
+		e.style.display = "none";
+		i += 1;
+		e = document.getElementById(name+i);
+	}
+	e = document.getElementById(name);
+	e.className = "done";
+	i = e.value;
+	e = document.getElementById(name+i);
+	e.style.display = "block";
+	if (e.hasAttribute("shunt")) {
+		location.href = e.getAttribute("shunt");
+	}
+	if (e.hasAttribute("waiver")) {
+		showDataWaiver("true");
+	} else if (name=="service") {
+		showDataWaiver("false");
+	}
+	if (e.hasAttribute("hidetop")) {
+		document.getElementById("topbit").style.display = "none";
+		document.getElementById("header").style.display = "none";
+	} else {
+		document.getElementById("topbit").style.display = "block";
+		document.getElementById("header").style.display = "block";
+	}
+
+}
+function showDataWaiver(b) {
+	if (b=="true") {
+		document.getElementById("datawaiver").style.display = "block";
+	} else {
+		document.getElementById("datawaiver").style.display = "none";
+	}
+}
+function addHelpHandler(a) {
+	var i = -1;
+	while (++i < a.length) {
+		var e = a[i];
+		if (e.addEventListener) {
+			e.addEventListener("mouseover",popHelp,false);
+		} else if (e.attachEvent) {
+			e.attachEvent("onmouseover",popHelp);
+		}
+		if (e.addEventListener) {
+			e.addEventListener("mouseout",unpopHelp,false);
+		} else if (e.attachEvent) {
+			e.attachEvent("onmouseout",unpopHelp);
+		}
+		if (e.addEventListener) {
+			e.addEventListener("click",unpopHelp,false);
+		} else if (e.attachEvent) {
+			e.attachEvent("onclick",unpopHelp);
+		}
+	}
+}
+function addDirtyHandler(a) {
+	var i = -1;
+	while (++i < a.length) {
+		var e = a[i];
+		if (e.addEventListener) {
+			e.addEventListener("click",dirty,false);
+		} else if (e.attachEvent) {
+			e.attachEvent("onclick",dirty);
+		}
+	}
+}
+var pht = null;
+function popHelp(ev) {
+	if (ev==null) ev = window.event;
+	var h = document.getElementById("pophelp");
+	var t = null;
+	if (ev.target) {
+		t = ev.target;
+	} else if (ev.srcElement) {
+		t = ev.srcElement;
+	}
+	var s = "";
+	if (t!=null) s = t.getAttribute("tip");
+	if (s!=null && s!="") {
+		h.innerHTML = s;
+		h.style.display = "block";
+		var y = offY(t) - getPageYOffset();
+		h.style.top = ""+y+"px";
+		var x = offX(t) + (t.clientWidth / 2);
+		if (t.tagName.toLowerCase()=="textarea") {
+			if (pht==null) {
+				clearTimeout(pht);
+				pht = null;
+			}
+			h.style.left = "auto";
+			h.style.right = "5px";
+			pht = setTimeout("hidePopHelp()",6000);
+		} else if (x > window.innerWidth-x) {
+			h.style.left = "5px";
+			h.style.right = "auto";
+			if (pht==null) {
+				clearTimeout(pht);
+				pht = null;
+			}
+			pht = setTimeout("hidePopHelp()",6000);
+		} else {
+			if (pht==null) {
+				clearTimeout(pht);
+				pht = null;
+			}
+			h.style.left = "auto";
+			h.style.right = "5px";
+			pht = setTimeout("hidePopHelp()",6000);
+		}
+	} else {
+		h.style.display = "none";
+	}
+}
+function unpopHelp(ev) {
+	if (ev==null) ev = window.event;
+	var h = document.getElementById("pophelp");
+	var t = null;
+	if (ev.target) {
+		t = ev.target;
+	} else if (ev.srcElement) {
+		t = ev.srcElement;
+	}
+	h.style.display = "none";
+	if (pht!=null) {
+		clearTimeout(pht);
+	}
+}
+function hidePopHelp() {
+	var h = document.getElementById("pophelp");
+	h.style.display = "none";
+}
+function setup() {
+	var inputs = document.getElementsByTagName("input");
+	addDirtyHandler(inputs);
+	addHelpHandler(inputs);
+	inputs = document.getElementsByTagName("textarea");
+	addHelpHandler(inputs);
+	inputs = document.getElementsByTagName("select");
+	addHelpHandler(inputs);
+
+	spamDates();
+}
+function spamDates() {
+	var dd = new Date();
+	dd = dd.toString();
+	dd = dd.substring(0, dd.indexOf(":")-3);
+	document.getElementById("datecaption").innerHTML = dd;
+
+	var inputs = document.getElementsByTagName("input");
+	var i = -1;
+	while (++i < inputs.length) {
+		var input = inputs[i];
+		if (input.hasAttribute("date")) {
+			input.value = dd;
+			input.setAttribute("readonly","true");
+		}
+	}
+}
+function dupe(e,f) {
+	var i = -1;
+	var inputs = document.getElementsByTagName("input");
+	while (++i < inputs.length) {
+		var input = inputs[i];
+		if (input.hasAttribute("dupe")) {
+			if (input.getAttribute("dupe")==f) {
+				input.value = e.value;
+				input.setAttribute("readonly","true");
+			}
+		}
+	}
+	var inputs = document.getElementsByTagName("textarea");
+	i = -1;
+	while (++i < inputs.length) {
+		var input = inputs[i];
+		if (input.hasAttribute("dupe")) {
+			if (input.getAttribute("dupe")==f) {
+				input.value = e.value;
+				input.setAttribute("readonly","true");
+			}
+		}
+	}
+	var inputs = document.getElementsByTagName("dupe");
+	i = -1;
+	while (++i < inputs.length) {
+		var input = inputs[i];
+		if (input.hasAttribute("dupe")) {
+			if (input.getAttribute("dupe")==f) {
+				input.innerHTML = e.value;
+			}
+		}
+	}
+}
+function getPageXOffset() {
+	return window.pageXOffset ? window.pageXOffset : document[(document.compatMode == 'CSS1Compat') ? 'documentElement' : 'body'].scrollLeft;
+}
+function getPageYOffset() {
+	return window.pageYOffset ? window.pageYOffset : document[(document.compatMode == 'CSS1Compat') ? 'documentElement' : 'body'].scrollTop;
+}
+
+function offX(e) {
+	if (typeof(e)=="string") e = dgebi(e);
+	var b = document.getElementsByTagName("body")[0];
+	var x = 0;
+	if (e.style.position=="absolute") {
+		x = e.offsetLeft-e.scrollLeft;
+	} else {
+		while ((e!=null) && (e!=b) && (e.style.position!="absolute")) {
+			x = x + e.offsetLeft-e.scrollLeft;
+			if ((e.parentNode) && (e.parentNode.scrollLeft)) x = x - e.parentNode.scrollLeft;
+			e = e.offsetParent;
+		}
+	}
+	return x;
+}
+function offY(e) {
+	var s = "";
+	if (typeof(e)=="string") e = dgebi(e);
+	var b = document.getElementsByTagName("body")[0];
+	var y = 0;
+	if (e.style.position==="absolute") {
+		y = e.offsetTop-e.scrollTop;
+	} else {
+		while ((e!=null) && (e!=b) && (e.style.position!="absolute")) {
+			y = y + e.offsetTop-e.scrollTop;
+			if ((e.parentNode) && (e.parentNode.scrollTop)) y = y - e.parentNode.scrollTop;
+			e = e.offsetParent;
+		}
+	}
+	return y;
+}
+
+function reveal(c,n) {
+	var e = document.getElementById(n.value);
+	e.style.display = "block";
+	var c = document.getElementById(c);
+	c.style.display = "none";
+	n.className = "done";
+}
+
+function revealstay(c,n) {
+	var e = document.getElementById(n.value);
+	e.style.display = "block";
+	var c = document.getElementById(c);
+	n.className = "done";
+}
+function done(n) {
+	n.className = "done";
+}
+function dirty(ev) {
+	if (ev==null) ev = window.event;
+	var t = null;
+	if (ev.target) {
+		t = ev.target;
+	} else if (ev.srcElement) {
+		t = ev.srcElement;
+	}
+	if (typeof(t.className)=="undefined") {
+		t.className = "done";
+	} else if (t.className=="") {
+		t.className = "done";
+	} else if (t.className=="done" || t.className.indexOf(" done")!=-1) {
+		return;
+	} else {
+		t.className += " done";
+	}
+}
+</script>
+</head>
+
+<body onLoad="setup()">
+<div id="pophelp">BLAH BLAH</div>
+<center><div id="capsule">
+
+<div id="header">
+	<p><center><img width="800" src="avstitle.png"></center><div id="datecaption" style="margin-top:-0.75em;text-align:right"></div></p>
+</div>
+
+<center>
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- Data Waiver -->
+<div class="avoidbreak" id="datawaiver" >
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td colspan="5" class="header">
+				<h1>TECHNICAL SERVICES DATA FORM</h1>
+				<h2><center>Health Check & Fix, Data Transfer & Software Install<br>Backup, Recovery & Repair</center></h2>
+				<h3>Please read this form carefully.</h3>
+				<h3>It is your responsibility, as the customer, to backup any important personal data (i.e. documents, pictures, music and videos) as well as any other important files, before you hand your equipment over to us for a service. This includes making sure you still have install discs or serial keys for any software you may have purchased.</h3>
+				<h3>Though John Lewis will take every care with your machine, all of your personal data, as well as any operating system upgrades or software you installed since purchase, may permanently be lost as a result of the service. John Lewis cannot be held responsible for such losses.</h3>
+				<h3>If you haven't backed up your files we can advise you how to do so.</h3>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5" class="text bigpadding">
+				<table class="nob">
+					<tr>
+						<td>Are you aware of a potential repair time of 4 - 6 weeks? </td>
+						<td>YES</td> <td class="tagme">NO</td> <td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Do you understand that your personal data, software, or upgrades may be lost?</td>
+						<td>YES</td> <td>NO</td> <td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td><i>(Apple iPad / iPhone only)</i> 'Find My iPad' disabled?</td>
+						<td>YES</td> <td>NO</td> <td>N/A</td>
+					</tr>
+					<tr>
+						<td><i>(Google tablet / phone only)</i> 'Factory Reset Protection' (FRP) disabled?</td>
+						<td>YES</td> <td>NO</td> <td>N/A</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="5">ENTER DETAILS BELOW</th>
+		</tr>
+		<tr>
+			<td width="10%">Customer name</td>
+			<td colspan="2"><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+			</td>
+			<td width="10%">Date</td>
+			<td width="20%"><input date="true" maxlength="30"></td>
+		</tr>
+		<tr>
+			<td width="10%">Customer item/s</td>
+			<td colspan="2" width="40%" class="small"><textarea tip="Briefly describe all items customer is entrusting us with - i.e. Laptop & hdd / usb."></textarea></td>
+			<td width="10%">Password</td>
+			<td width="20%" class="small"><textarea></textarea></td>
+		</tr>
+
+		<tr>
+			<td colspan="5">By signing this form you are confirming that you understand and accept John Lewis cannot be held responsible for any loss of data, software or system upgrades as a result of the service.</td>
+		</tr>
+		<tr>
+			<td colspan="2">Customer signature</td>
+			<td colspan="3"><br><br></td>
+		</tr>
+	</table>
+</div>
+
+
+
+
+
+<br clear=all class="noprint"><!-- ensure a little bit of white space before the end -->
+</center><!-- CENTER INSIDE CAPSULE -->
+</div><!-- OUTER CAPSULE -->
+</center><!-- OUTER CAPSULE -->
+
+
+</body>
+</html>
