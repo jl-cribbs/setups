@@ -1,0 +1,4418 @@
+
+<html>
+<!--This form has been created by Alison Daines - John Lewis Cribbs Causeway. alison.daines@johnlewis.co.uk-->
+<!--Please also look at the Google+ collection showing my progress writing a complete Google App solution for JL AVS "https://plus.Google.com/u/1/collection/QhkusB" -->
+<head>
+<meta charset="UTF-8">
+<style>
+BODY {
+	font-family:		calibri;
+	font-size:			14pt;
+	background:			linear-gradient(to bottom, #fff 0%, #ccc 100%);
+	background-attachment: fixed;
+	margin:				0px;
+	}
+H1	{
+	margin-bottom:		0px;
+	size:				22pt;
+	text-align:			center;
+	}
+.screeninfo {
+	background-color:	#aed6f1;
+	width:				calc(800px-40px);
+	border:				2px solid #3498db;
+	border-radius:		10px;
+	padding:			10px;
+	margin-bottom:		10px;
+	text-align:			center;
+	font-weight:		bold;
+	box-shadow:			#666 4px 4px 8px;
+	}
+DIV#capsule {
+	background:			white;
+	width:				800px;
+	padding-left:		10px;
+	padding-right:		10px;
+	box-shadow:			0px 0px 32px #999;
+	}
+DUPE {
+	display:			inline-block;
+	}
+TABLE {
+	border-collapse:	collapse;
+	margin-bottom:		1em;
+	width:				800px;
+	}
+TABLE TABLE {
+	width:				auto;
+	}
+TABLE TABLE.w100 {
+	width:				100%;
+	}
+TH, TD {
+	border:				1px solid black;
+	font-size:			12pt;
+	font-weight:		normal;
+	padding:			0.30em;
+	padding-left:		0.67em;
+	padding-right:		0.67em;
+	}
+TH {
+	background-color:	#cccccc;
+	}
+INPUT, TEXTAREA, SELECT {
+	background-color:	white;
+	border:				1px solid black;
+	color:				black;
+	overflow:			hidden;
+	font-family:		inherit;
+	font-size:			12pt;
+	font-weight:		normal;
+	width:				100%;
+	}
+SELECT, INPUT {
+	background-color:	#aed6f1;
+	transition:	background-color 0.25s linear;
+	}
+INPUT[readonly] {
+	background-color:	#ffffff;
+	color:				#666;
+	}
+SELECT.done, INPUT.done {
+	background-color:	#ffffff;
+	}
+SELECT OPTION {
+	background-color:	white;
+	}
+INPUT[type="checkbox"] {
+	background-color:	#ffffff;
+	transform:			scale(2.5);
+	}
+.small {
+	font-size:			10pt;
+	}
+.vsmall {
+	font-size:			8pt;
+	}
+.big {
+	font-size:			18pt;
+	}
+.reallybig {
+	font-size:			24pt;
+	}
+.center {
+	text-align:			center;
+	}
+DIV#pophelp {
+	position:			fixed;
+	max-width:			25%;
+	width:				auto;
+	height:				auto;
+	background-color:	#F3F781;
+	border:				2px solid black;
+	font-size:			12pt;
+	font-weight:		normal;
+	padding:			4px;
+	display:			none;
+	z-index:			99;
+	}
+.avoidbreak {
+	page-break-inside:	avoid;
+	}
+.nobum {
+	margin-bottom: 0px;
+	}
+.hot {
+	background-color:	red;
+	color:				yellow;
+	}
+@media print {
+	BODY { background:white!important; }
+	DIV#pophelp { display:none!important; }
+	.noprint { display:none!important; }
+	SELECT { background-color:white!important; }
+	.screeninfo { display:none!important; }
+	.hot {
+		background-color:	initial;
+		color:				initial;
+		}
+	.slip {
+    		page-break-before: always;
+		}
+	}
+SPAN.tagme {
+	font-size:			1.5em;
+	display:			inline-block;
+	margin-left:		0.5em;
+	padding-right:		1em;
+	padding-left:		1em;
+	background:			-moz-radial-gradient(center, ellipse contain, white 80%, #eee 90%, white 100%);
+	}
+.nob { border:none!important; }
+IFRAME {
+	width:				100%;
+	height:				100%;
+	border:				0px;
+	overflow:			visible;
+	}
+</style>
+<script type="text/javascript">
+function switching(name) {
+	var i = 1;
+	var e = document.getElementById(name+i);
+	while ((e!=null) && (typeof(e)!="undefined")) {
+		e.style.display = "none";
+		i += 1;
+		e = document.getElementById(name+i);
+	}
+	e = document.getElementById(name);
+	e.className = "done";
+	i = e.value;
+	e = document.getElementById(name+i);
+	e.style.display = "block";
+	if (e.hasAttribute("shunt")) {
+		location.href = e.getAttribute("shunt");
+	}
+	if (e.hasAttribute("waiver")) {
+		showDataWaiver("true");
+	} else if (name=="service") {
+		showDataWaiver("false");
+	}
+	if (e.hasAttribute("hidetop")) {
+		document.getElementById("topbit").style.display = "none";
+		document.getElementById("header").style.display = "none";
+	} else {
+		document.getElementById("topbit").style.display = "block";
+		document.getElementById("header").style.display = "block";
+	}
+
+}
+function showDataWaiver(b) {
+	if (b=="true") {
+		document.getElementById("datawaiver").style.display = "block";
+	} else {
+		document.getElementById("datawaiver").style.display = "none";
+	}
+}
+function addHelpHandler(a) {
+	var i = -1;
+	while (++i < a.length) {
+		var e = a[i];
+		if (e.addEventListener) {
+			e.addEventListener("mouseover",popHelp,false);
+		} else if (e.attachEvent) {
+			e.attachEvent("onmouseover",popHelp);
+		}
+		if (e.addEventListener) {
+			e.addEventListener("mouseout",unpopHelp,false);
+		} else if (e.attachEvent) {
+			e.attachEvent("onmouseout",unpopHelp);
+		}
+		if (e.addEventListener) {
+			e.addEventListener("click",unpopHelp,false);
+		} else if (e.attachEvent) {
+			e.attachEvent("onclick",unpopHelp);
+		}
+	}
+}
+function addDirtyHandler(a) {
+	var i = -1;
+	while (++i < a.length) {
+		var e = a[i];
+		if (e.addEventListener) {
+			e.addEventListener("click",dirty,false);
+		} else if (e.attachEvent) {
+			e.attachEvent("onclick",dirty);
+		}
+	}
+}
+var pht = null;
+function popHelp(ev) {
+	if (ev==null) ev = window.event;
+	var h = document.getElementById("pophelp");
+	var t = null;
+	if (ev.target) {
+		t = ev.target;
+	} else if (ev.srcElement) {
+		t = ev.srcElement;
+	}
+	var s = "";
+	if (t!=null) s = t.getAttribute("tip");
+	if (s!=null && s!="") {
+		h.innerHTML = s;
+		h.style.display = "block";
+		var y = offY(t) - getPageYOffset();
+		h.style.top = ""+y+"px";
+		var x = offX(t) + (t.clientWidth / 2);
+		if (t.tagName.toLowerCase()=="textarea") {
+			if (pht==null) {
+				clearTimeout(pht);
+				pht = null;
+			}
+			h.style.left = "auto";
+			h.style.right = "5px";
+			pht = setTimeout("hidePopHelp()",6000);
+		} else if (x > window.innerWidth-x) {
+			h.style.left = "5px";
+			h.style.right = "auto";
+			if (pht==null) {
+				clearTimeout(pht);
+				pht = null;
+			}
+			pht = setTimeout("hidePopHelp()",6000);
+		} else {
+			if (pht==null) {
+				clearTimeout(pht);
+				pht = null;
+			}
+			h.style.left = "auto";
+			h.style.right = "5px";
+			pht = setTimeout("hidePopHelp()",6000);
+		}
+	} else {
+		h.style.display = "none";
+	}
+}
+function unpopHelp(ev) {
+	if (ev==null) ev = window.event;
+	var h = document.getElementById("pophelp");
+	var t = null;
+	if (ev.target) {
+		t = ev.target;
+	} else if (ev.srcElement) {
+		t = ev.srcElement;
+	}
+	h.style.display = "none";
+	if (pht!=null) {
+		clearTimeout(pht);
+	}
+}
+function hidePopHelp() {
+	var h = document.getElementById("pophelp");
+	h.style.display = "none";
+}
+function setup() {
+	var inputs = document.getElementsByTagName("input");
+	addDirtyHandler(inputs);
+	addHelpHandler(inputs);
+	inputs = document.getElementsByTagName("textarea");
+	addHelpHandler(inputs);
+	inputs = document.getElementsByTagName("select");
+	addHelpHandler(inputs);
+
+	spamDates();
+}
+function spamDates() {
+	var dd = new Date();
+	dd = dd.toString();
+	dd = dd.substring(0, dd.indexOf(":")-3);
+	document.getElementById("datecaption").innerHTML = dd;
+
+	var inputs = document.getElementsByTagName("input");
+	var i = -1;
+	while (++i < inputs.length) {
+		var input = inputs[i];
+		if (input.hasAttribute("date")) {
+			input.value = dd;
+			input.setAttribute("readonly","true");
+		}
+	}
+}
+function dupe(e,f) {
+	var i = -1;
+	var inputs = document.getElementsByTagName("input");
+	while (++i < inputs.length) {
+		var input = inputs[i];
+		if (input.hasAttribute("dupe")) {
+			if (input.getAttribute("dupe")==f) {
+				input.value = e.value;
+				input.setAttribute("readonly","true");
+			}
+		}
+	}
+	var inputs = document.getElementsByTagName("textarea");
+	i = -1;
+	while (++i < inputs.length) {
+		var input = inputs[i];
+		if (input.hasAttribute("dupe")) {
+			if (input.getAttribute("dupe")==f) {
+				input.value = e.value;
+				input.setAttribute("readonly","true");
+			}
+		}
+	}
+	var inputs = document.getElementsByTagName("dupe");
+	i = -1;
+	while (++i < inputs.length) {
+		var input = inputs[i];
+		if (input.hasAttribute("dupe")) {
+			if (input.getAttribute("dupe")==f) {
+				input.innerHTML = e.value;
+			}
+		}
+	}
+}
+function getPageXOffset() {
+	return window.pageXOffset ? window.pageXOffset : document[(document.compatMode == 'CSS1Compat') ? 'documentElement' : 'body'].scrollLeft;
+}
+function getPageYOffset() {
+	return window.pageYOffset ? window.pageYOffset : document[(document.compatMode == 'CSS1Compat') ? 'documentElement' : 'body'].scrollTop;
+}
+
+function offX(e) {
+	if (typeof(e)=="string") e = dgebi(e);
+	var b = document.getElementsByTagName("body")[0];
+	var x = 0;
+	if (e.style.position=="absolute") {
+		x = e.offsetLeft-e.scrollLeft;
+	} else {
+		while ((e!=null) && (e!=b) && (e.style.position!="absolute")) {
+			x = x + e.offsetLeft-e.scrollLeft;
+			if ((e.parentNode) && (e.parentNode.scrollLeft)) x = x - e.parentNode.scrollLeft;
+			e = e.offsetParent;
+		}
+	}
+	return x;
+}
+function offY(e) {
+	var s = "";
+	if (typeof(e)=="string") e = dgebi(e);
+	var b = document.getElementsByTagName("body")[0];
+	var y = 0;
+	if (e.style.position==="absolute") {
+		y = e.offsetTop-e.scrollTop;
+	} else {
+		while ((e!=null) && (e!=b) && (e.style.position!="absolute")) {
+			y = y + e.offsetTop-e.scrollTop;
+			if ((e.parentNode) && (e.parentNode.scrollTop)) y = y - e.parentNode.scrollTop;
+			e = e.offsetParent;
+		}
+	}
+	return y;
+}
+
+function reveal(c,n) {
+	var e = document.getElementById(n.value);
+	e.style.display = "block";
+	var c = document.getElementById(c);
+	c.style.display = "none";
+	n.className = "done";
+}
+
+function revealstay(c,n) {
+	var e = document.getElementById(n.value);
+	e.style.display = "block";
+	var c = document.getElementById(c);
+	n.className = "done";
+}
+function done(n) {
+	n.className = "done";
+}
+function dirty(ev) {
+	if (ev==null) ev = window.event;
+	var t = null;
+	if (ev.target) {
+		t = ev.target;
+	} else if (ev.srcElement) {
+		t = ev.srcElement;
+	}
+	if (typeof(t.className)=="undefined") {
+		t.className = "done";
+	} else if (t.className=="") {
+		t.className = "done";
+	} else if (t.className=="done" || t.className.indexOf(" done")!=-1) {
+		return;
+	} else {
+		t.className += " done";
+	}
+}
+</script>
+</head>
+
+<body onLoad="setup()">
+<div id="pophelp">BLAH BLAH</div>
+<center><div id="capsule">
+<center><div class="screeninfo">Fill in coloured areas and check with Tech Services on current service completion times. V.7.3</div></center>
+
+<div id="header">
+	<p><center><img width="800" src="avstitle.png"></center><div id="datecaption" style="margin-top:-0.75em;text-align:right"></div></p>
+</div>
+
+<center>
+
+<div id="topbit">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th colspan="5">CUSTOMER DETAILS</th>
+		</tr>
+		<tr>
+			<td width="20%">TITLE & FORENAME</td>
+			<td style="border-right:0px"><select onChange="done(this);dupe(this,'title')">
+				<option default></option>
+				<option>Mr</option>
+				<option>Mrs</option>
+				<option>Miss</option>
+				<option>Ms</option>
+				<option>Dr</option>
+				<option>Rev</option>
+			</select></td>
+			<td style="border-left:0px"><input maxlength="25" onKeyUp="dupe(this,'forename')"></td>
+			<td width="20%">SURNAME</td>
+			<td><input maxlength="25" onKeyUp="dupe(this,'surname')"></td>
+		</tr>
+		<tr>
+			<td>DATE OF BIRTH</td>
+			<td colspan="2"><input maxlength="25"></td>
+			<td>MOBILE TEL</td>
+			<td><input maxlength="25"></td>
+		</tr>
+		<tr>
+			<td>REF NO.</td>
+			<td colspan="2"><input tip="CR, Stock No. etc, SP No. To identify the job." maxlength="18" onKeyUp="dupe(this,'refno')"></td>
+			<td>DESCRIPTION</td>
+			<td><input tip="I.e. Toshiba laptop or Samsung tab s 10.1" maxlength="30"></td>
+		</tr>
+		<tr>
+			<td width="20%">POSTCODE / TOWN</td>
+			<td width="12%" style="border-right:0px"><input tip="Important!" maxlength="8"></td>
+			<td style="border-left:0px"><input maxlength="15"></td>
+			<td width="20%">HOUSE / STREET</td>
+			<td width="30%"><input tip="When setting up some accounts, it is necessary to have the first line of the customer's address & post code." maxlength="30"></td>
+		</tr>
+		<tr>
+			<td>BOOKING PARTNER</td>
+			<td colspan="2"><input tip="The person who filled this form out with the customer." maxlength="30"></td>
+			<td>BOOK TIME & ETA</td>
+			<td><input tip="Time the item was booked in and (if agreed) when customer is expecting to return.  If no eta agreed, type 'no eta'." maxlength="40"></td>
+		</tr>
+	</table>
+</div>
+
+<!-- Choose Service -->
+
+<div class="noprint">
+	<table cellspacing="0" cellpadding="0" id="s1table">
+		<tr>
+			<td width="55%">
+				<p id="s1"><select class="new" id="service" onChange="switching('service')">
+					<option selected>[-- SELECT SERVICE --]</option>
+					<option value="1">STANDARD COMPUTER SET UP - WINDOWS</option>
+					<option value="2">STANDARD COMPUTER SET UP - APPLE</option>
+					<option value="3">ADVANCED COMPUTER SET UP - WINDOWS</option>
+					<option value="4">ADVANCED COMPUTER SET UP - APPLE</option>
+					<option value="5">IPAD SET UP</option>
+					<option value="6">ANDROID TABLET SET UP</option>
+					<option value="17">AMAZON TABLET / EREADER SET UP</option>
+					<option value="7">IPHONE SET UP</option>
+					<option value="8">ANDROID PHONE SET UP</option>
+					<option value="9">MICROSOFT PHONE SET UP</option>
+					<option value="14">SOFTWARE INSTALLATION ONLY</option>
+					<option disabled></option>
+					<option value="10">HEALTH CHECK AND FIX</option>
+					<option value="11">DATA BACKUP</option>
+					<option value="12">DATA RECOVERY - STANDARD</option>
+					<option value="19">DATA RECOVERY - ADVANCED</option>
+					<option value="13">DATA ERASURE</option>
+					<option disabled></option>
+					<option value="15">DATA FORM ONLY</option>
+					<option value="16">HANDOVER NOTES FORM ONLY</option>
+					<option value="18">LETTER</option>
+					<option value="20">BARCODES</option>
+
+				</select></p>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 1 -->
+<!-- Standard PC Set Up - Windows -->
+
+
+<div style="display:none" id="service1">
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="5">STANDARD COMPUTER SETUP - WINDOWS</th>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - standard.png"><br>&pound;45 87540101</td>
+				<td colspan="2" width="60%"><strong class="small">Set up user account(s). Prepare Laptop or desktop for first use. Installation of any manufacturer updates or operating system updates available. Configure or create email address (if available). Activate & update pre installed Antivirus software. Set up inbuilt Parental Controls (if required). Brief explanation of how to use the device and download apps.</td>
+				<td class="small">SERVICE PAID FOR?</td>
+				<td width="15%"><select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO, PAY LATER</option>
+					<option>ALLOWANCE</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - software.png"><br>SOFTWARE<br>&pound;15 87540301</td>
+				<td width="15%" class="small">ADD-ON SOFTWARE</td>
+				<td colspan="3" class="small"><input tip="Software purchased with computer - I.E. Photoshop, MS Office or Norton." maxlength="40"></td>
+			</tr>
+			<tr>
+				<td>ADDITIONAL INFORMATION</td>
+				<td colspan="4" class="small"><textarea rows="4" tip="Any other relevant info. I.E. Unique requests by customer such as multiple users or parental controls."></textarea></td>
+			</tr>
+		</table>
+
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">MICROSOFT ACCOUNT</th>
+			</tr>
+			<tr>
+				<td colspan="4">
+				<select id="switch" onChange="switching('switch')" tip="Ask if they already have an account.">
+					<option value="" selected>[-- CREATE NEW OR USE EXISTING ACCOUNT? --]</option>
+					<option value="1">CREATE NEW MICROSOFT ACCOUNT</option>
+					<option value="2">USE EXISTING MICROSOFT ACCOUNT</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="display:none" id="switch1">
+						<table>
+							<tr>
+								<td width="30%">DESIRED ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@Outlook.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+								<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>DESIRED ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm."maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>RECOVERY EMAIL</td>
+								<td class="small" colspan="3"><input tip="Used for password recovery." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>SECURITY QUESTION</td>
+								<td class="small" colspan="4">Required when creating a new account.
+									<select onChange="done(this)">
+										<option>-- Select Question --</option>
+										<option>Mother's birthplace</option>
+										<option>Best childhood friend</option>
+										<option>Name of first pet</option>
+										<option>Favourite teacher</option>
+										<option>Favourite historical person</option>
+										<option>Grandfather's occupation</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Microsoft." maxlength="25">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div style="display:none" id="switch2">
+						<table>
+							<tr>
+								<td width="30%">EXISTING ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@Outlook.com.
+									<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. Otherwise, we will always set up a new Microsoft account." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="http://mail.live.com" target="_blank">'MAIL.LIVE.COM'.</a>
+								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm. You can always ensure account name and password are correct by signing into Windows mail at mail.live.com." maxlength="40">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+
+
+
+						<table>
+							<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+							<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+
+							<tr>
+								<td width="30%">EXISTING EMAIL ADDRESS</td>
+								<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING EMAIL PASSWORD</td>
+								<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+								</td>
+							</tr>
+						</table>
+
+
+
+
+					<div class="noprint">
+						<table style="width:100%">
+							<tr>
+								<td>
+								<select id="login" onChange="switching('login')" tip="How would the customer like to log into their machine?">
+								<option value="" selected>[-- HOW WOULD CUSTOMER LIKE TO LOG IN? --]</option>
+								<option value="1">USE MICROSOFT ACCOUNT EMAIL AND PASSWORD TO LOG IN</option>
+								<option value="2">USE A LOCAL ACCOUNT NAME AND OPTIONAL PASSWORD TO LOG IN</option>
+								</select>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div style="display:none" id="login1"></div>
+
+					<div style="display:none" id="login2">
+						<table style="width:100%" class="nobum">
+							<tr>
+								<td class="small" width="15%">LOGIN NAME</td>
+								<td class="small" colspan="3"><input tip="Can be anything - first name, nickname, pet etc. If left blank, log in will by default become the Microsoft account and password." maxlength="20"></td>
+								<td class="small">LOGIN PASSWORD (OPTIONAL)</td>
+								<td class="small"><input tip="This is optional. Not required unless customer specifically wants it. Having no password is recommended. Customer can always add one later. If setting up a password, the password cannot have the login name as part of it. I.e. 'Nicola' cannot have a password of 'nicola123' ." maxlength="15"></td>
+								<td width="10%">HINT</td>
+								<td><input tip="If setting up a password, you must get a hint from the customer to remind them what it is." maxlength="20"></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="avoidbreak">
+		<table cellspacing="0" cellpadding="0">
+					<tr>
+						<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+					</tr>
+					<tr>
+						<td width="10%">PARTNER</td>
+						<td width="40%"></td>
+						<td width="25%">CR/STOCK NO./JOB NO.</td>
+						<td width="25%"><input dupe="refno"></td>
+					</tr>
+					<tr>
+						<td>NAME</td>
+						<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+						</td>
+						<td>CURRENT DATE</td>
+						<td><input date="true" maxlength="30"></td>
+					</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th>STANDARD COMPUTER SET UP - WINDOWS</th>
+				<th>COMMENTS</th>
+				<th>&#x2713; DONE</th>
+			</tr>
+			<tr>
+				<td class="small">Unpack and check contents of new machine. Boot unit.</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Set  language, agree terms, register.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Name pc (use manufacturer name).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Create local account or create new / use existing Microsoft account.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Connect to internet. Ensure Windows is activated.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Ensure time and date are correct using internet time.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Download and install Windows updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Download and install essential manufacturer updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Log into mail app to ensure account functioning.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Activate, register and update definitions for trial antivirus (unless specified to uninstall by customer).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		    <tr>
+				<td class="small">Activate Windows defender / firewall.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Create additional users (if required).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Set parental controls (if required).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Repack contents.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Contact customer if no agreed eta.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Handover to customer, explaining what has been done.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		</table>
+
+
+		<hr class="slip" align="centre">
+		<centre><p>To be retained in branch for 6 months</p></centre>
+		<table>
+
+				<tr>
+					<th colspan="5">COMPLETION OF SERVICE</th>
+				</tr>
+				<tr>
+					<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+				</tr>
+				<tr>
+				 	<td>Service</td>
+					<td width="40%"><br><br></td>
+					<td>Branch</td>
+					<td width="40%"><br><br></td>
+				</tr>
+				<tr>
+					<td>Customer name</td>
+					<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+					</td>
+					<td>Ref No.</td>
+					<td><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>Customer signature</td>
+					<td width="40%"><br><br></td>
+					<td>Date</td>
+					<td width="40%"><br><br></td>
+				</tr>
+		</table>
+		<hr align="centre">
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 2 -->
+<!-- Standard Computer Set Up - Apple -->
+
+
+<div style="display:none" id="service2">
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="5">STANDARD COMPUTER SETUP - APPLE</th>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - standard.png"><br>&pound;45 87540101</td>
+				<td colspan="2" width="60%"><strong class="small">Set up user account(s). Prepare Laptop or desktop for first use. Installation of any manufacturer updates or operating system updates available. Configure or create email address (if available). Activate & update pre installed Antivirus software. Set up inbuilt Parental Controls (if required). Brief explanation of how to use the device and download apps.</td>
+				<td class="small">SERVICE PAID FOR?</td>
+				<td width="15%"><select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO, PAY LATER</option>
+					<option>ALLOWANCE</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - software.png"><br>SOFTWARE<br>&pound;15 87540301</td>
+				<td width="15%" class="small">ADD-ON SOFTWARE</td>
+				<td colspan="3" class="small"><input tip="Software purchased with computer - i.e. Photoshop, ms office or norton." maxlength="40"></td>
+			</tr>
+			<tr>
+				<td>ADDITIONAL INFORMATION</td>
+				<td colspan="4" class="small"><textarea rows="4" tip="Any other relevant info. I.e. Unique requests by customer such as multiple users or parental controls."></textarea></td>
+			</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">APPLE ID (MAC)</th>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<select id="mac" onChange="switching('mac')" tip="Ask if they already have an account.">
+						<option value="" selected>[-- SELECT NEW OR EXISTING ACCOUNT --]</option>
+						<option value="1">CREATE NEW APPLE ACCOUNT</option>
+						<option value="2">USE EXISTING APPLE ACCOUNT</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="display:none" id="mac1">
+						<table class="nobum">
+							<tr>
+								<td width="30%">DESIRED ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@iCloud.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+								<input tip="The customer may already have an account with Apple and not realise it. Ask them if they have an ipod or iPhone. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>DESIRED ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>RECOVERY EMAIL</td>
+								<td class="small" colspan="3"><input tip="Used for password recovery. Required when setting up a new Apple account." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td rowspan="3">SECURITY QUESTIONS</td>
+								<td colspan="4">
+									<select onChange="done(this)">
+									<option>-- Select Question --</option>
+									<option>What is the first name of your best friend in high school?</option>
+									<option>What was the name of your first pet?</option>
+									<option>What was the first thing you learned to cook?</option>
+									<option>What was the first film you saw in the theater?</option>
+									<option>Where did you go the first time you flew on a plane?</option>
+									<option>What is the last name of your favorite elementary school teacher?</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<select onChange="done(this)">
+									<option>-- Select Question --</option>
+									<option>What is your dream job?</option>
+									<option>What is your favorite children's book?</option>
+									<option>What was the model of your first car?</option>
+									<option>What was your childhood nickname?</option>
+									<option>Who was your favorite film star or character in high school?</option>
+									<option>Who was your favorite singer or band in high school?</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<select onChange="done(this)">
+									<option>-- Select Question --</option>
+									<option>In what city did your parents first meet?</option>
+									<option>What was the name of your first boss?</option>
+									<option>What is the name of the street where you grew up?</option>
+									<option>What is the name of the first beach you visited?</option>
+									<option>What was the first album that you purchased?</option>
+									<option>What is the name of you favorite sports team?</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div style="display:none" id="mac2">
+						<table class="nobum">
+							<tr>
+								<td width="30%">EXISTING ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@iCloud.com.
+									<input tip="This is the same account the customer uses in itunes. It could be @iCloud.com or something else like @yahoo or @btinternet." maxlength="45">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="https://Appleid.Apple.com" target="_blank">'APPLEID.APPLE.COM'.</a>
+								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer and confirm. Ensure account name and password are correct by signing in at 'https://Appleid.Apple.com'." maxlength="45">
+								</td>
+							</tr>
+							<tr>
+								<td>RESTORE FROM ICLOUD BACKUP?</td>
+								<td><select onChange="done(this)">
+									<option selected>--YES / NO--</option>
+									<option>YES IF POSSIBLE</option>
+									<option>NO</option>
+									</select></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+			<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+			<tr>
+				<td width="30%">EXISTING EMAIL ADDRESS</td>
+				<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td>EXISTING EMAIL PASSWORD</td>
+				<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+				</td>
+			</tr>
+		</table>
+		<div class="avoidbreak">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan="4">
+					<select id="macoffice" onChange="switching('macoffice')" tip="Is this also a ms office install?">
+						<option value="" selected>[-- IS THIS A MICROSOFT OFFICE INSTALL? --]</option>
+						<option value="1">CREATE A NEW MS ACCOUNT TO INSTALL OFFICE</option>
+						<option value="2">USE AN EXISTING MS ACCOUNT TO INSTALL OFFICE</option>
+						<option value="3">THIS IS NOT AN OFFICE INSTALLATION</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<div style="display:none" id="macoffice1">
+							<table>
+								<tr>
+									<td width="30%">DESIRED ACCOUNT EMAIL</td>
+									<td class="small" colspan="3">i.e John.Smith@Outlook.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+									<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+								</tr>
+								<tr>
+									<td>DESIRED ACCOUNT PASSWORD</td>
+									<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+										<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm."maxlength="40">
+									</td>
+								</tr>
+								<tr>
+									<td>RECOVERY EMAIL</td>
+									<td class="small" colspan="3"><input tip="Used for password recovery. Required when setting up a new account." maxlength="40"></td>
+								</tr>
+								<tr>
+									<td>SECURITY QUESTION</td>
+									<td class="small" colspan="4">Required when creating a new account.
+										<select onChange="done(this)">
+											<option>-- Select Question --</option>
+											<option>Mother's birthplace</option>
+											<option>Best childhood friend</option>
+											<option>Name of first pet</option>
+											<option>Favourite teacher</option>
+											<option>Favourite historical person</option>
+											<option>Grandfather's occupation</option>
+										</select>
+										<input tip="Type answer exactly how customer wishes it to be set up with Microsoft." maxlength="25">
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<div style="display:none" id="macoffice2">
+							<table>
+								<tr>
+									<td width="30%">EXISTING ACCOUNT EMAIL</td>
+									<td class="small" colspan="3">i.e John.Smith@Outlook.com.
+										<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. Otherwise, we will always set up a new Microsoft account." maxlength="40">
+									</td>
+								</tr>
+								<tr>
+									<td>EXISTING ACCOUNT PASSWORD</td>
+									<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="http://mail.live.com" target="_blank">'MAIL.LIVE.COM'.</a>
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm. Ensure account name and password are correct by signing into Windows mail at mail.live.com."maxlength="40">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div style="display:none" id="macoffice3"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td colspan="4">
+					<select id="maclocallogin" onChange="switching('maclocallogin')" tip="How would the customer like to log in to their mac?">
+						<option value="" selected>[-- HOW WOULD THE CUSTOMER LIKE TO LOG IN? --]</option>
+						<option value="1">NO LOG IN REQUIRED - GO STRAIGHT TO DESKTOP</option>
+						<option value="2">USE LOCAL ACCOUNT LOG IN AND PASSWORD</option>
+						<option value="3">USE APPLE ID AND PASSWORD</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div style="display:none" id="maclocallogin1"></div>
+					<div style="display:none" id="maclocallogin2">
+						<table style="width:100%" class="nobum">
+							<tr>
+								<td class="small" width="15%">LOGIN NAME</td>
+								<td class="small" colspan="3"><input tip="Can be anything - first name, nickname, pet etc. If left blank, log in will by default become the Microsoft account and password." maxlength="20"></td>
+								<td class="small">LOGIN PASSWORD (OPTIONAL)</td>
+								<td class="small"><input tip="This is optional. Not required unless customer specifically wants it. Having no password is recommended. Customer can always add one later. If setting up a password, password cannot have the login name as part of it. I.e. 'Nicola' cannot have a password of 'nicola123'" maxlength="15"></td>
+								<td width="10%">HINT</td>
+								<td><input tip="If setting up a password, you must get a hint from the customer to remind them what it is." maxlength="20"></td>
+							</tr>
+						</table>
+					<div style="display:none" id="maclocallogin3"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="avoidbreak">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+			</tr>
+			<tr>
+				<td width="10%">PARTNER</td>
+				<td width="40%"></td>
+				<td width="25%">CR/STOCK NO./JOB NO.</td>
+				<td width="25%"><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>NAME</td>
+				<td><dupe dupe="title"></dupe>
+					<dupe dupe="forename"></dupe>
+					<dupe dupe="surname"></dupe>
+				</td>
+				<td>CURRENT DATE</td>
+				<td><input date="true" maxlength="30"></td>
+			</tr>
+		</table>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th>STANDARD COMPUTER SET UP - APPLE</th>
+				<th>COMMENTS</th>
+				<th>&#x2713; DONE</th>
+			</tr>
+			<tr>
+				<td class="small">Unpack and check contents of new machine. Boot unit.</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Set  language, agree terms, register.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Create local account, create new or use existing Apple id account.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Connect to internet.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Ensure time and date are correct.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Download and install operating system updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Download and install essential app updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		    <tr>
+				<td class="small">Install pages, numbers & keynote (yes / no).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Create additional users (if required).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Set parental controls (if required).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Repack contents.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Contact customer if no agreed eta.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Copy this page. 1 Copy for customer, 1 for jlp.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Handover to customer, explaining what has been done.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		</table>
+		<hr class="slip" align="centre">
+		<centre><p>To be retained in branch for 6 months</p></centre>
+		<table>
+			<tr>
+				<th colspan="5">COMPLETION OF SERVICE</th>
+			</tr>
+			<tr>
+				<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+			</tr>
+			<tr>
+				<td>Service</td>
+				<td width="40%"><br><br></td>
+				<td>Branch</td>
+				<td width="40%"><br><br></td>
+			</tr>
+			<tr>
+				<td>Customer name</td>
+				<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+				</td>
+				<td>Ref No.</td>
+				<td><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>Customer signature</td>
+				<td width="40%"><br><br></td>
+				<td>Date</td>
+				<td width="40%"><br><br></td>
+			</tr>
+		</table>
+		<hr align="centre">
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 3 -->
+<!-- Advanced Computer Set Up Section - Windows -->
+
+<div style="display:none" id="service3" waiver="true">
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="5">ADVANCED COMPUTER SETUP - WINDOWS</th>
+			</tr>
+			<tr>
+				<td rowspan="2" width="15%"><img width="100%" src="barcode - advanced.png"><br>&pound;80 87540113</td>
+				<td rowspan="2" colspan="2" width="50%"><strong class="small">Set up user account(s). Prepare Laptop or desktop for first use. Installation of any manufacturer updates or operating system updates available. Configure or create email address (if available). Activate & update pre installed Antivirus software. Set up inbuilt Parental Controls (if required). Brief explanation of how to use the device and download apps. Data transfer of Music, Photos, Movies and Documents to a the new computer, USB or external hard drive (supplied separately).</td>
+				<td class="small">SERVICE PAID FOR?</td>
+				<td width="18%"><select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO</option>
+					<option>ALLOWANCE</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="hot">A SIGNED DATA WAIVER FORM IS REQUIRED</td>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - software.png"><br>&pound;15 87540301</td>
+				<td width="15%" class="small">ADD-ON SOFTWARE INSTALLATION</td>
+				<td colspan="3">*Please note - The first piece of software purchased in-store is now free with this Advanced Service.*<input tip="Additional software purchased with computer (first piece is free) - i.e. Photoshop, ms office or norton." maxlength="40"></td>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - data cleanse.png"><br>&pound;35 87550305</td>
+				<td colspan="3">Prepare original device for disposal with our Data Cleanse service?</td>
+				<td colspan="1">
+				<select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES</option>
+					<option>NO</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td width="15%">ADDITIONAL INFORMATION</td>
+				<td colspan="4" class="small"><textarea rows="3" tip="Any other relevant info. I.e. Unique requests such as multiple users or parental controls. Details of any other software or email accounts (email & password) customer would like put on. Whether old machine is being brought in on another day."></textarea></td>
+			</tr>
+		</table>
+
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">MICROSOFT ACCOUNT</th>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<select id="msadv" onChange="switching('msadv')" tip="Ask if they already have an account.">
+						<option value="" selected>[-- CREATE NEW OR USE EXISTING ACCOUNT? --]</option>
+						<option value="1">CREATE NEW MICROSOFT ACCOUNT</option>
+						<option value="2">USE EXISTING MICROSOFT ACCOUNT</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="display:none" id="msadv1">
+						<table>
+							<tr>
+								<td width="30%">DESIRED ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@Outlook.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+								<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>DESIRED ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm."maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>RECOVERY EMAIL</td>
+								<td class="small" colspan="3"><input tip="Used for password recovery. Required when setting up a new account." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>SECURITY QUESTION</td>
+								<td class="small" colspan="4">Required when creating a new account.
+									<select onChange="done(this)">
+										<option>-- Select Question --</option>
+										<option>Mother's birthplace</option>
+										<option>Best childhood friend</option>
+										<option>Name of first pet</option>
+										<option>Favourite teacher</option>
+										<option>Favourite historical person</option>
+										<option>Grandfather's occupation</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Microsoft." maxlength="25">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div style="display:none" id="msadv2">
+						<table>
+							<tr>
+								<td width="30%">EXISTING ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@Outlook.com.
+									<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. Otherwise, we will always set up a new Microsoft account." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="http://mail.live.com" target="_blank">'MAIL.LIVE.COM'.</a>
+								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm. Ensure account name and password are correct by signing into Windows mail at mail.live.com."maxlength="40">
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<div class="avoidbreak">
+			<table>
+				<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+				<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+
+				<tr>
+					<td width="30%">EXISTING EMAIL ADDRESS</td>
+					<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+					</td>
+				</tr>
+				<tr>
+					<td>EXISTING EMAIL PASSWORD</td>
+					<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="noprint">
+			<table style="width:100%">
+				<tr>
+					<td>
+					<select id="msadvlogin" onChange="switching('msadvlogin')" tip="How would the customer like to log into their machine?.">
+					<option value="" selected>[-- HOW WOULD CUSTOMER LIKE TO LOG IN? --]</option>
+					<option value="1">USE MICROSOFT ACCOUNT EMAIL AND PASSWORD TO LOG IN</option>
+					<option value="2">USE A LOCAL ACCOUNT NAME AND OPTIONAL PASSWORD TO LOG IN</option>
+					</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div style="display:none" id="msadvlogin1"></div>
+
+		<div style="display:none" id="msadvlogin2">
+			<table style="width:100%" class="nobum">
+				<tr>
+					<td class="small" width="15%">LOGIN NAME</td>
+					<td class="small" colspan="3"><input tip="Can be anything - first name, nickname, pet etc. If left blank, log in will by default become the Microsoft account and password." maxlength="20"></td>
+					<td class="small">LOGIN PASSWORD (OPTIONAL)</td>
+					<td class="small"><input tip="This is optional. Not required unless customer specifically wants it. Having no password is recommended. Customer can always add one later. If setting up a password, password cannot have the login name as part of it. I.e. 'Nicola' cannot have a password of 'nicola123'" maxlength="15"></td>
+					<td width="10%">HINT</td>
+					<td><input tip="If setting up a password, you must get a hint from the customer to remind them what it is." maxlength="20"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="avoidbreak">
+
+		<table cellspacing="0" cellpadding="0">
+					<tr>
+						<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+					</tr>
+					<tr>
+						<td width="10%">PARTNER</td>
+						<td width="40%"></td>
+						<td width="25%">CR/STOCK NO./JOB NO.</td>
+						<td width="25%"><dupe dupe="refno"></td>
+					</tr>
+					<tr>
+						<td>NAME</td>
+						<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+						</td>
+						<td>CURRENT DATE</td>
+						<td><input date="true" maxlength="30"></td>
+					</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th>ADVANCED SET UP - WINDOWS</th>
+				<th>COMMENTS</th>
+				<th>&#x2713; DONE</th>
+			</tr>
+			<tr>
+				<td class="small">If data transfer, confirm presence of signed data form before proceeding.</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Unpack and check contents of new machine. Boot unit.</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Set  language, agree terms, register.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Name pc (use manufacturer name).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Create local account or create new / use existing Microsoft account.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Connect to internet. Ensure Windows is activated.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Ensure time and date are correct using internet time.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Download and install Windows updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Download and install essential manufacturer updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Log into mail app to ensure account functioning.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Install purchased software (antivirus / office).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Activate, register and update definitions for trial or purchased antivirus.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Install / uninstall any other customer requested software.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Activate Windows defender / firewall.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Create additional users (if required).</br>set parental controls (if required).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Transfer data (photos, videos, documents) from original pc / storage device.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Confirm data transfer has been successful and that files are accessible. Once done, if our own external hdd, delete customer data from it.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Repack contents. Ensure all customer items are stored together.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Contact customer if no agreed eta.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Copy this page. 1 Copy for customer, 1 for jlp.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Handover to customer, explaining what has been done.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		<hr class="slip" align="centre">
+		<centre><p>To be retained in branch for 6 months</p></centre>
+		<table>
+
+				<tr>
+					<th colspan="5">COMPLETION OF SERVICE</th>
+				</tr>
+				<tr>
+					<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+				</tr>
+				<tr>
+				 	<td>Service</td>
+					<td width="40%"><br><br></td>
+					<td>Branch</td>
+					<td width="40%"><br><br></td>
+				</tr>
+				<tr>
+					<td>Customer name</td>
+					<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+					</td>
+					<td>Ref No.</td>
+					<td><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>Customer signature</td>
+					<td width="40%"><br><br></td>
+					<td>Date</td>
+					<td width="40%"><br><br></td>
+				</tr>
+		</table>
+		<hr align="centre">
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 4 -->
+<!-- Advanced Computer Set Up Section - Apple -->
+
+
+<div style="display:none" id="service4" waiver="true">
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="5">ADVANCED COMPUTER SETUP - APPLE</th>
+			</tr>
+			<tr>
+				<td rowspan="2" width="15%"><img width="100%" src="barcode - advanced.png"><br>&pound;80 87540113</td>
+				<td rowspan="2" colspan="2" width="50%"><strong class="small">Set up user account(s). Prepare Laptop or desktop for first use. Installation of any manufacturer updates or operating system updates available. Configure or create email address (if available). Activate & update pre installed Antivirus software. Set up inbuilt Parental Controls (if required). Brief explanation of how to use the device and download apps. Data transfer of Music, Photos, Movies and Documents to a the new computer, USB or external hard drive (supplied separately).</td>
+				<td class="small">SERVICE PAID FOR?</td>
+				<td width="18%"><select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO</option>
+					<option>ALLOWANCE</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="hot">A SIGNED DATA WAIVER FORM IS REQUIRED</td>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - software.png"><br>&pound;15 87540301</td>
+				<td width="15%" class="small">ADD-ON SOFTWARE INSTALLATION</td>
+				<td colspan="3">*Please note - The first piece of software purchased in-store is now free with this Advanced Service.*<input tip="Additional software purchased with computer (after first piece, which is free) - i.e. Photoshop, ms office or norton." maxlength="40"></td>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - data cleanse.png"><br>&pound;35 87550305</td>
+				<td colspan="3">Prepare original device for disposal with our Data Cleanse service?</td>
+				<td colspan="1">
+				<select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES</option>
+					<option>NO</option>
+				</select></td>
+
+
+			</tr>
+			<tr>
+				<td width="15%">ADDITIONAL INFORMATION</td>
+				<td colspan="4" class="small"><textarea rows="3" tip="Any other relevant info. I.e. Unique requests such as multiple users or parental controls. Details of any other software or email accounts (email & password) customer would like put on. Whether old machine is being brought in on another day."></textarea></td>
+			</tr>
+		</table>
+
+		<div class="avoidbreak">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th colspan="4">APPLE ID (MAC)</th>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<select id="macadv" onChange="switching('macadv')" tip="Ask if they already have an account.">
+							<option value="" selected>[-- SELECT NEW OR EXISTING ACCOUNT --]</option>
+							<option value="1">CREATE NEW APPLE ACCOUNT</option>
+							<option value="2">USE EXISTING APPLE ACCOUNT</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<div style="display:none" id="macadv1">
+							<table class="nobum">
+								<tr>
+									<td width="30%">DESIRED ACCOUNT EMAIL</td>
+									<td class="small" colspan="3">i.e John.Smith@iCloud.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+									<input tip="The customer may already have an account with Apple and not realise it. Ask them if they have an ipod or iPhone. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+								</tr>
+								<tr>
+									<td>DESIRED ACCOUNT PASSWORD</td>
+									<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+										<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+									</td>
+								</tr>
+								<tr>
+									<td>RECOVERY EMAIL</td>
+									<td class="small" colspan="3"><input tip="Used for password recovery. Required when setting up a new Apple account." maxlength="40"></td>
+								</tr>
+								<tr>
+									<td rowspan="3">SECURITY QUESTIONS</td>
+									<td colspan="4">
+										<select onChange="done(this)">
+										<option>-- Select Question --</option>
+										<option>What is the first name of your best friend in high school?</option>
+										<option>What was the name of your first pet?</option>
+										<option>What was the first thing you learned to cook?</option>
+										<option>What was the first film you saw in the theater?</option>
+										<option>Where did you go the first time you flew on a plane?</option>
+										<option>What is the last name of your favorite elementary school teacher?</option>
+										</select>
+										<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<select onChange="done(this)">
+										<option>-- Select Question --</option>
+										<option>What is your dream job?</option>
+										<option>What is your favorite children's book?</option>
+										<option>What was the model of your first car?</option>
+										<option>What was your childhood nickname?</option>
+										<option>Who was your favorite film star or character in high school?</option>
+										<option>Who was your favorite singer or band in high school?</option>
+										</select>
+										<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<select onChange="done(this)">
+										<option>-- Select Question --</option>
+										<option>In what city did your parents first meet?</option>
+										<option>What was the name of your first boss?</option>
+										<option>What is the name of the street where you grew up?</option>
+										<option>What is the name of the first beach you visited?</option>
+										<option>What was the first album that you purchased?</option>
+										<option>What is the name of you favorite sports team?</option>
+										</select>
+										<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<div style="display:none" id="macadv2">
+							<table class="nobum">
+								<tr>
+									<td width="30%">EXISTING ACCOUNT EMAIL</td>
+									<td class="small" colspan="3">i.e John.Smith@iCloud.com.
+										<input tip="This is the same account the customer uses in itunes. It could be @iCloud.com or something else like @yahoo or @btinternet." maxlength="45">
+									</td>
+								</tr>
+								<tr>
+									<td>EXISTING ACCOUNT PASSWORD</td>
+									<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="https://Appleid.Apple.com" target="_blank">'APPLEID.APPLE.COM'.</a>
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer and confirm. Ensure account name and password are correct by signing in at 'https://Appleid.Apple.com'." maxlength="45">
+									</td>
+								</tr>
+								<tr>
+									<td>RESTORE FROM ICLOUD BACKUP?</td>
+									<td><select onChange="done(this)">
+										<option selected>--YES / NO--</option>
+										<option>YES IF POSSIBLE</option>
+										<option>NO</option>
+										</select></td>
+								</tr>
+
+							</table>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="avoidbreak">
+			<table>
+				<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+				<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+				<tr>
+					<td width="30%">EXISTING EMAIL ADDRESS</td>
+					<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+					</td>
+				</tr>
+				<tr>
+					<td>EXISTING EMAIL PASSWORD</td>
+					<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="avoidbreak">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan="4"><select id="macofficeadv" onChange="switching('macofficeadv')" tip="Is this also a ms office install?">
+						<option value="" selected>[-- IS THIS A MICROSOFT OFFICE INSTALL? --]</option>
+						<option value="1">CREATE A NEW MS ACCOUNT TO INSTALL OFFICE</option>
+						<option value="2">USE AN EXISTING MS ACCOUNT TO INSTALL OFFICE</option>
+						<option value="3">THIS IS NOT AN OFFICE INSTALLATION</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<div style="display:none" id="macofficeadv1">
+							<table>
+								<tr>
+									<td width="30%">DESIRED ACCOUNT EMAIL</td>
+									<td class="small" colspan="3">i.e John.Smith@Outlook.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+									<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+								</tr>
+								<tr>
+									<td>DESIRED ACCOUNT PASSWORD</td>
+									<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+										<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm."maxlength="40">
+									</td>
+								</tr>
+								<tr>
+									<td>RECOVERY EMAIL</td>
+									<td class="small" colspan="3"><input tip="Used for password recovery. Required when setting up a new account." maxlength="40"></td>
+								</tr>
+								<tr>
+									<td>SECURITY QUESTION</td>
+									<td class="small" colspan="4">Required when creating a new account.
+										<select onChange="done(this)">
+											<option>-- Select Question --</option>
+											<option>Mother's birthplace</option>
+											<option>Best childhood friend</option>
+											<option>Name of first pet</option>
+											<option>Favourite teacher</option>
+											<option>Favourite historical person</option>
+											<option>Grandfather's occupation</option>
+										</select>
+										<input tip="Type answer exactly how customer wishes it to be set up with Microsoft." maxlength="25">
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<div style="display:none" id="macofficeadv2">
+							<table>
+								<tr>
+									<td width="30%">EXISTING ACCOUNT EMAIL</td>
+									<td class="small" colspan="3">i.e John.Smith@Outlook.com.
+										<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. Otherwise, we will always set up a new Microsoft account." maxlength="40">
+									</td>
+								</tr>
+								<tr>
+									<td>EXISTING ACCOUNT PASSWORD</td>
+									<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="http://mail.live.com" target="_blank">'MAIL.LIVE.COM'.</a>
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm. Ensure account name and password are correct by signing into Windows mail at mail.live.com."maxlength="40">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div style="display:none" id="macofficeadv3"></div>
+					</td>
+				</tr>
+			</table>
+
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan="4"><select id="maclocalloginadv" onChange="switching('maclocalloginadv')" tip="How would the customer like to log in to their mac?">
+							<option value="" selected>[-- HOW WOULD THE CUSTOMER LIKE TO LOG IN? --]</option>
+							<option value="1">NO LOG IN REQUIRED - GO STRAIGHT TO DESKTOP</option>
+							<option value="2">USE LOCAL ACCOUNT LOG IN AND PASSWORD</option>
+							<option value="3">USE APPLE ID AND PASSWORD</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>
+						<div style="display:none" id="maclocalloginadv1"></div>
+						<div style="display:none" id="maclocalloginadv2">
+							<table style="width:100%" class="nobum">
+								<tr>
+									<td class="small" width="15%">LOGIN NAME</td>
+									<td class="small" colspan="3"><input tip="Can be anything - first name, nickname, pet etc. If left blank, log in will by default will become the Apple account id and password." maxlength="20"></td>
+									<td class="small">LOGIN PASSWORD (OPTIONAL)</td>
+									<td class="small"><input tip="This is optional. Not required unless customer specifically wants it. Having no password is recommended. Customer can always add one later. If setting up a password, password cannot have the login name as part of it. I.e. 'Nicola' cannot have a password of 'nicola123'" maxlength="15"></td>
+									<td width="10%">HINT</td>
+									<td><input tip="If setting up a password, you must get a hint from the customer to remind them what it is." maxlength="20"></td>
+								</tr>
+							</table>
+						</div>
+						<div style="display:none" id="maclocalloginadv3"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="avoidbreak">
+		<table cellspacing="0" cellpadding="0">
+					<tr>
+						<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+					</tr>
+					<tr>
+						<td width="10%">PARTNER</td>
+						<td width="40%"></td>
+						<td width="25%">CR/STOCK NO./JOB NO.</td>
+						<td width="25%"><dupe dupe="refno"></td>
+					</tr>
+					<tr>
+						<td>NAME</td>
+						<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+						</td>
+						<td>CURRENT DATE</td>
+						<td><input date="true" maxlength="30"></td>
+					</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th>ADVANCED COMPUTER SET UP - APPLE</th>
+				<th>COMMENTS</th>
+				<th>&#x2713; DONE</th>
+			</tr>
+			<tr>
+				<td class="small">If data transfer, confirm presence of signed data form before proceeding.</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Unpack and check contents of new machine. Boot unit.</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Set  language, agree terms, register.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Create local account, create new or use existing Apple id account.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Connect to internet.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Ensure time and date are correct.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Download and install available operating system updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Download and install app updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Download and install pages, numbers & keynote (yes / no).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Install purchased software (i.e. Office).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		    <tr>
+				<td class="small">Install / uninstall any other customer requested software.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Create additional users (if required).</br>set parental controls (if required).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Transfer data (photos, videos, documents) from original machine / storage device.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		    <tr>
+				<td class="small">Confirm data transfer has been successful and that files are accessible. Once done, if our own external hdd, delete customer data from it.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Repack contents. Ensure all customer items are stored together.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Contact customer if no agreed eta.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Handover to customer, explaining what has been done.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		</table>
+		<hr class="slip" align="centre">
+		<centre><p>To be retained in branch for 6 months</p></centre>
+		<table>
+
+				<tr>
+					<th colspan="5">COMPLETION OF SERVICE</th>
+				</tr>
+				<tr>
+					<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+				</tr>
+				<tr>
+				 	<td>Service</td>
+					<td width="40%"><br><br></td>
+					<td>Branch</td>
+					<td width="40%"><br><br></td>
+				</tr>
+				<tr>
+					<td>Customer name</td>
+					<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+					</td>
+					<td>Ref No.</td>
+					<td><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>Customer signature</td>
+					<td width="40%"><br><br></td>
+					<td>Date</td>
+					<td width="40%"><br><br></td>
+				</tr>
+		</table>
+		<hr align="centre">
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 5 -->
+<!-- Ipad Tablet Set Up Section -->
+
+<div style="display:none" id="service5">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">IPAD SET UP</th>
+			</tr>
+			<tr>
+				<td width="20%"><img width="100%" src="barcode - tablet.png"><br><centre>&pound;30 87540110</centre></td>
+				<td colspan="2"><strong class="small">Set up user account. Prepare Tablet for first use. Install any available operating system updates. Configure or create email address (if available). Provide brief explanation of how to use the device and download apps.</td>
+				<td width="25%">PUT IN CASE?<br><select onChange="done(this)">
+					<option selected>[-- SELECT --]</option>
+					<option>YES</option>
+					<option>NO</option>
+					<option>NOT APPLICABLE</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td width="20%">ADDITIONAL INFORMATION</td>
+				<td width="40%" class="small" colspan="2"><textarea rows="4" tip="Any other relevant info. I.e. Unique requests by customer such as email accounts or interest in apps."></textarea></td>
+				<td>SERVICE PAID FOR?<br>
+					<select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO, PAY LATER</option>
+					<option>ALLOWANCE</option>
+				</select></td>
+			</tr>
+		</table>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">APPLE ID (IPAD)</th>
+			</tr>
+			<tr>
+				<td colspan="4"><select id="AppleiPadacc" onChange="switching('AppleiPadacc')" tip="Ask if they already have an account.">
+					<option value="" selected>[-- SELECT NEW OR EXISTING ACCOUNT --]</option>
+					<option value="1">CREATE NEW APPLE ACCOUNT</option>
+					<option value="2">USE EXISTING APPLE ACCOUNT</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="display:none" id="AppleiPadacc1">
+						<table class="nobum">
+							<tr>
+								<td width="30%">DESIRED ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@iCloud.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+								<input tip="The customer may already have an account with Apple and not realise it. Ask them if they have an ipod or iPhone. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>DESIRED ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>RECOVERY EMAIL</td>
+								<td class="small" colspan="3"><input tip="Used for password recovery. Required when setting up a new Apple account." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td rowspan="3">SECURITY QUESTIONS</td>
+								<td colspan="4">
+									<select onChange="done(this)">
+									<option>-- Select Question --</option>
+									<option>What is the first name of your best friend in high school?</option>
+									<option>What was the name of your first pet?</option>
+									<option>What was the first thing you learned to cook?</option>
+									<option>What was the first film you saw in the theater?</option>
+									<option>Where did you go the first time you flew on a plane?</option>
+									<option>What is the last name of your favorite elementary school teacher?</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<select onChange="done(this)">
+									<option>-- Select Question --</option>
+									<option>What is your dream job?</option>
+									<option>What is your favorite children's book?</option>
+									<option>What was the model of your first car?</option>
+									<option>What was your childhood nickname?</option>
+									<option>Who was your favorite film star or character in high school?</option>
+									<option>Who was your favorite singer or band in high school?</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<select onChange="done(this)">
+									<option>-- Select Question --</option>
+									<option>In what city did your parents first meet?</option>
+									<option>What was the name of your first boss?</option>
+									<option>What is the name of the street where you grew up?</option>
+									<option>What is the name of the first beach you visited?</option>
+									<option>What was the first album that you purchased?</option>
+									<option>What is the name of you favorite sports team?</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div style="display:none" id="AppleiPadacc2">
+						<table class="nobum">
+							<tr>
+								<td width="30%">EXISTING ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@iCloud.com.
+									<input tip="This is the same account the customer uses in itunes. It could be @iCloud.com or something else like @yahoo or @btinternet." maxlength="45">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="https://Appleid.Apple.com" target="_blank">'APPLEID.APPLE.COM'.</a>
+								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer and confirm. If in any doubt you can test by signing in at 'https://Appleid.Apple.com'." maxlength="45">
+								</td>
+							</tr>
+							<tr>
+								<td>RESTORE FROM ICLOUD BACKUP?</td>
+								<td><select onChange="done(this)">
+									<option selected>--YES / NO--</option>
+									<option>YES IF POSSIBLE</option>
+									<option>NO</option>
+									</select></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+			<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+			<tr>
+				<td width="30%">EXISTING EMAIL ADDRESS</td>
+				<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td>EXISTING EMAIL PASSWORD</td>
+				<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+				</td>
+			</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="small">LOCATION SERVICES</td>
+				<td class="center">
+					<input type="checkbox" tip="Enabling this helps the iPad work out where you are in maps and apps.">
+				</td>
+				<td class="small">USE iCLOUD</td>
+				<td class="center">
+					<input type="checkbox" tip="iCloud is necessary for backing up the device.">
+				</td>
+				<td class="small">USE &quot;FIND MY iPAD&quot;</td>
+				<td class="center">
+					<input type="checkbox" tip="Location services must be active for 'find my iPad' to work.">
+				</td>
+				<td class="small">APPLE SUPPORT APP</td>
+				<td class="center">
+					<input type="checkbox" tip="Installing this allows the customer to receive support and make appointments with Apple through their
+					device.">
+				</td>
+				<td class="small">USE PASSCODE (OPTIONAL)</td>
+				<td class="center"><input tip="Must be 4 digits" maxlength="6"></td>
+				<td class="small">JOHN LEWIS & PARTNERS APP</td>
+				<td class="center">
+					<input type="checkbox" tip="Would the customer like us to install the john lewis & Partners shopping app for them?">
+				</td>
+			</tr>
+		</table>
+
+		<div class="avoidbreak">
+			<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+			</tr>
+			<tr>
+				<td width="10%">PARTNER</td>
+				<td width="40%"></td>
+				<td width="25%">CR/STOCK NO./JOB NO.</td>
+				<td width="25%"><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>NAME</td>
+				<td><dupe dupe="title"></dupe>
+					<dupe dupe="forename"></dupe>
+					<dupe dupe="surname"></dupe>
+				</td>
+				<td>CURRENT DATE</td>
+				<td><input date="true" maxlength="30"></td>
+			</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th>TABLET SET UP - IPAD</th>
+				<th>COMMENTS</th>
+				<th>&#x2713; DONE</th>
+			</tr>
+			<tr>
+				<td class="small">Unpack  and check contents.</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Set  language, country or region.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Connect to wifi.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Enable location services (yes/no).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Set up as new iPad or restore from existing Apple id / backup.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Create new Apple id or use existing - sign in.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Agree terms and conditions.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Use iCloud (yes), backup to iCloud (yes), find my iPad (yes/no).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Set up passcode (yes/no).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Use siri (yes), keychain (no).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Send diagnostics to Apple (no).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Install Apple Support app.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Install any available operating system / app updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Ensure iPad has reasonable charge.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Repack contents. Place in case (yes/no).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Contact customer if no agreed eta.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="small">Give handover to customer, making sure any relevant info / passwords are understood.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		<hr class="slip" align="centre">
+		<centre><p>To be retained in branch for 6 months</p></centre>
+		<table>
+			<tr>
+				<th colspan="5">COMPLETION OF SERVICE</th>
+			</tr>
+			<tr>
+				<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+			</tr>
+			<tr>
+				<td>Service</td>
+				<td width="40%"><br><br></td>
+				<td>Branch</td>
+				<td width="40%"><br><br></td>
+			</tr>
+			<tr>
+				<td>Customer name</td>
+				<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+				</td>
+				<td>Ref No.</td>
+				<td><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>Customer signature</td>
+				<td width="40%"><br><br></td>
+				<td>Date</td>
+				<td width="40%"><br><br></td>
+			</tr>
+		</table>
+		<hr align="centre">
+	</div>
+</div>
+<!-- End of iPad Tablet Section -->
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 6 -->
+<!-- Android Tablet Set Up Section -->
+
+<div style="display:none" id="service6">
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">ANDROID / GOOGLE TABLET SET UP</th>
+			</tr>
+			<tr>
+				<td width="20%"><img width="100%" src="barcode - tablet.png"><br>&pound;30 87540110</td>
+				<td colspan="3"><strong class="small">Set up user account. Prepare Tablet for first use. Install any available operating system updates. Configure or create email address (if available). Provide brief explanation of how to use the device and download apps.</td>
+				</td>
+			</tr>
+			<tr>
+				<td width="20%">PUT IN CASE?<br>
+					<select onChange="done(this)">
+					<option selected>[-- SELECT --]</option>
+					<option>YES</option>
+					<option>NO</option>
+					<option>NOT APPLICABLE</option>
+				</select></td>
+				<td width="20%">PAID FOR?<br>
+					<select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO, PAY LATER</option>
+					<option>ALLOWANCE</option>
+				</select></td>
+				<td width="20%">ADDITIONAL INFORMATION</td>
+				<td width="40%" class="small"><textarea rows="4" tip="Any other relevant info. I.e. Unique requests by customer such as email accounts or interest in apps."></textarea></td>
+			</tr>
+		</table>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">GOOGLE ACCOUNT (GMAIL)</th>
+			</tr>
+			<tr>
+				<td colspan="4">
+				<select id="Google" onChange="switching('Google')" tip="Ask if they already have a Google account.">
+					<option value="" selected>[-- CREATE NEW ACCOUNT OR USE EXISTING? --]</option>
+					<option value="1">CREATE NEW GOOGLE ACCOUNT</option>
+					<option value="2">USE EXISTING GOOGLE ACCOUNT</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="display:none" id="Google1">
+						<table class="nobum">
+							<tr>
+								<td width="25%">DESIRED ACCOUNT</td>
+								<td class="small" colspan="3">i.e John.Smith@gmail.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+								<input tip="The customer may already have an account with Google / Gmail and not realise it. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>DESIRED PASSWORD</td>
+								<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>RECOVERY EMAIL</td>
+								<td class="small" colspan="3"><input tip="Used for password recovery. Required when setting up a new Google account." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>SECURITY QUESTION</td>
+								<td>
+									<select onChange="done(this)">
+										<option>-- Select Question --</option>
+										<option>FIRST PHONE NUMBER</option>
+										<option>CHILDHOOD BEST FRIEND</option>
+										<option>FIRST TEACHER NAME</option>
+										<option>MANAGERS NAME FIRST JOB</option>
+										<option>VEHICLE REG NUMBER</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Google." maxlength="25">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div style="display:none" id="Google2">
+						<table class="nobum">
+							<tr>
+								<td width="25%">EXISTING ACCOUNT</td>
+								<td class="small" colspan="3">i.e John.Smith@gmail.com.
+									<input tip="A Google account will usually be 'something@gmail.com' but could also be something@btinternet.com etc." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING PASSWORD</td>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="https://myaccount.google.com/" target="_blank">'MAIL.GOOGLE.COM'.</a>
+								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer and confirm. If in any doubt you can test by signing in at 'https://myaccount.google.com/'." maxlength="40">
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+			<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+
+			<tr>
+				<td width="30%">EXISTING EMAIL ADDRESS</td>
+				<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td>EXISTING EMAIL PASSWORD</td>
+				<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+				</td>
+			</tr>
+		</table>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="small">INSTALL JOHN LEWIS & PARTNERS APP (OPTIONAL)</td>
+				<td class="center">
+					<input type="checkbox" tip="Would the customer like us to install the John Lewis & Partners shopping app for them?">
+				</td>
+			</tr>
+		</table>
+
+		<div class="avoidbreak">
+
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+				</tr>
+				<tr>
+					<td width="10%">PARTNER</td>
+					<td width="40%"></td>
+					<td width="25%">CR/STOCK NO./JOB NO.</td>
+					<td width="25%"><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>NAME</td>
+					<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+					</td>
+					<td>CURRENT DATE</td>
+					<td><input date="true" maxlength="30"></td>
+				</tr>
+			</table>
+
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th>TABLET SET UP - ANDROID</th>
+					<th>COMMENTS</th>
+					<th>&#x2713; DONE</th>
+				</tr>
+				<tr>
+					<td class="small">Unpack  and check contents.</td>
+					<td width="40%">&nbsp;</td>
+					<td width="10%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set  language, country or region.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Connect to wifi.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Accept licence agreement. Send info to manufacturer (no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set up optional manufacturer account (i.e. Samsung) - (no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Got Google? Set up new Google account or use existing. If existing, choose whether to restore from existing backup (if available).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Keep up to date with news from Google (no).<br>keep tablet backed up to Google account (yes).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Enable location services (yes).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Dropbox (optional) - (no). Give device a name.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Install any available operating system / app updates..</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Ensure tablet has reasonable charge.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Repack contents. Place in case (yes/no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Contact customer if no agreed eta.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Give brief handover to customer making sure any relevant info / passwords are understood.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<hr class="slip" align="centre">
+			<centre><p>To be retained in branch for 6 months</p></centre>
+			<table>
+				<tr>
+					<th colspan="5">COMPLETION OF SERVICE</th>
+				</tr>
+				<tr>
+					<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+				</tr>
+				<tr>
+				 	<td>Service</td>
+					<td width="40%"><br><br></td>
+					<td>Branch</td>
+					<td width="40%"><br><br></td>
+				</tr>
+				<tr>
+					<td>Customer name</td>
+					<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+					</td>
+					<td>Ref No.</td>
+					<td><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>Customer signature</td>
+					<td width="40%"><br><br></td>
+					<td>Date</td>
+					<td width="40%"><br><br></td>
+				</tr>
+			</table>
+			<hr align="centre">
+		</div>
+	</div>
+</div>
+
+<!-- End of Android Tablet Section -->
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 7 -->
+<!-- Iphone Set Up Section -->
+
+<div style="display:none" id="service7">
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="3">IPHONE SET UP</th>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - mobile.png"><br>&pound;30 87540102</td>
+				<td colspan="2"><strong class="small">Set up user account. Prepare mobile for first use. Install any system updates. Configure or create email address (if available). Provide brief explanation of how to use the device and download apps.</td>
+			</tr>
+			<tr>
+				<td width="15%">ADDITIONAL INFORMATION</td>
+				<td width="60%" class="small"><textarea rows="4" tip="Any other relevant info. I.e. Unique requests by customer such as email accounts or interest in apps."></textarea></td>
+				<td>SERVICE PAID FOR?<br>
+					<select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO</option>
+					<option>ALLOWANCE</option>
+				</select></td>
+			</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">APPLE ACCOUNT / ID (IPHONE)</th>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<select id="AppleiPhoneacc" onChange="switching('AppleiPhoneacc')" tip="Ask if they already have an account.">
+						<option value="" selected>[-- SELECT NEW OR EXISTING ACCOUNT --]</option>
+						<option value="1">CREATE NEW APPLE ACCOUNT</option>
+						<option value="2">USE EXISTING APPLE ACCOUNT</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="display:none" id="AppleiPhoneacc1">
+						<table class="nobum">
+							<tr>
+								<td width="30%">DESIRED ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@iCloud.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+								<input tip="The customer may already have an account with Apple and not realise it. Ask them if they have an ipod or iPhone. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>DESIRED ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>RECOVERY EMAIL</td>
+								<td class="small" colspan="3"><input tip="Used for password recovery. Required when setting up a new Apple account." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td rowspan="3">SECURITY QUESTIONS</td>
+								<td colspan="4">
+									<select onChange="done(this)">
+									<option>-- Select Question --</option>
+									<option>What is the first name of your best friend in high school?</option>
+									<option>What was the name of your first pet?</option>
+									<option>What was the first thing you learned to cook?</option>
+									<option>What was the first film you saw in the theater?</option>
+									<option>Where did you go the first time you flew on a plane?</option>
+									<option>What is the last name of your favorite elementary school teacher?</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<select onChange="done(this)">
+									<option>-- Select Question --</option>
+									<option>What is your dream job?</option>
+									<option>What is your favorite children's book?</option>
+									<option>What was the model of your first car?</option>
+									<option>What was your childhood nickname?</option>
+									<option>Who was your favorite film star or character in high school?</option>
+									<option>Who was your favorite singer or band in high school?</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<select onChange="done(this)">
+									<option>-- Select Question --</option>
+									<option>In what city did your parents first meet?</option>
+									<option>What was the name of your first boss?</option>
+									<option>What is the name of the street where you grew up?</option>
+									<option>What is the name of the first beach you visited?</option>
+									<option>What was the first album that you purchased?</option>
+									<option>What is the name of you favorite sports team?</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Apple." maxlength="25">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div style="display:none" id="AppleiPhoneacc2">
+						<table class="nobum">
+							<tr>
+								<td width="30%">EXISTING ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@iCloud.com.
+									<input tip="This is the same account the customer uses in itunes. It could be @iCloud.com or something else like @yahoo or @btinternet." maxlength="45">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="https://Appleid.Apple.com" target="_blank">'APPLEID.APPLE.COM'.</a>
+								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer and confirm. If in any doubt you can test by signing in at 'https://Appleid.Apple.com'." maxlength="45">
+								</td>
+							</tr>
+							<tr>
+								<td>RESTORE FROM ICLOUD BACKUP?</td>
+								<td><select onChange="done(this)">
+									<option selected>--YES / NO--</option>
+									<option>YES IF POSSIBLE</option>
+									<option>NO</option>
+									</select></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+			<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+			<tr>
+				<td width="30%">EXISTING EMAIL ADDRESS</td>
+				<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td>EXISTING EMAIL PASSWORD</td>
+				<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+				</td>
+			</tr>
+		</table>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="small">LOCATION SERVICES</td>
+				<td class="center">
+					<input type="checkbox" tip="Enabling this helps the iPhone work out where you are in maps and apps.">
+				</td>
+				<td class="small">USE ICLOUD</td>
+				<td class="center">
+					<input type="checkbox" tip="Icloud is necessary for backing up the device.">
+				</td>
+				<td class="small">USE &quot;FIND MY IPHONE&quot;</td>
+				<td class="center">
+					<input type="checkbox" tip="Location services must be active for 'find my iPhone' to work.">
+				</td>
+				<td class="small">APPLE SUPPORT APP</td>
+				<td class="center">
+					<input type="checkbox" tip="Installing this allows the customer to receive support and make appointments with Apple through their
+					device.">
+				</td>
+				<td class="small">USE PASSCODE (OPTIONAL)</td>
+				<td class="center"><input tip="Must be at least 4 digits" maxlength="6"></td>
+				<td class="small">JOHN LEWIS & PARTNERS APP</td>
+				<td class="center">
+					<input type="checkbox" tip="Would the customer like us to install the john lewis & Partners shopping app for them?">
+				</td>
+			</tr>
+		</table>
+
+		<div class="avoidbreak">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+				</tr>
+				<tr>
+					<td width="10%">PARTNER</td>
+					<td width="40%"></td>
+					<td width="25%">CR/STOCK NO./JOB NO.</td>
+					<td width="25%"><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>NAME</td>
+					<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+					</td>
+					<td>CURRENT DATE</td>
+					<td><input date="true" maxlength="30"></td>
+				</tr>
+			</table>
+
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th>MOBILE SET UP - IPHONE</th>
+					<th>COMMENTS</th>
+					<th>&#x2713; DONE</th>
+				</tr>
+				<tr>
+					<td class="small">Unpack  and check contents.</td>
+					<td width="40%">&nbsp;</td>
+					<td width="10%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set  language, country or region.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Connect to wifi.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Enable location services (yes/no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set up as new iPhone or restore from existing Apple id / backup.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Create new Apple id or use existing - sign in.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Agree terms and conditions.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Use iCloud (yes), backup to iCloud (yes), find my iPhone (yes/no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set up passcode (yes/no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Use siri (yes), keychain (no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Send diagnostics to Apple (no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Install Apple Support app.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Use phone transfer tool to transfer contacts and images from an old phone (optional).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Install any available operating system / app updates.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Ensure iPhone has reasonable charge.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Repack contents. Place in case (yes/no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Contact customer if no agreed eta.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Give handover to customer, making sure any relevant info / passwords are understood.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<hr class="slip" align="centre">
+			<centre><p>To be retained in branch for 6 months</p></centre>
+			<table>
+				<tr>
+					<th colspan="5">COMPLETION OF SERVICE</th>
+				</tr>
+				<tr>
+					<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+				</tr>
+				<tr>
+				 	<td>Service</td>
+					<td width="40%"><br><br></td>
+					<td>Branch</td>
+					<td width="40%"><br><br></td>
+				</tr>
+				<tr>
+					<td>Customer name</td>
+					<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+					</td>
+					<td>Ref No.</td>
+					<td><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>Customer signature</td>
+					<td width="40%"><br><br></td>
+					<td>Date</td>
+					<td width="40%"><br><br></td>
+				</tr>
+			</table>
+			<hr align="centre">
+		</div>
+	</div>
+</div>
+
+<!-- End of iPhone Set Up Section -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 8 -->
+<!-- Android Phone Set Up Section -->
+
+<div style="display:none" id="service8">
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">ANDROID / GOOGLE PHONE SET UP</th>
+			</tr>
+			<tr>
+				<td width="20%"><img width="100%" src="barcode - mobile.png"><br>&pound;30 87540102</td>
+				<td colspan="3"><strong class="small">Set up user account. Prepare Tablet for first use. Install any available operating system updates. Configure or create email address (if available). Provide brief explanation of how to use the device and download apps.</td>
+				</td>
+			</tr>
+			<tr>
+				<td>PUT IN CASE?<br><select onChange="done(this)">
+				<option selected>[-- SELECT --]</option>
+				<option>YES</option>
+				<option>NO</option>
+				<option>NOT APPLICABLE</option>
+				</select></td>
+
+				<td width="20%">PAID FOR?<br>
+					<select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO</option>
+					<option>ALLOWANCE</option>
+
+				</select></td>
+
+				<td width="20%">ADDITIONAL INFORMATION</td>
+				<td width="60%" class="small"><textarea rows="4" tip="Any other relevant info. I.e. Unique requests by customer such as email accounts or interest in apps."></textarea></td>
+			</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">GOOGLE ACCOUNT (GMAIL)</th>
+			</tr>
+			<tr>
+
+				<td colspan="4"><select id="Googlephone" onChange="switching('Googlephone')" tip="Ask if they already have a Google account.">
+					<option value="" selected>[-- CREATE NEW ACCOUNT OR USE EXISTING? --]</option>
+					<option value="1">CREATE NEW GOOGLE ACCOUNT</option>
+					<option value="2">USE EXISTING GOOGLE ACCOUNT</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="display:none" id="Googlephone1">
+						<table class="nobum">
+							<tr>
+								<td width="25%">DESIRED ACCOUNT</td>
+								<td class="small" colspan="3">i.e John.Smith@gmail.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+								<input tip="The customer may already have an account with Google / Gmail and not realise it. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>DESIRED PASSWORD</td>
+								<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>RECOVERY EMAIL</td>
+								<td class="small" colspan="3"><input tip="Used for password recovery. Required when setting up a new Google account." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>SECURITY QUESTION</td>
+								<td>
+									<select onChange="done(this)">
+										<option>-- Select Question --</option>
+										<option>FIRST PHONE NUMBER</option>
+										<option>CHILDHOOD BEST FRIEND</option>
+										<option>FIRST TEACHER NAME</option>
+										<option>MANAGERS NAME FIRST JOB</option>
+										<option>VEHICLE REG NUMBER</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Google." maxlength="25">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div style="display:none" id="Googlephone2">
+						<table class="nobum">
+							<tr>
+								<td width="25%">EXISTING ACCOUNT</td>
+								<td class="small" colspan="3">i.e John.Smith@gmail.com.
+									<input tip="A Google account will usually be 'something@gmail.com' but could also be something@btinternet.com etc." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING PASSWORD</td>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="https://myaccount.google.com/" target="_blank">'MAIL.GOOGLE.COM'.</a>
+								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer and confirm. If in any doubt you can test by signing in at 'https://myaccount.google.com/'." maxlength="40">
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+			<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+			<tr>
+				<td width="30%">EXISTING EMAIL ADDRESS</td>
+				<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td>EXISTING EMAIL PASSWORD</td>
+				<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+				</td>
+			</tr>
+		</table>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="small">INSTALL JOHN LEWIS & PARTNERS APP (OPTIONAL)</td>
+				<td class="center">
+					<input type="checkbox" tip="Would the customer like us to install the John Lewis & Partners shopping app for them?">
+				</td>
+			</tr>
+		</table>
+
+		<div class="avoidbreak">
+
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+				</tr>
+				<tr>
+					<td width="10%">PARTNER</td>
+					<td width="40%"></td>
+					<td width="25%">CR/STOCK NO./JOB NO.</td>
+					<td width="25%"><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>NAME</td>
+					<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+					</td>
+					<td>CURRENT DATE</td>
+					<td><input date="true" maxlength="30"></td>
+				</tr>
+			</table>
+
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th>MOBILE SET UP - ANDROID</th>
+					<th>COMMENTS</th>
+					<th>&#x2713; DONE</th>
+				</tr>
+				<tr>
+					<td class="small">Unpack and check contents.</td>
+					<td width="40%">&nbsp;</td>
+					<td width="10%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set  language, country or region.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Connect to wifi.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Accept licence agreement. Send info to manufacturer (no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set up optional manufacturer account (i.e. Samsung) - (no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set up new Google account or use existing. If existing, choose whether to restore from existing backup (if available).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Keep up to date with news from Google (no).<br>Keep tablet backed up to Google account (yes).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Enable location services (yes).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Dropbox (optional) - (no). Give device a name.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Use phone transfer tool to transfer contacts and images from an old phone (optional).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Install any available operating system / app updates..</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Ensure phone has reasonable charge.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Repack contents. Place in case (yes/no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Contact customer if no agreed eta.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Give brief handover to customer making sure any relevant info / passwords are understood.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<hr class="slip" align="centre">
+			<centre><p>To be retained in branch for 6 months</p></centre>
+			<table>
+				<tr>
+					<th colspan="5">COMPLETION OF SERVICE</th>
+				</tr>
+				<tr>
+					<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+				</tr>
+				<tr>
+				 	<td>Service</td>
+					<td width="40%"><br><br></td>
+					<td>Branch</td>
+					<td width="40%"><br><br></td>
+				</tr>
+				<tr>
+					<td>Customer name</td>
+					<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+					</td>
+					<td>Ref No.</td>
+					<td><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>Customer signature</td>
+					<td width="40%"><br><br></td>
+					<td>Date</td>
+					<td width="40%"><br><br></td>
+				</tr>
+			</table>
+			<hr align="centre">
+		</div>
+	</div>
+</div>
+
+<!-- End of Android phone section -->
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 9 -->
+<!-- Microsoft Phone Section 9 -->
+<!-- End of Microsoft phone section -->
+
+
+<div style="display:none" id="service9">
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="5">MOBILE PHONE SETUP - WINDOWS / MICROSOFT</th>
+			</tr>
+			<tr>
+				<td width="15%"><img width="100%" src="barcode - mobile.png"><br>&pound;30 87540102</td>
+				<td colspan="2" width="50%"><strong class="small">Set up user account(s). Prepare Laptop or desktop for first use. Installation of any manufacturer updates or operating system updates available. Configure or create email address (if available). Activate & update pre installed Antivirus software. Set up inbuilt Parental Controls (if required). Brief explanation of how to use the device and download apps.</td>
+				<td width="18%">PUT IN CASE?<br><select onChange="done(this)">
+				<option selected>[-- SELECT --]</option>
+				<option>YES</option>
+				<option>NO</option>
+				<option>NOT APPLICABLE</option>
+				</select></td>
+				<td>PAID FOR?<br>
+				<select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO, PAY LATER</option>
+					<option>ALLOWANCE</option>
+				</select></td>
+
+			</tr>
+			<tr>
+				<td>ADDITIONAL INFORMATION</td>
+				<td colspan="4" class="small"><textarea rows="4" tip="Any other relevant info. I.E. Unique requests by customer such as multiple users or parental controls."></textarea></td>
+			</tr>
+		</table>
+
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">MICROSOFT ACCOUNT</th>
+			</tr>
+			<tr>
+				<td colspan="4">
+				<select id="msphoneswitch" onChange="switching('msphoneswitch')" tip="Ask if they already have an account.">
+					<option value="" selected>[-- CREATE NEW OR USE EXISTING ACCOUNT? --]</option>
+					<option value="1">CREATE NEW MICROSOFT ACCOUNT</option>
+					<option value="2">USE EXISTING MICROSOFT ACCOUNT</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<div style="display:none" id="msphoneswitch1">
+						<table>
+							<tr>
+								<td width="30%">DESIRED ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@Outlook.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+								<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>DESIRED ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">8 characters long and mixture of upper & lower case letters / numbers.
+									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm."maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>RECOVERY EMAIL</td>
+								<td class="small" colspan="3"><input tip="Used for password recovery." maxlength="40"></td>
+							</tr>
+							<tr>
+								<td>SECURITY QUESTION</td>
+								<td class="small" colspan="4">Required when creating a new account.
+									<select onChange="done(this)">
+										<option>-- Select Question --</option>
+										<option>Mother's birthplace</option>
+										<option>Best childhood friend</option>
+										<option>Name of first pet</option>
+										<option>Favourite teacher</option>
+										<option>Favourite historical person</option>
+										<option>Grandfather's occupation</option>
+									</select>
+									<input tip="Type answer exactly how customer wishes it to be set up with Microsoft." maxlength="25">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<div style="display:none" id="msphoneswitch2">
+						<table>
+							<tr>
+								<td width="30%">EXISTING ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@Outlook.com.
+									<input tip="A Microsoft account is any 'live', 'msn', 'hotmail' or 'outlook' email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. Otherwise, we will always set up a new Microsoft account." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING ACCOUNT PASSWORD</td>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="http://mail.live.com" target="_blank">'MAIL.LIVE.COM'.</a>
+								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm. You can always ensure account name and password are correct by signing into Windows mail at mail.live.com." maxlength="40">
+								</td>
+							</tr>
+						</table>
+					</div>
+					<table>
+						<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+						<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+
+						<tr>
+							<td width="30%">EXISTING EMAIL ADDRESS</td>
+							<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+							</td>
+						</tr>
+						<tr>
+							<td>EXISTING EMAIL PASSWORD</td>
+							<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+							</td>
+						</tr>
+					</table>
+					<div class="noprint">
+						<table style="width:100%">
+							<tr>
+								<td>
+								<select id="msphonelogin" onChange="switching('msphonelogin')" tip="How would the customer like to log into their machine?">
+								<option value="" selected>[-- HOW WOULD CUSTOMER LIKE TO LOG IN? --]</option>
+								<option value="1">USE MICROSOFT ACCOUNT EMAIL AND PASSWORD TO LOG IN</option>
+								<option value="2">USE A PASSCODE TO LOG IN</option>
+								</select>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div style="display:none" id="msphonelogin1"></div>
+
+					<div style="display:none" id="msphonelogin2">
+						<table style="width:100%" class="nobum">
+							<tr>
+								<td class="small" width="15%">PASSCODE</td>
+								<td class="small" colspan="3"><input tip="Should be 4 to 6 numbers long." maxlength="20"></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="avoidbreak">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+			</tr>
+			<tr>
+				<td width="10%">PARTNER</td>
+				<td width="40%"></td>
+				<td width="25%">CR/STOCK NO./JOB NO.</td>
+				<td width="25%"><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>NAME</td>
+				<td><dupe dupe="title"></dupe>
+					<dupe dupe="forename"></dupe>
+					<dupe dupe="surname"></dupe>
+				</td>
+				<td>CURRENT DATE</td>
+				<td><input date="true" maxlength="30"></td>
+			</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th>MOBILE PHONE SETUP - MICROSOFT / WINDOWS</th>
+				<th>COMMENTS</th>
+				<th>&#x2713; DONE</th>
+			</tr>
+			<tr>
+				<td class="small">Unpack and check contents of new phone.</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Set  language, agree terms, register.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Create new or use existing Microsoft account.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		    <tr>
+				<td class="small">Restore settings from another MS phone (optional).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Activate Cortana.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		    <tr>
+				<td class="small">Use phone transfer tool to transfer contacts and images from an old phone (optional).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Download and install all Windows app updates.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Set up email app.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Create additional users (if required).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Set parental controls (if required).</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Repack contents.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Contact customer if no agreed eta.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+			<tr>
+				<td class="small">Handover to customer, explaining what has been done.</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+		    </tr>
+		</table>
+		<hr class="slip" align="centre">
+		<centre><p>To be retained in branch for 6 months</p></centre>
+		<table>
+			<tr>
+				<th colspan="5">COMPLETION OF SERVICE</th>
+			</tr>
+			<tr>
+				<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+			</tr>
+			<tr>
+				<td>Service</td>
+				<td width="40%"><br><br></td>
+				<td>Branch</td>
+				<td width="40%"><br><br></td>
+			</tr>
+			<tr>
+				<td>Customer name</td>
+				<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+				</td>
+				<td>Ref No.</td>
+				<td><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>Customer signature</td>
+				<td width="40%"><br><br></td>
+				<td>Date</td>
+				<td width="40%"><br><br></td>
+			</tr>
+		</table>
+		<hr align="centre">
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 10 -->
+<!-- Health Check & Fix Section 10 -->
+
+<div style="display:none" id="service10" waiver="true">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th colspan="6">HEALTH CHECK AND FIX</th>
+		</tr>
+		<tr>
+			<td width="15%"><img width="100%" src="barcode - check.png"><br>&pound;50 87560105</td>
+			<td colspan="4"><strong class="small">Scan for and remove any unwanted programs such as adware, malware or viruses. Install any outstanding updates to operating system or from manufacturer. Test for errors and diagnose issues. Attempt to improve performance and address software-based problems.</td>
+		<td class="small">SERVICE PAID FOR?>
+			<select onChange="done(this)">
+				<option selected>--SELECT--</option>
+				<option>YES AT TILL</option>
+				<option>YES IN TS</option>
+				<option>NO, PAY LATER</option>
+				<option>ALLOWANCE</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td width="15%">EMAIL / ACCOUNT</td>
+			<td width="25%" colspan="3"><input tip="Required for accessing machine and for setup after a system restore." maxlength="40"</td>
+			<td width="15%">DEVICE PASSWORD</td>
+			<td width="20%"><input tip="Required for accessing machine." maxlength="25"</td>
+		</tr>
+		<tr>
+			<td colspan="6" class="hot">A SIGNED DATA WAIVER FORM IS REQUIRED</td>
+		</tr>
+		<tr>
+			<td>ADDITIONAL INFORMATION</td>
+			<td colspan="6" class="small"><textarea rows="10" tip="I.e. What is wrong with the machine? Details of any errors or inconsistent behaviours. How long has the machine been like this?" maxlength="500"></textarea></td>
+		</tr>
+	</table>
+	<hr class="slip" align="centre">
+	<centre><p>To be retained in branch for 6 months</p></centre>
+	<table>
+		<tr>
+			<th colspan="5">COMPLETION OF SERVICE</th>
+		</tr>
+		<tr>
+			<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+		</tr>
+		<tr>
+			<td>Service</td>
+			<td width="40%"><br><br></td>
+			<td>Branch</td>
+			<td width="40%"><br><br></td>
+		</tr>
+		<tr>
+			<td>Customer name</td>
+			<td><dupe dupe="title"></dupe>
+					<dupe dupe="forename"></dupe>
+					<dupe dupe="surname"></dupe>
+			</td>
+			<td>Ref No.</td>
+			<td><dupe dupe="refno"></td>
+		</tr>
+		<tr>
+			<td>Customer signature</td>
+			<td width="40%"><br><br></td>
+			<td>Date</td>
+			<td width="40%"><br><br></td>
+		</tr>
+	</table>
+	<hr align="centre">
+</div>
+
+<!-- End of Health Check and Fix Section -->
+
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 11 -->
+<!-- Data Backup Section -->
+
+<div style="display:none" id="service11" waiver="true">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th colspan="5">DATA BACK UP</th>
+		</tr>
+		<tr>
+			<td width="15%"><img width="100%" src="barcode - data backup.png"><br>&pound;35 87560106</td>
+			<td colspan="4"><strong class="small">Back up operating system and / or files (photos, music, videos and documents) to an external harddrive or usb stick (customer to purchase or provide). Storage requirements will vary so a member of technical support will determine what is appropriate.</td>
+		</tr>
+		<tr>
+			<td width="15%">PASSWORD FOR DEVICE</td>
+			<td colspan="2" class="small">If no password, type 'None'.<input maxlength="25"</td>
+			<td class="hot">A SIGNED DATA WAIVER FORM IS REQUIRED</td>
+			<td>The customer must sign to give us permission to access their old machine and any files it might contain.</td>
+		</tr>
+		<tr>
+			<td>ADDITIONAL INFORMATION</td>
+			<td colspan="4" class="small"><textarea rows="6" tip="" maxlength="150"></textarea></td>
+		</tr>
+	</table>
+	<hr class="slip" align="centre">
+	<centre><p>To be retained in branch for 6 months</p></centre>
+	<table>
+
+			<tr>
+				<th colspan="5">COMPLETION OF SERVICE</th>
+			</tr>
+			<tr>
+				<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+			</tr>
+			<tr>
+				<td>Service</td>
+				<td width="40%"><br><br></td>
+				<td>Branch</td>
+				<td width="40%"><br><br></td>
+			</tr>
+			<tr>
+				<td>Customer name</td>
+				<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+				</td>
+				<td>Ref No.</td>
+				<td><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>Customer signature</td>
+				<td width="40%"><br><br></td>
+				<td>Date</td>
+				<td width="40%"><br><br></td>
+			</tr>
+	</table>
+	<hr align="centre">
+</div>
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 12 -->
+<!-- Data Recovery Standard Section -->
+
+<div style="display:none" id="service12" waiver="true">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th colspan="5"><a href="https://drive.google.com/open?id=0BwyMPGYq_QV7QTZNZ0NKZDBFUTQ" target="_blank">DATA RECOVERY (STANDARD)</a></th>
+		</tr>
+		<tr>
+			<td width="15%"><img width="100%" src="barcode - data rec std.png"><br>&pound;80 87560101</td>
+			<td colspan="4"><strong>This service applies to harddrives that may have been accidentally erased or corrupted.<br>Examples of what qualifies for as Standard Data Recovery include; Unreadable or corrupt files, instances where the device has been accidentally formatted or had its OS re-installed, deleted files, not powering on or infection from malware/virus.<br>Any recovered data will need to be put onto an external HHD or USB (customer to purchase or provide). The faulty harddrive and backup harddrive are both sent away to the Data Recovery agent with an expected turnaround of 5-7 days.</strong></td>
+
+		</tr>
+		<tr>
+			<td width="15%">PASSWORD FOR DEVICE</td>
+			<td colspan="2" class="small">If no password, type 'None'.<input maxlength="25"></td>
+			<td width="15%">SERVICE POWER REF</td>
+			<td><input maxlength="25"></td>
+		<tr>
+			<td class="hot">A SIGNED DATA WAIVER FORM IS REQUIRED</td>
+			<td colspan="4">The customer must sign to give us permission to access their old machine and any files it might contain. There is no guarantee that any data can be recovered.</td>
+		<tr>
+			<td>ADDITIONAL INFORMATION</td>
+			<td colspan="4" class="small"><textarea rows="6" tip="Any special requirements or additional information." maxlength="150"></textarea></td>
+		</tr>
+	</table>
+	<hr class="slip" align="centre">
+	<centre><p>To be retained in branch for 6 months</p></centre>
+	<table>
+
+			<tr>
+				<th colspan="5">COMPLETION OF SERVICE</th>
+			</tr>
+			<tr>
+				<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+			</tr>
+			<tr>
+				<td>Service</td>
+				<td width="40%"><br><br></td>
+				<td>Branch</td>
+				<td width="40%"><br><br></td>
+			</tr>
+			<tr>
+				<td>Customer name</td>
+				<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+				</td>
+				<td>Ref No.</td>
+				<td><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>Customer signature</td>
+				<td width="40%"><br><br></td>
+				<td>Date</td>
+				<td width="40%"><br><br></td>
+			</tr>
+	</table>
+	<hr align="centre">
+</div>
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 13 -->
+<!-- Data Cleanse Section -->
+
+<div style="display:none" id="service13" waiver="true">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th colspan="5">DATA CLEANSE / ERASURE</th>
+		</tr>
+		<tr>
+			<td width="15%"><img width="100%" src="barcode - data cleanse.png"><br>&pound;35 87550305</td>
+			<td colspan="4"><strong class="small">Use of a military-grade data cleansing program to securely wipe an old pc, mobile phone or tablet. Printed evidence of the data cleanse is provided by the program upon completion.</td>
+		</tr>
+		<tr>
+			<td width="15%">PASSWORD FOR DEVICE</td>
+			<td colspan="2" class="small">If no password, type 'None'.<input maxlength="25"</td>
+			<td class="hot">A SIGNED DATA WAIVER FORM IS REQUIRED</td>
+			<td>The customer must sign to give us permission to erase their old machine and any files it might contain.</td>
+		</tr>
+		<tr>
+			<td>ADDITIONAL INFORMATION</td>
+			<td colspan="4" class="small"><textarea rows="6" tip="Any special requirements or additional information." maxlength="150"></textarea></td>
+		</tr>
+	</table>
+	<hr class="slip" align="centre">
+	<centre><p>To be retained in branch for 6 months</p></centre>
+	<table>
+
+			<tr>
+				<th colspan="5">COMPLETION OF SERVICE</th>
+			</tr>
+			<tr>
+				<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+			</tr>
+			<tr>
+				<td>Service</td>
+				<td width="40%"><br><br></td>
+				<td>Branch</td>
+				<td width="40%"><br><br></td>
+			</tr>
+			<tr>
+				<td>Customer name</td>
+				<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+				</td>
+				<td>Ref No.</td>
+				<td><dupe dupe="refno" maxlength="10"></td>
+			</tr>
+			<tr>
+				<td>Customer signature</td>
+				<td width="40%"><br><br></td>
+				<td>Date</td>
+				<td width="40%"><br><br></td>
+			</tr>
+	</table>
+	<hr align="centre">
+</div>
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 14 -->
+<!-- Software Installation Section -->
+
+<div style="display:none" id="service14" waiver="true">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th colspan="7">SOFTWARE INSTALLATION ONLY</th>
+		</tr>
+		<tr>
+			<td width="20%"><img width="100%" src="barcode - software installation only.png"><br>&pound;35 87540302</td>
+			<td colspan="4"><strong class="small">Installation of one or more items of software purchased in-store, (but not at the same time as a new machine), such as Microsoft Office or Norton's Internet Security.</td>
+		</tr>
+		<tr>
+			<td width="15%">PASSWORD FOR DEVICE</td>
+			<td width="25%"><input tip="Required for accessing machine. If no password, leave blank or type 'None'" maxlength="25"</td>
+			<td class="hot">A SIGNED DATA WAIVER FORM IS REQUIRED</td>
+			<td>The customer must sign to give us permission to erase their old machine and any files it might contain.</td>
+		</tr>
+		<tr>
+			<td>ADDITIONAL INFORMATION</td>
+			<td colspan="6" class="small"><textarea rows="6" tip="Any special requirements or additional information." maxlength="150"></textarea></td>
+		</tr>
+	</table>
+	<hr class="slip" align="centre">
+	<centre><p>To be retained in branch for 6 months</p></centre>
+	<table>
+
+			<tr>
+				<th colspan="5">COMPLETION OF SERVICE</th>
+			</tr>
+			<tr>
+				<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+			</tr>
+			<tr>
+				<td>Service</td>
+				<td width="40%"><br><br></td>
+				<td>Branch</td>
+				<td width="40%"><br><br></td>
+			</tr>
+			<tr>
+				<td>Customer name</td>
+				<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+				</td>
+				<td>Ref No.</td>
+				<td><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>Customer signature</td>
+				<td width="40%"><br><br></td>
+				<td>Date</td>
+				<td width="40%"><br><br></td>
+			</tr>
+	</table>
+	<hr align="centre">
+</div>
+
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 15 -->
+<!-- Waiver Only -->
+<div id="service15" waiver="true" style="display:none" hidetop="true"></div>
+
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 16 -->
+<!-- Handover Notes Only -->
+<div id="service16" style="display:none" hidetop="true">
+	<table class="avoidbreak" class="nobum">
+		<tr>
+			<td>
+				<h1>PARTNER HANDOVER NOTES</h1>
+
+				<table cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="20%">SURNAME</td>
+						<td width="40%"><input maxlength="30" dupe="surname"></td>
+						<td>DATE</td>
+						<td width="20%"><input date="true" maxlength="30"></td>
+						<td>PAGE NO.</td>
+						<td width="10%">&nbsp;</td>
+					</tr>
+				</table>
+
+				<table cellspacing="0" cellpadding="0" class="nobum">
+					<tr>
+						<th width="20%">PARTNER NAME</th>
+						<th>NOTES</th>
+					</tr>
+					<tr>
+						<td><textarea class="nob" style="height:50em"></textarea></td>
+						<td><textarea class="nob" style="height:50em"></textarea></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 17 -->
+<!-- Amazon Tablet / EReader Setup -->
+
+<div style="display:none" id="service17">
+	<div>
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th colspan="4">AMAZON TABLET / EREADER SETUP</th>
+			</tr>
+			<tr>
+				<td width="20%"><img width="100%" src="barcode - tablet.png"><br>&pound;30 87540110</td>
+				<td colspan="3"><strong class="small">Set up an email address and Amazon account (if required). Prepare Tablet for first use. Install any available operating system updates. Provide brief explanation of how to use the device and download apps.</td>
+				</td>
+			</tr>
+			<tr>
+				<td>PUT IN CASE?<br><select onChange="done(this)">
+					<option selected>[-- SELECT --]</option>
+					<option>YES</option>
+					<option>NO</option>
+					<option>NOT APPLICABLE</option>
+				</select></td>
+				<td width="20%">PAID FOR?<br>
+				<select onChange="done(this)">
+					<option selected>--SELECT--</option>
+					<option>YES AT TILL</option>
+					<option>YES IN TS</option>
+					<option>NO, PAY LATER</option>
+					<option>ALLOWANCE</option>
+				</select></td>
+				<td width="20%">ADDITIONAL INFORMATION</td>
+				<td width="50%" class="small"><textarea rows="4" tip="Any other relevant info. I.e. Unique requests by customer such as email accounts or interest in apps (if applicable)."></textarea></td>
+			</tr>
+		</table>
+
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<th>AMAZON ACCOUNT</th>
+			</tr>
+			<tr>
+				<td>
+				<select id="amazon" onChange="switching('amazon')" tip="Ask if they already have a Amazon account.">
+					<option value="" selected>[-- CREATE NEW ACCOUNT OR USE EXISTING? --]</option>
+					<option value="1">CREATE NEW AMAZON ACCOUNT</option>
+					<option value="2">USE EXISTING AMAZON ACCOUNT</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div style="display:none" id="amazon1">
+						<table width="100%" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>Does the customer already have an email address and know their password?</td>
+								<td width="40%"><select id="existingemail" onChange="switching('existingemail')" tip="Ask if they already have an email address.">
+									<option value="" selected>[-- SELECT --]</option>
+									<option value="1">YES</option>
+									<option value="2">NO, CREATE A NEW GMAIL ADDRESS</option>
+								</select></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div style="display:none" id="existingemail2">
+										<table width="100%" class="nobum" cellspacing="0" cellpadding="0">
+											<th colspan="2">CREATE A NEW GOOGLE EMAIL ADDRESS</th>
+											<tr>
+												<td width="25%">DESIRED ACCOUNT</td>
+												<td class="small">i.e John.Smith@gmail.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+												<input onKeyUp="dupe(this,'newemail')" tip="The customer may already have an account with Google / Gmail and not realise it. As a customer's first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+											</tr>
+											<tr>
+												<td>DESIRED PASSWORD</td>
+												<td class="small">8 characters long and mixture of upper & lower case letters / numbers.
+													<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+												</td>
+											</tr>
+											<tr>
+												<td>SECURITY QUESTION</td>
+												<td>
+													<select onChange="done(this)">
+														<option>-- Select Question --</option>
+														<option>FIRST PHONE NUMBER</option>
+														<option>CHILDHOOD BEST FRIEND</option>
+														<option>FIRST TEACHER NAME</option>
+														<option>MANAGERS NAME FIRST JOB</option>
+														<option>VEHICLE REG NUMBER</option>
+													</select>
+													<input tip="Type answer exactly how customer wishes it to be set up with Google." maxlength="25">
+												</td>
+											</tr>
+											<th colspan="2">CREATE AMAZON ACCOUNT</th>
+											<tr>
+												<td width="25%">NEW AMAZON ACCOUNT</td>
+												<td ><input dupe="newemail" maxlength="40"></td>
+											</tr>
+											<tr>
+												<td>NEW AMAZON PASSWORD</td>
+												<td class="small">Should be different than the email address password above. 8 characters long and mixture of upper & lower case letters / numbers.<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40"></td>
+											</tr>
+										</table>
+									</div>
+
+									<div style="display:none" id="existingemail1">
+										<table width="100%" class="w100 nobum" cellspacing="0" cellpadding="0">
+											<tr>
+												<td width="40%">EXISTING EMAIL ACCOUNT</td>
+												<td><input onKeyUp="dupe(this,'existamazon')" tip="We need this email address in order to activate their new Amazon account." maxlength="40"></td>
+											</tr>
+											<tr>
+												<td width="40%">EXISTING EMAIL PASSWORD</td>
+												<td><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer and confirm." maxlength="40"></td>
+											</tr>
+											<tr>
+												<td width="25%">NEW AMAZON ACCOUNT</td>
+												<td><input dupe="existamazon" maxlength="40"></td>
+											</tr>
+											<tr>
+												<td>NEW AMAZON PASSWORD</td>
+												<td class="small"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40"></td>
+											</tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+
+
+					<div style="display:none" id="amazon2">
+						<table class="nobum">
+							<tr>
+								<td width="25%">EXISTING ACCOUNT</td>
+								<td class="small" colspan="3">i.e John.Smith@gmail.com.
+									<input tip="An Amazon account can be any valid email address." maxlength="40">
+								</td>
+							</tr>
+							<tr>
+								<td>EXISTING PASSWORD</td>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="https://www.amazon.co.uk/" target="_blank">'Amazon.co.uk'.</a>
+								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer and confirm." maxlength="40">
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<table>
+			<tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
+			<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</td></tr>
+
+			<tr>
+				<td width="30%">EXISTING EMAIL ADDRESS</td>
+				<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td>EXISTING EMAIL PASSWORD</td>
+				<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+				</td>
+			</tr>
+		</table>
+
+
+
+		<div class="avoidbreak">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS & PARTNERS PARTNER</th>
+				</tr>
+				<tr>
+					<td width="10%">PARTNER</td>
+					<td width="40%"></td>
+					<td width="25%">CR/STOCK NO./JOB NO.</td>
+					<td width="25%"><dupe dupe="refno"></td>
+				</tr>
+				<tr>
+					<td>NAME</td>
+					<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+					</td>
+					<td>CURRENT DATE</td>
+					<td><input date="true" maxlength="30"></td>
+				</tr>
+			</table>
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th>TABLET SET UP - KINDLE</th>
+					<th>COMMENTS</th>
+					<th>&#x2713; DONE</th>
+				</tr>
+				<tr>
+					<td class="small">Unpack  and check contents.</td>
+					<td width="40%">&nbsp;</td>
+					<td width="10%">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set language, country or region.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Connect to wifi.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Accept licence agreement.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Set up Amazon account / sign in.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Install any available operating system / app updates.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Create extra users (if required).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Enable parent controls (if required).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Ensure tablet has reasonable charge.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Repack contents. Place in case (yes/no).</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Contact customer if no agreed eta.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="small">Give brief handover to customer making sure any relevant info / passwords are understood.</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<hr class="slip" align="centre">
+			<centre><p>To be retained in branch for 6 months</p></centre>
+			<table>
+
+				<tr>
+					<th colspan="5">COMPLETION OF SERVICE</th>
+				</tr>
+				<tr>
+					<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+				</tr>
+				<tr>
+				 	<td>Service</td>
+					<td width="40%"><br><br></td>
+					<td>Branch</td>
+					<td width="40%"><br><br></td>
+				</tr>
+				<tr>
+					<td>Customer name</td>
+					<td><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+					</td>
+					<td>Ref No.</td>
+					<td><dupe dupe="refno" maxlength="10"></td>
+				</tr>
+				<tr>
+					<td>Customer signature</td>
+					<td width="40%"><br><br></td>
+					<td>Date</td>
+					<td width="40%"><br><br></td>
+				</tr>
+			</table>
+			<hr align="centre">
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 18 -->
+<!-- Letter -->
+
+<div style="display:none" id="service18" shunt="letter.html"></div>
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 19 -->
+<!-- Data Recovery Advanced Section -->
+
+<div style="display:none" id="service19" waiver="true">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<th colspan="5"><a href="https://drive.google.com/open?id=0BwyMPGYq_QV7QTZNZ0NKZDBFUTQ" target="_blank">DATA RECOVERY (ADVANCED)</a></th>
+		</tr>
+		<tr>
+			<td width="15%"><img width="100%" src="barcode - data rec adv.png"><br>&pound;190+ 87560102</td>
+			<td colspan="4"><strong><p>This service applies where the harddrive has sustained physical damage or developed a severe fault.<br>Depending on the nature of the fault, it may be necessary to forcibly remove the harddrive during the recovery process, resulting in further damage to the unit.</p></strong>
+			<p>Examples of this advanced service include but are not limited to the following;- Liquid damage, fire/smoke damage, clicking noises/vibration, producing a smoke/burning smell or evidence of physical trauma.</p><p>Where possible we remove the damaged harddrive in-store and then send it away to the Data Recovery agent, with an expected turnaround of 7-10 days. Data will need to be recovered onto an external HHD or USB (customer to purchase or provide).</p></td>
+		</tr>
+
+		<tr>
+			<td width="15%">PASSWORD FOR DEVICE</td>
+			<td colspan="2"><input maxlength="25"></td>
+			<td width="15%">SERVICE POWER REF</td>
+			<td><input maxlength="25"></td>
+		</tr>
+		<tr>
+			<td class="hot">A SIGNED DATA WAIVER FORM IS REQUIRED</td>
+			<td colspan="4">The customer must sign to give us permission to access their old machine and any files it might contain. There is no guarantee that any data can be recovered.</td>
+		</tr>
+		<tr>
+			<td>ADDITIONAL INFORMATION</td>
+			<td colspan="4" class="small"><textarea rows="6" tip="Any special requirements or additional information." maxlength="150"></textarea></td>
+		</tr>
+	</table>
+	<hr class="slip" align="centre">
+	<centre><p>To be retained in branch for 6 months</p></centre>
+	<table>
+
+			<tr>
+				<th colspan="5">COMPLETION OF SERVICE</th>
+			</tr>
+			<tr>
+				<td colspan="5">John Lewis & Partners does not retain any of the information or paperwork used to complete this service. Where possible, this has been returned to you. If you feel we have completed the service to your satisfaction, please sign and date below.</td>
+			</tr>
+			<tr>
+				<td>Service</td>
+				<td width="40%"><br><br></td>
+				<td>Branch</td>
+				<td width="40%"><br><br></td>
+			</tr>
+			<tr>
+				<td>Customer name</td>
+				<td><dupe dupe="title"></dupe>
+						<dupe dupe="forename"></dupe>
+						<dupe dupe="surname"></dupe>
+				</td>
+				<td>Ref No.</td>
+				<td><dupe dupe="refno"></td>
+			</tr>
+			<tr>
+				<td>Customer signature</td>
+				<td width="40%"><br><br></td>
+				<td>Date</td>
+				<td width="40%"><br><br></td>
+			</tr>
+	</table>
+	<hr align="centre">
+</div>
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- SECTION 20 -->
+<!-- Letter -->
+
+<div style="display:none" id="service20" shunt="https://drive.google.com/open?id=0BwyMPGYq_QV7VFpSZUFZdmp6UGs"></div>
+
+
+
+
+
+
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- ################################################################################## -->
+<!-- Data Waiver -->
+<div class="avoidbreak" id="datawaiver" style="display:none">
+	<table cellspacing="0" cellpadding="0">
+		<tr>
+			<td colspan="5" class="header"><img width="100%" src="avstitle.png"/>
+				<h1>TECHNICAL SERVICES DATA FORM</h1>
+				<h2><center>Health Check & Fix - Data Transfer, Backup & Recovery - Software Install</center></h2>
+				<h3>Please read this form carefully.</h3>
+				<h3>It is your responsibility, as the customer, to backup any important personal data (i.e. documents, pictures, music and videos) as well as any other important files, before you hand your equipment over to us for a service. This includes making sure you still have install discs or serial keys for any software you may have purchased.</h3>
+				<h3>Though John Lewis & Partners will take every care with your machine, all of your personal data, as well as any operating system upgrades or software you installed since purchase, may permanently be lost as a result of the service. John Lewis & Partners cannot be held responsible for such losses.</h3>
+				<h3>If you haven't backed up your files we can advise you how to do so.</h3>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5" class="text bigpadding">
+				<ul>
+				<!--<li>Are you aware of a potential repair time of 4 - 6 weeks? <span class="tagme">YES</span> <span class="tagme">NO</span><span class="tagme">N/
+<div style="display:none" id="service18" hidetop="true"</div>A</span></li>-->
+				<!--<li>Do you understand that your personal data, software, or upgrades may be lost? <span class="tagme">YES</span> <span class="tagme">NO</span></li>-->
+				<!--<li>*Apple iPad / iPhone only* 'Find My iPad' disabled? <span class="tagme">YES</span> <span class="tagme">NO</span><span class="tagme">N/A</span></li>
+				<li>*Google tablet / phone only* 'Factory Reset Protection' (FRP) disabled? <span class="tagme">YES</span> <span class="tagme">NO</span><span class="tagme">N/A</span></li>
+				</ul>-->
+			</td>
+		</tr>
+		<tr>
+			<th colspan="5">ENTER DETAILS BELOW</th>
+		</tr>
+		<tr>
+			<td width="10%">Customer name</td>
+			<td colspan="2"><dupe dupe="title"></dupe>
+							<dupe dupe="forename"></dupe>
+							<dupe dupe="surname"></dupe>
+			</td>
+			<td width="10%">Date</td>
+			<td width="20%"><input date="true" maxlength="30"></td>
+		</tr>
+		<tr>
+			<td width="10%">Customer item/s</td>
+			<td colspan="2" width="40%" class="small"><textarea tip="Briefly describe all items customer is entrusting us with - i.e. Laptop & hdd / usb."></textarea></td>
+			<td width="10%">Password</td>
+			<td width="20%" class="small"><textarea></textarea></td>
+		</tr>
+
+		<tr>
+			<td colspan="5">By signing this form you are confirming that you understand and accept John Lewis & Partners cannot be held responsible for any loss of data, software or system upgrades as a result of the service.</td>
+		</tr>
+		<tr>
+			<td colspan="2">Customer signature</td>
+			<td colspan="3"><br><br></td>
+		</tr>
+	</table>
+</div>
+
+
+
+
+
+<br clear=all class="noprint"><!-- ensure a little bit of white space before the end -->
+</center><!-- CENTER INSIDE CAPSULE -->
+</div><!-- OUTER CAPSULE -->
+</center><!-- OUTER CAPSULE -->
+
+<!--This form has been created by Alison Daines - John Lewis Cribbs Causeway.-->
+<!--Please visit "https://sites.Google.com/a/johnlewis.co.uk/set-up-services/" for the most up to date version -->
+<!--Please also look at the Google+ collection showing my progress writing a complete Google App solution for JL AVS "https://plus.Google.com/u/1/collection/QhkusB" -->
+
+</body>
+</html>
