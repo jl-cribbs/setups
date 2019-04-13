@@ -485,6 +485,12 @@ function dirty(ev) {
 			<td>BOOK TIME & ETA</td>
 			<td><input tip="Time the item was booked in and (if agreed) when customer is expecting to return.  If no eta agreed, type 'no eta'." maxlength="40"></td>
 		</tr>
+		<tr>
+			<td>ON BEHALF OF</td>
+			<td colspan="2"><input tip="If the purchasing customer is different from the user (for instance, a gift), please name the user here." maxlength="18" onkeyup="dupe(this,&#39;refno&#39;)"></td>
+			<td>POSTCODE</td>
+			<td><input tip="Postcode of user" maxlength="30"></td>
+		</tr>
 	</table>
 </div>
 
