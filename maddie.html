@@ -78,6 +78,12 @@ function autoCourier() {
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
+		case 'SAMSUNG':
+			courierToMatch = 'DIGICARE/SAMSUNG';
+		case 'DIGICARE':
+    			document.getElementById('courier').value = 'DPD';
+			document.getElementById('courimg').src = 'DPD512.jpg';
+    			break;
 		case 'SONY':
     			document.getElementById('courier').value = 'DPD';
 		case 'SONY CENTRAL SERVICE':
@@ -89,7 +95,14 @@ function autoCourier() {
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('destimg').src = 'lazarus.png';
 			document.getElementById('courimg').src = 'DPD512.jpg';
-			
+    			break;
+		case 'LGE':
+    			document.getElementById('courier').value = 'TALUUS';
+			document.getElementById('courimg').src = 'Default.jpg';
+    			break;
+		case 'MICROSOFT':
+    			document.getElementById('courier').value = 'TALUUS';
+			document.getElementById('courimg').src = 'Default.jpg';
     			break;
 	}
 	document.getElementById('destination').value = courierToMatch;
