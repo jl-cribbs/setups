@@ -35,10 +35,27 @@ function autoCourier() {
 			document.getElementById('courier').value = 'UPS';
 			break;
 		case 'LENOVO':
+			courierToMatch = 'FLEXTRONICS/LENOVO';
 		case 'HP':
+			courierToMatch = 'FLEXTRONICS/HP';
 		case 'FLEX':
+			courierToMatch = 'FLEXTRONICS';
 		case 'FLEXTRONICS':
     			document.getElementById('courier').value = 'DPD';
+    			break;
+		case 'TOSHIBA':
+			courierToMatch = 'REPAIRTECH/TOSHIBA';
+		case 'NINTENDO':
+			courierToMatch = 'REPAIRTECH/NINTENDO';
+		case 'LINSAR':
+			courierToMatch = 'REPAIRTECH/LINSAR';
+		case 'REPAIRTECH':
+    			document.getElementById('courier').value = 'REPAIRTECH';
+    			break;
+		case 'ASUS':
+    			courierToMatch = 'LETMEREPAIR/ASUS';
+		case 'LETMEREPAIR':
+    			document.getElementById('courier').value = 'LETMEREPAIR';
     			break;
 	}
 	document.getElementById('destination').value = courierToMatch;
