@@ -19,6 +19,21 @@
 
 <body oncontextmenu="return false">
 
+<script>
+function autoCourier() {
+	var courierToMatch = document.getElementById('destination').value.toUpperCase();
+	switch (courierToMatch) {
+		default:
+			break;
+		case 'GOGGLEBOX':
+    			document.getElementById('courier').value = 'GOGGLEBOX';
+    			break;
+		case 'DELL':
+    			document.getElementById('courier').value = 'GOGGLEBOX';
+    			break;
+	}
+}
+</script>
 
 <!--Title-->
 <div style="background-color:#92BEBF; width:100%; height:97px;">
@@ -34,12 +49,12 @@
 	<td style="width:500px;"><input id="text" name=my Text value="Audio / TV" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
 <tr>
-	<td style="width:400px;"><font size=+2>Collecting Carrier</font></td>
-	<td style="width:500px;"><input id="text" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
+	<td style="width:400px;"><font size=+2>Destination</font></td>
+	<td style="width:500px;"><input id="destination" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
 <tr>
-	<td style="width:400px;"><font size=+2>Going to</font></td>
-	<td style="width:500px;"><input id="text" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
+	<td style="width:400px;"><font size=+2>Collecting Carrier</font></td>
+	<td style="width:500px;"><input id="courier" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
 <tr>
 	<td style="width:400px;"><font size=+2>Reference No</font></td>
@@ -66,7 +81,7 @@
 	<td style="width:500px;"><input id="text" type="text" style="width:100px; height:30px;" maxlength="50" /></td>
 </tr>
 	<td style="width:430px;"><font size=+2>BT Number</font></td>
-	<td style="width:500px;"><input id="text" type="text" style="width:100px; height:30px;" maxlength="50" /></td>
+	<td style="width:500px;"><input id="text" type="text" style="width:100px; height:30px;" maxlength="4" /></td>
 </tr>
 <tr>
 	<td style="width:400px;"><font size=+2>Serial No</font></td>
@@ -114,7 +129,7 @@
 
 </form>
 
-
+	<button onClick='autoCourier()'>Auto</button>
 </body>
 
 </html>
