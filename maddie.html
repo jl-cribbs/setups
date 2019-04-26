@@ -22,6 +22,8 @@
 <script>
 function autoDate(){
 	document.getElementById('timestamp').innerHTML = Date();}
+function clearCourimg() {document.getElementById('courimg').src = 'default.jpg';}
+function clearDestimag(){document.getElementById('destimg').src = 'default.jpg';}
 function autoServicePower(){document.getElementById('servicepower').value = document.getElementById('reference').value;}
 function autoCourier() {
 	var courierToMatch = document.getElementById('destination').value.toUpperCase();
@@ -149,8 +151,8 @@ function autoCourier() {
 <table border="0px" cellspacing="0px" cellpadding="0px">
 <div id="form-note" style="width:400px;"></div>
 	<td style="width:200px;">
-	<img id="destimg" class="stamp" src="" onClick="" title = 'CLICK TO CLEAR' height=200px width=200px>
-	<img id="courimg" class="stamp"src="" onClick="" title = 'CLICK TO CLEAR' height=200px width=200px></td>
+	<img id="destimg" class="stamp" src="default.jpg" onClick="clearDestimg" title = 'CLICK TO CLEAR' height=200px width=200px>
+	<img id="courimg" class="stamp"src="default.jpg" onClick="" title = 'CLICK TO CLEAR' height=200px width=200px></td>
 	<td style="width:380px;">
 
 	<table border="10px" cellspacing="0px" cellpadding="0px">
