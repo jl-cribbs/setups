@@ -53,12 +53,13 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'UPS512.jpg';
 			break;
 		case 'LENOVO':
-			courierToMatch = 'FLEXTRONICS/LENOVO';
+			
 		case 'HP':
-			courierToMatch = 'FLEXTRONICS/HP';
+			
 		case 'FLEX':
-			courierToMatch = 'FLEXTRONICS';
+			
 		case 'FLEXTRONICS':
+			courierToMatch = 'FLEXTRONICS/' + courierToMatch;
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'flex.jpg';
@@ -70,7 +71,7 @@ function autoCourier() {
 		case 'LINSAR':
 			
 		case 'REPAIRTECH':
-			courierToMatch = 'REPAIRTECH/' + 'courierToMatch';
+			courierToMatch = 'REPAIRTECH/' + courierToMatch;
     			document.getElementById('courier').value = 'REPAIRTECH';
     			break;
 		case 'ASUS':
@@ -103,7 +104,7 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'Default.jpg';
     			break;
 		case 'MICROSOFT':
-    			document.getElementById('courier').value = 'TALUUS';
+    			document.getElementById('courier').value = '';
 			document.getElementById('courimg').src = 'Default.jpg';
     			break;
 	}
