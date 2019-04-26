@@ -79,8 +79,11 @@ function autoCourier() {
     			document.getElementById('courier').value = 'DPD';
 		case 'SONY CENTRAL SERVICE':
     			document.getElementById('courier').value = 'DPD';
-			document.getElementById('destimg').src = 'sony.jpg';
+			document.getElementById('destimg').src = 'sony.png';
 			document.getElementById('courimg').src = 'DPD512.jpg';
+    			break;
+		case 'LAZARUS':
+    			document.getElementById('courier').value = 'DPD';
     			break;
 	}
 	document.getElementById('destination').value = courierToMatch;
