@@ -20,6 +20,7 @@
 <body oncontextmenu="return false">
 
 <script>
+function autoCourierLogo(){}
 function autoCourier() {
 	var courierToMatch = document.getElementById('destination').value.toUpperCase();
 	switch (courierToMatch) {
@@ -29,7 +30,7 @@ function autoCourier() {
     			document.getElementById('courier').value = 'GOGGLEBOX';
     			break;
 		case 'ALIENWARE':
-			document.getElementById('destination').value = 'DELL';
+			courierToMatch = 'DELL/ALIENWARE';
 		case 'DELL':
 			document.getElementById('courier').value = 'UPS';
 			break;
@@ -40,11 +41,12 @@ function autoCourier() {
     			document.getElementById('courier').value = 'DPD';
     			break;
 	}
+	document.getElementById('destination').value = courierToMatch;
 }
 </script>
 
 <!--Title-->
-<div style="background-color:#92BEBF; width:100%; height:97px;">
+<div style="background-color:#92BEBF; width:100%; height:80px;">
 	<p><h3>Technical Services</h3>
 	<h3>at John Lewis Cribbs Causeway</h3>
 	</p>
