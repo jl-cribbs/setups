@@ -84,6 +84,9 @@ function autoCourier() {
     			break;
 		case 'LAZARUS':
     			document.getElementById('courier').value = 'DPD';
+			document.getElementById('destimg').src = 'lazarus.png';
+			document.getElementById('courimg').src = 'DPD512.jpg';
+			
     			break;
 	}
 	document.getElementById('destination').value = courierToMatch;
