@@ -23,7 +23,6 @@
 function autoDate(){
 	document.getElementById('timestamp').innerHTML = Date();}
 function autoServicePower(){document.getElementById('servicepower').value = document.getElementById('reference').value;}
-function autoCourierLogo(){}
 function autoCourier() {
 	var courierToMatch = document.getElementById('destination').value.toUpperCase();
 	switch (courierToMatch) {
@@ -34,14 +33,17 @@ function autoCourier() {
     			break;
 		case 'CAD':
     			document.getElementById('courier').value = 'DPD';
+			document.getElementById('courimg').source = 'DPD512.jpg';
     			break;
 		case 'REGENERSIS':
     			document.getElementById('courier').value = 'DPD';
+			document.getElementById('courimg').source = 'DPD512.jpg';
     			break;
 		case 'ALIENWARE':
 			courierToMatch = 'DELL/ALIENWARE';
 		case 'DELL':
 			document.getElementById('courier').value = 'UPS';
+			document.getElementById('courimg').source = 'UPS512.jpg';
 			break;
 		case 'LENOVO':
 			courierToMatch = 'FLEXTRONICS/LENOVO';
@@ -51,6 +53,7 @@ function autoCourier() {
 			courierToMatch = 'FLEXTRONICS';
 		case 'FLEXTRONICS':
     			document.getElementById('courier').value = 'DPD';
+			document.getElementById('courimg').source = 'DPD512.jpg';
     			break;
 		case 'TOSHIBA':
 			courierToMatch = 'REPAIRTECH/TOSHIBA';
@@ -65,11 +68,14 @@ function autoCourier() {
     			courierToMatch = 'LETMEREPAIR/ASUS';
 		case 'LETMEREPAIR':
     			document.getElementById('courier').value = 'DPD';
+			document.getElementById('courimg').source = 'DPD512.jpg';
     			break;
 		case 'SONY':
     			document.getElementById('courier').value = 'DPD';
 		case 'SONY CENTRAL SERVICE':
     			document.getElementById('courier').value = 'DPD';
+			document.getElementById('destimg').source = 'sony.jpg';
+			document.getElementById('courimg').source = 'DPD512.jpg';
     			break;
 	}
 	document.getElementById('destination').value = courierToMatch;
@@ -143,7 +149,8 @@ function autoCourier() {
 <table border="0px" cellspacing="0px" cellpadding="0px">
 <div id="form-note" style="width:400px;"></div>
 	<td style="width:200px;">
-	<img id="imgdest" src="" onClick="" title = 'CLICK TO CLEAR' height=200px width=200px><</td>
+	<img id="destimg" class="stamp" src="" onClick="" title = 'CLICK TO CLEAR' height=200px width=200px><</td>
+	<img id="courimg" class="stamp"src="" onClick="" title = 'CLICK TO CLEAR' height=200px width=200px><</td>
 	<td style="width:380px;">
 
 	<table border="10px" cellspacing="0px" cellpadding="0px">
