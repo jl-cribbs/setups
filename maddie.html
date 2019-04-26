@@ -33,17 +33,17 @@ function autoCourier() {
     			break;
 		case 'CAD':
     			document.getElementById('courier').value = 'DPD';
-			document.getElementById('courimg').source = 'DPD512.jpg';
+			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
 		case 'REGENERSIS':
     			document.getElementById('courier').value = 'DPD';
-			document.getElementById('courimg').source = 'DPD512.jpg';
+			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
 		case 'ALIENWARE':
 			courierToMatch = 'DELL/ALIENWARE';
 		case 'DELL':
 			document.getElementById('courier').value = 'UPS';
-			document.getElementById('courimg').source = 'UPS512.jpg';
+			document.getElementById('courimg').src = 'UPS512.jpg';
 			break;
 		case 'LENOVO':
 			courierToMatch = 'FLEXTRONICS/LENOVO';
@@ -53,7 +53,7 @@ function autoCourier() {
 			courierToMatch = 'FLEXTRONICS';
 		case 'FLEXTRONICS':
     			document.getElementById('courier').value = 'DPD';
-			document.getElementById('courimg').source = 'DPD512.jpg';
+			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
 		case 'TOSHIBA':
 			courierToMatch = 'REPAIRTECH/TOSHIBA';
@@ -68,14 +68,14 @@ function autoCourier() {
     			courierToMatch = 'LETMEREPAIR/ASUS';
 		case 'LETMEREPAIR':
     			document.getElementById('courier').value = 'DPD';
-			document.getElementById('courimg').source = 'DPD512.jpg';
+			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
 		case 'SONY':
     			document.getElementById('courier').value = 'DPD';
 		case 'SONY CENTRAL SERVICE':
     			document.getElementById('courier').value = 'DPD';
-			document.getElementById('destimg').source = 'sony.jpg';
-			document.getElementById('courimg').source = 'DPD512.jpg';
+			document.getElementById('destimg').src = 'sony.jpg';
+			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
 	}
 	document.getElementById('destination').value = courierToMatch;
