@@ -22,14 +22,23 @@
 <script>
 function autoCourier() {
 	var courierToMatch = document.getElementById('destination').value.toUpperCase();
+	document.getElementById('destination').value = courierToMatch;
 	switch (courierToMatch) {
 		default:
 			break;
 		case 'GOGGLEBOX':
     			document.getElementById('courier').value = 'GOGGLEBOX';
     			break;
+		case 'ALIENWARE':
 		case 'DELL':
-    			document.getElementById('courier').value = 'GOGGLEBOX';
+			document.getElementById('courier').value = 'UPS';
+			break;
+		case 'LENOVO':
+		case 'HP':
+		case 'FLEX':
+		case 'FLEXTRONICS':
+			document.getElementById('destination').value = 'FLEXTRONICS/' + courierToMatch;
+    			document.getElementById('courier').value = 'DPD';
     			break;
 	}
 }
