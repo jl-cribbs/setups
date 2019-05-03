@@ -9,7 +9,7 @@
 	<style>
 		body { font-family: 'Roboto Slab', serif;}
 		@media print {    
-    		#print-hide {display: none !important;}
+    		.print-hide {display: none !important;}
 		}
 		table, td {border: solid 1px #000000;}
 	</style>
@@ -139,7 +139,7 @@ function autoCourier() {
 	<td style="width:300px;"><font size=+1>Collecting Carrier</font></td>
 	<td style="width:500px;"><input id="courier" type="text" style="width:200px; height:30px;" maxlength="50" />
 		</td>
-	<td onClick='autoCourier()'>Auto</td>
+	<td class="print-hide" onClick='autoCourier()'>Auto</td>
 </tr>
 <tr>
 	<td style="width:300px;"><font size=+1>Reference No</font></td>
@@ -200,7 +200,7 @@ function autoCourier() {
 </table>
 </div>
 <!--Button-->
-<div id="print-hide" style="background-color:relative; width:600px; height:30px; text-align:right;">
+<div class="print-hide" style="background-color:relative; width:600px; height:30px; text-align:right;">
 <a id="button" href="javascript:void(window.print())">Print</a>
 <a id="button" href="setupmenu.html">Home</a>
 </div>
