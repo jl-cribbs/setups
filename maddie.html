@@ -108,6 +108,10 @@ function autoCourier() {
     			document.getElementById('courier').value = '';
 			document.getElementById('courimg').src = 'Default.jpg';
     			break;
+		case 'HUMAX':
+    			document.getElementById('courier').value = 'DHL';
+			document.getElementById('courimg').src = 'Default.jpg';
+    			break;
 	}
 	document.getElementById('destination').value = courierToMatch;
 }
