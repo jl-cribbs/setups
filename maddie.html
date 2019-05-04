@@ -21,6 +21,7 @@
 function autoDate(){
 	document.getElementById('timestamp').innerHTML = Date();}
 function manualLogo() {
+	document.getElementById('courier').value == 'DHL'
 	if (document.getElementById('courier').value == 'DHL') {document.getElementById('courimg').src = 'DHL512.jpg';}
 	else if (document.getElementById('courier').value == 'DPD') {document.getElementById('courimg').src = 'DPD512.jpg';}
 	else if (document.getElementById('courier').value == 'GOGGLEBOX') {document.getElementById('courimg').src = 'gogglebox.png';}
@@ -120,6 +121,10 @@ function autoCourier() {
     			document.getElementById('courier').value = 'DHL';
 			document.getElementById('courimg').src = 'DHL512.jpg';
     			break;
+		case 'TELEPLAN':
+    			document.getElementById('courier').value = 'UPS';
+			document.getElementById('courimg').src = 'UPS512.jpg';
+    			break;
 		case 'KITCHENAID':
     			courierToMatch = 'WHIRLPOOL/KITCHENAID';
 		case 'WHIRLPOOL':
@@ -186,7 +191,7 @@ function autoCourier() {
 <div id="images-top" style ="float: left;width: 181px; margin:10px; padding:10px; background-color:#92BEBF; display: inline-block;">
 		<img id="destimg" class="stamp" src="default.jpg" onClick="clearDestimg()" title = 'CLICK TO CLEAR' height=180px width=200px>
 		<img id="courimg" class="stamp"src="default.jpg" onClick="clearCourimg()" title = 'CLICK TO CLEAR' height=180px width=200px></td>
-		<button class="print-hide" onclick="manualLogo()">Courier</button>
+		<button class="print-hide" onclick="manualLogo()">Courier Logo</button>
 	</div>
 	
 
