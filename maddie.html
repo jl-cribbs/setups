@@ -25,7 +25,7 @@ function manualLogo() {
 	else if (document.getElementById('courier').value == 'DPD') {document.getElementById('courimg').src = 'DPD512.jpg';}
 	else if (document.getElementById('courier').value == 'GOGGLEBOX') {document.getElementById('courimg').src = 'gogglebox.png';}
 	else if (document.getElementById('courier').value == 'UPS') {document.getElementById('courimg').src = 'UPS512.jpg';}
-	else {document.getElementById('courimg').src = 'Default.jpg';}
+	else {document.getElementById('courimg').src = 'default.jpg';}
 	}
 function clearCourimg() {document.getElementById('courimg').src = 'default.jpg';}
 function clearDestimg(){document.getElementById('destimg').src = 'default.jpg';}
@@ -110,11 +110,11 @@ function autoCourier() {
     			break;
 		case 'LGE':
     			document.getElementById('courier').value = 'TALUUS';
-			document.getElementById('courimg').src = 'Default.jpg';
+			document.getElementById('courimg').src = 'default.jpg';
     			break;
 		case 'MICROSOFT':
     			document.getElementById('courier').value = '';
-			document.getElementById('courimg').src = 'Default.jpg';
+			document.getElementById('courimg').src = 'default.jpg';
     			break;
 		case 'HUMAX':
     			document.getElementById('courier').value = 'DHL';
