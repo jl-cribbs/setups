@@ -111,6 +111,12 @@ function autoCourier() {
     			document.getElementById('courier').value = 'DHL';
 			document.getElementById('courimg').src = 'DHL512.jpg';
     			break;
+		case 'KITCHENAID':
+    			courierToMatch = 'WHIRLPOOL/KITCHENAID';
+		case 'WHIRLPOOL':
+    			document.getElementById('courier').value = 'DPD';
+			document.getElementById('courimg').src = 'DPD512.jpg';
+    			break;
 	}
 	document.getElementById('destination').value = courierToMatch;
 }
@@ -128,11 +134,7 @@ function autoCourier() {
 <form id="form">
 <table border="0px" display: inline-block; cellspacing="0px" cellpadding="0px">
 <tr>
-	<td style="width:300px;"><font size=+1>Department</font></td>
-	<td style="width:500px;"><input id="text" name=my Text value="Audio / TV" style="width:200px; height:30px;" maxlength="50" /></td>
-</tr>
-<tr>
-	<td style="width:300px;"><font size=+1>Destination</font></td>
+	<td style="width:300px;"><font size=+2>Destination</font></td>
 	<td style="width:500px;"><input id="destination" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
 <tr>
