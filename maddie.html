@@ -126,7 +126,7 @@ function autoCourier() {
 </div>
 
 <div style="width: 500px; background-color:#92BEBF; border-top:solid 1px #999999; margin:10px; padding:10px;">
-<table border="0px" cellspacing="0px" cellpadding="0px">
+<table border="0px" display: inline-block; cellspacing="0px" cellpadding="0px">
 <tr>
 	<td style="width:300px;"><font size=+1>Department</font></td>
 	<td style="width:500px;"><input id="text" name=my Text value="Audio / TV" style="width:200px; height:30px;" maxlength="50" /></td>
@@ -179,7 +179,12 @@ function autoCourier() {
 	<td style="width:500px;"><input id="text" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
 </table>
+	<div id="images-top" width = 201px; display = inline-block;>
+		<img id="destimg" class="stamp" src="default.jpg" onClick="clearDestimg()" title = 'CLICK TO CLEAR' height=200px width=200px>
+		<img id="courimg" class="stamp"src="default.jpg" onClick="clearCourimg()" title = 'CLICK TO CLEAR' height=200px width=200px></td>
+	</div>
 </div>
+	
 <div style="width:600px; background-color:#31BEBF; border-top:solid 1px #999999; margin:10px; padding:10px;" display: none;>
 <table border="0px" cellspacing="0px" cellpadding="0px">
 <div id="form-note" style="width:400px;"></div>
