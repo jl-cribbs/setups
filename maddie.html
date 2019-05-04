@@ -20,6 +20,13 @@
 <script>
 function autoDate(){
 	document.getElementById('timestamp').innerHTML = Date();}
+function manualLogo() {
+	if (document.getElementById('courier').value == 'DHL') {document.getElementById('courimg').src = 'DHL512.jpg';}
+	else if (document.getElementById('courier').value == 'DPD') {document.getElementById('courimg').src = 'DPD512.jpg';}
+	else if (document.getElementById('courier').value == 'GOGGLEBOX') {document.getElementById('courimg').src = 'gogglebox.png';}
+	else if (document.getElementById('courier').value == 'UPS') {document.getElementById('courimg').src = 'UPS512.jpg';}
+	else {document.getElementById('courimg').src = 'Default.jpg';}
+	}
 function clearCourimg() {document.getElementById('courimg').src = 'default.jpg';}
 function clearDestimg(){document.getElementById('destimg').src = 'default.jpg';}
 function autoServicePower(){document.getElementById('servicepower').value = document.getElementById('reference').value;}
@@ -28,6 +35,7 @@ function autoCourier() {
 	switch (courierToMatch) {
 		default:
 			break;
+		case 'GOGGLE BOX':
 		case 'GOGGLEBOX':
     			document.getElementById('courier').value = 'GOGGLEBOX';
 			document.getElementById('courimg').src = 'gogglebox.png';
@@ -72,7 +80,8 @@ function autoCourier() {
 		case 'REPAIRTECH':
 			courierToMatch = 'REPAIRTECH/' + courierToMatch;
 			document.getElementById('destimg').src = 'repairtech.png';
-    			document.getElementById('courier').value = 'BJS';
+    			document.getElementById('courier').value = 'DPD';
+			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
 		case 'ASUS':
     			courierToMatch = 'LETMEREPAIR/ASUS';
@@ -177,6 +186,7 @@ function autoCourier() {
 <div id="images-top" style ="float: left;width: 181px; margin:10px; padding:10px; background-color:#92BEBF;">
 		<img id="destimg" class="stamp" src="default.jpg" onClick="clearDestimg()" title = 'CLICK TO CLEAR' height=180px width=200px>
 		<img id="courimg" class="stamp"src="default.jpg" onClick="clearCourimg()" title = 'CLICK TO CLEAR' height=180px width=200px></td>
+		<button onclick="manualLogo()">Courier</button>
 	</div>
 	
 
@@ -186,7 +196,7 @@ function autoCourier() {
 <br />
 <br />
 <br />
-<div style="height: 300px; width: 100%; background-color:#92BEBF;">
+<div style="height: 300px; width: 100%; background-color:#92BEBF; display: block;">
 <br /><center>Please attach the 'Courier Receipt' here and return sheet to Loading Bay Partner</center>
 </div>
 
