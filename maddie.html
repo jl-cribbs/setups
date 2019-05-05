@@ -16,11 +16,15 @@
 </head>
 
 
-<body oncontextmenu="return false">
+<body onLoad="autoDate()">
 
 <script>
 function autoDate(){
-	document.getElementById('timestamp').innerHTML = Date();}
+	<!-- Following courtesy of CSSTRICKS -->
+	let today = new Date().toISOString().substr(0, 10);
+	document.querySelector("#date").value = today;
+	<!-- End of CSSTRICKS code -->
+	}
 function manualLogo() {
 	document.getElementById('courier').value == 'DHL'
 	if (document.getElementById('courier').value == 'DHL') {document.getElementById('courimg').src = 'DHL512.jpg';}
@@ -150,10 +154,7 @@ function autoCourier() {
 	}
 	document.getElementById('destination').value = courierToMatch;
 }
-<!-- Following courtesy of CSSTRICKS -->
-let today = new Date().toISOString().substr(0, 10);
-document.querySelector("#date").value = today;
-<!-- End of CSSTRICKS code -->
+
 </script>
 
 <!--Title-->
