@@ -10,8 +10,7 @@
 		@media print {    
     		.print-hide {display: none !important;}
 		}
-		table {border: solid 1px #000000;}
-		.crucial {border: solid 1px #000000;}
+		table, td {border: solid 1px #000000;}
 	</style>
 </head>
 
@@ -26,7 +25,6 @@ function autoDate(){
 	<!-- End of CSSTRICKS code -->
 	}
 function manualLogo() {
-	document.getElementById('courier').value == 'DHL'
 	if (document.getElementById('courier').value == 'DHL') {document.getElementById('courimg').src = 'DHL512.jpg';}
 	else if (document.getElementById('courier').value == 'DPD') {document.getElementById('courimg').src = 'DPD512.jpg';}
 	else if (document.getElementById('courier').value == 'GOGGLEBOX') {document.getElementById('courimg').src = 'gogglebox.png';}
@@ -213,11 +211,15 @@ function autoCourier() {
 
 </div>
 
-<br />
-<br />
-<br />
-<br />
+
 <div style="height: 300px;float: left; clear:both; width: 100%; background-color:#92BEBF; display: block; margin-top:10px;">
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <br /><center>Please attach the 'Courier Receipt' here and return sheet to Loading Bay Partner</center>
 </div>
 
