@@ -36,6 +36,17 @@ function autoCourier() {
 	switch (courierToMatch) {
 		default:
 			break;
+		case 'GP SERVICES':
+		case 'GP':
+		case 'MOTO REPAIRS':
+		case 'MOTO':
+		case 'MOTOROLA':
+		case 'MOTOROLA REPAIRS':
+		case 'ANOVO':
+		case 'DKAUDIO':
+		case 'DK':
+		case 'DK AUDIO':
+			alert("This repair agent usually requires postage via CSS, not collection via courier");
 		case 'GOGGLE BOX':
 		case 'GOGGLEBOX':
     			document.getElementById('courier').value = 'GOGGLEBOX';
@@ -131,6 +142,7 @@ function autoCourier() {
     			courierToMatch = 'WHIRLPOOL/KITCHENAID';
 		case 'WHIRLPOOL':
     			document.getElementById('courier').value = 'DPD';
+			document.getElementById('destimg').src = 'whirlpool.png';
 			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
 	}
