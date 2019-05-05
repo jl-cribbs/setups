@@ -10,7 +10,8 @@
 		@media print {    
     		.print-hide {display: none !important;}
 		}
-		table, td {border: solid 1px #000000;}
+		table {border: solid 1px #000000;}
+		.crucial {border: solid 1px #000000;}
 	</style>
 </head>
 
@@ -193,15 +194,15 @@ document.querySelector("#date").value = today;
 	<td style="width:210px;"><input id="text" name=my Text value="" style="width:200px; height:30px;" maxlength="50" />
 	<input id="text" type="text" style="width:100px; height:30px;" maxlength="4" /></td>
 </tr>
-<tr>
+<tr class="crucial">
 	<td style="width:210px;"><font size=+2>ServicePower</font></td>
 	<td style="width:210px;"><input id="servicepower" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 	<td class="print-hide" onClick='autoServicePower()'>Auto</td>
-<tr>
+<tr class="crucial">
 	<td style="width:210px;"><font size=+2>Serial No</font></td>
 	<td style="width:210px;"><input id="text" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
-<tr>
+<tr class="crucial">
 	<td style="width:210px;"><font size=+2>Customer</font></td>
 	<td style="width:210px;"><input id="text" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
