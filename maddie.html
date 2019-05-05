@@ -60,14 +60,16 @@ function autoCourier() {
 			document.getElementById('destimg').src = 'dell.png';
 			document.getElementById('courimg').src = 'UPS512.jpg';
 			break;
-		case 'LENOVO':
-			
+		
 		case 'HP':
+			alert("Ensure you have created a claim on HP SPOW if the unit is in the first year prior to collection");
+		
+		case 'LENOVO':
 			
 		case 'FLEX':
 			
 		case 'FLEXTRONICS':
-			courierToMatch = 'FLEXTRONICS/' + courierToMatch;
+			if(courierToMatch != 'FLEXTRONICS') {courierToMatch = 'FLEXTRONICS/' + courierToMatch;}
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'flex.jpg';
