@@ -149,6 +149,10 @@ function autoCourier() {
 	}
 	document.getElementById('destination').value = courierToMatch;
 }
+<!-- Following courtesy of CSSTRICKS -->
+let today = new Date().toISOString().substr(0, 10);
+document.querySelector("#date").value = today;
+<!-- End of CSSTRICKS code -->
 </script>
 
 <!--Title-->
