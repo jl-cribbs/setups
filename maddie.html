@@ -89,6 +89,14 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'flex.jpg';
     			break;
+		case 'KENWOOD':
+		case 'DELONGHI':	
+		case 'KENWOOD/DELONGHI':
+			if(courierToMatch != 'KENWOOD/DELONGHI') {courierToMatch = 'FLEXTRONICS/' + courierToMatch;}
+    			document.getElementById('courier').value = 'PARCELFORCE';
+			document.getElementById('courimg').src = 'parcelforce.png';
+			document.getElementById('destimg').src = 'default.jpg';
+    			break;
 		case 'TOSHIBA':
 			
 		case 'NINTENDO':
