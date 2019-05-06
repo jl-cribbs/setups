@@ -142,6 +142,10 @@ function autoCourier() {
     			document.getElementById('courier').value = 'UPS';
 			document.getElementById('courimg').src = 'UPS512.jpg';
     			break;
+		case 'BOSE':
+    			document.getElementById('courier').value = 'UPS';
+			document.getElementById('courimg').src = 'UPS512.jpg';
+    			break;
 		case 'KITCHENAID':
     			courierToMatch = 'WHIRLPOOL/KITCHENAID';
 		case 'WHIRLPOOL':
@@ -180,7 +184,7 @@ function autoCourier() {
 	<td style="width:210px;"><input id="reference" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
 <tr>
-	<td style="width:210px;"><font size=+2>Date Booked</font></td>
+	<td style="width:210px;"><font size=+2>Date</font></td>
 	<td style="width:210px;"><input  type="date" id="date" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
 <tr>
@@ -189,7 +193,8 @@ function autoCourier() {
 	<input id="text" type="text" style="width:100px; height:30px;" maxlength="4" /></td>
 </tr>
 </table>
-
+<br />
+<br />
 <table>
 <tr>
 	<td style="width:210px;"><font size=+2>ServicePower</font></td>
@@ -226,9 +231,10 @@ function autoCourier() {
 <br /><center>Please attach the 'Courier Receipt' here and return sheet to Loading Bay Partner</center>
 </div>
 
-
-<a id="button" class="print-hide" href="javascript:void(window.print())">Print</a>
-<a id="button" class="print-hide" href="setupmenu.html">Home</a>
+<table>
+	<tr><td><a id="button" class="print-hide" href="javascript:void(window.print())">Print</a></td></tr>
+	<tr><td><a id="button" class="print-hide" href="setupmenu.html">Home</a></td></tr>
+<table>
 	
 </body>
 
