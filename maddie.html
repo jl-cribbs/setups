@@ -92,7 +92,7 @@ function autoCourier() {
 		case 'KENWOOD':
 		case 'DELONGHI':	
 		case 'KENWOOD/DELONGHI':
-			if(courierToMatch != 'KENWOOD/DELONGHI') {courierToMatch = 'FLEXTRONICS/' + courierToMatch;}
+			if(courierToMatch != 'KENWOOD/DELONGHI') {courierToMatch = 'KENWOOD/DELONGHI'}
     			document.getElementById('courier').value = 'PARCELFORCE';
 			document.getElementById('courimg').src = 'parcelforce.png';
 			document.getElementById('destimg').src = 'default.jpg';
@@ -228,7 +228,7 @@ function autoCourier() {
 </div>
 
 
-<div style="height: 300px;float: left; clear:both; width: 100%; background-color:#92BEBF; display: block; margin-top:10px;">
+<div style="border: solid 1px #000000; height: 300px;float: left; clear:both; width: 100%; background-color:#92BEBF; display: block; margin-top:10px;">
 <br />
 <br />
 <br />
