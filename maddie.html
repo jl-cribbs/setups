@@ -160,6 +160,12 @@ function autoCourier() {
 			document.getElementById('partner').value = 'ELWOOD';
 			document.getElementById('destimg').src = 'bluesbrothers.png';
     			break;
+		case 'GYPSY':
+			document.getElementById('courier').value = '';
+			document.getElementById('courimg').src = 'default.jpg';
+			document.getElementById('destimg').src = 'default.jpg';
+			document.getElementById('partner').value = 'CRYSTAL WATERS';
+			document.getElementById('courlabel').innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/_KztNIg4cvE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 		case 'SONY':
     			document.getElementById('courier').value = 'DPD';
 		case 'SONY CENTRAL SERVICE':
@@ -273,7 +279,7 @@ function autoCourier() {
 </div>
 <br />
 <br />
-<div style="border: solid 1px #000000; padding-top: 20px; height: 300px;float: left; clear:both; width: 100%; background-color:#92BEBF; display: block; margin-top:10px;">
+<div id="courlabel" style="border: solid 1px #000000; padding-top: 20px; height: 300px;float: left; clear:both; width: 100%; background-color:#92BEBF; display: block; margin-top:10px;">
 <br />
 <br />
 <br />
