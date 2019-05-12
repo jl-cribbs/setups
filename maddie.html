@@ -63,6 +63,11 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'cad.png';
     			break;
+		case 'CTDI':
+    			document.getElementById('courier').value = 'DPD';
+			document.getElementById('courimg').src = 'DPD512.jpg';
+			document.getElementById('destimg').src = 'regnersis.jpg';
+    			break;
 		case 'REGENERSIS':
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
@@ -78,7 +83,7 @@ function autoCourier() {
 		
 		case 'HP':
 			alert("Ensure you have created a claim on HP SPOW if the unit is in the first year prior to collection");
-			document.getElementById('refType').innerHTML = 'SPOW CSO';
+			document.getElementById('refType').innerHTML = '<font size=+2>GBB</font>';
 		case 'LENOVO':
 			
 		case 'FLEX':
@@ -112,11 +117,12 @@ function autoCourier() {
 		case 'ASUS':
     			courierToMatch = 'LETMEREPAIR/ASUS';
 		case 'LET ME REPAIR':
+		case 'LET-ME-REPAIR':
 		case 'LETMEREPAIR':
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'letmerepair.png';
-			document.getElementById('refType').innerHTML = 'GBB';
+			document.getElementById('refType').innerHTML = '<font size=+2>GBB</font>';
     			break;
 		case 'SAMSUNG':
 			courierToMatch = 'DIGICARE/SAMSUNG';
@@ -229,8 +235,7 @@ function autoCourier() {
 	
 
 </div>
-
-
+<h3>
 <div style="border: solid 1px #000000; height: 300px;float: left; clear:both; width: 100%; background-color:#92BEBF; display: block; margin-top:10px;">
 <br />
 <br />
