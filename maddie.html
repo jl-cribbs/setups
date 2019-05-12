@@ -73,7 +73,7 @@ function autoCourier() {
 			break;
 		
 		case 'LENOVO':
-			var hpyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
+			var lenovoyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
 			if (lenovoyear == '1') {
 				document.getElementById('courier').value = 'DPD';
 				document.getElementById('courimg').src = 'DPD512.jpg';
@@ -85,12 +85,7 @@ function autoCourier() {
 				courierToMatch = 'CTDI/REGENERSIS/LENOVO';
     			}
 			break;
-		case 'HP':
-			var hpyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
-			if (hpyear == '1') {
-				alert("Ensure you have created a claim on HP SPOW if the unit is in the first year prior to collection");
-				}
-			document.getElementById('refType').innerHTML = '<font size=+2>GBB</font>';
+		
 		case 'CTDI':
 		case 'REGEN':
 		case 'RGX':
@@ -100,6 +95,13 @@ function autoCourier() {
 			document.getElementById('destimg').src = 'regnersis.jpg';
 			courierToMatch = 'CTDI/REGENERSIS';
     			break;
+			
+		case 'HP':
+			var hpyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
+			if (hpyear == '1') {
+				alert("Ensure you have created a claim on HP SPOW if the unit is in the first year prior to collection");
+				}
+			document.getElementById('refType').innerHTML = '<font size=+2>SPOW CSO#</font>';
 		case 'FLEX':
 		case 'FLX':
 		case 'FLEXTRONICS':
