@@ -64,14 +64,11 @@ function autoCourier() {
 			document.getElementById('destimg').src = 'cad.png';
     			break;
 		case 'CTDI':
-    			document.getElementById('courier').value = 'DPD';
-			document.getElementById('courimg').src = 'DPD512.jpg';
-			document.getElementById('destimg').src = 'regnersis.jpg';
-    			break;
 		case 'REGENERSIS':
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'regnersis.jpg';
+			courierToMatch = 'CTDI/REGENERSIS';
     			break;
 		case 'ALIENWARE':
 			courierToMatch = 'DELL/ALIENWARE';
