@@ -63,13 +63,7 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'cad.png';
     			break;
-		case 'CTDI':
-		case 'REGENERSIS':
-    			document.getElementById('courier').value = 'DPD';
-			document.getElementById('courimg').src = 'DPD512.jpg';
-			document.getElementById('destimg').src = 'regnersis.jpg';
-			courierToMatch = 'CTDI/REGENERSIS';
-    			break;
+		
 		case 'ALIENWARE':
 			courierToMatch = 'DELL/ALIENWARE';
 		case 'DELL':
@@ -78,13 +72,36 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'UPS512.jpg';
 			break;
 		
-		case 'HP':
-			alert("Ensure you have created a claim on HP SPOW if the unit is in the first year prior to collection");
-			document.getElementById('refType').innerHTML = '<font size=+2>GBB</font>';
 		case 'LENOVO':
-			
+			var hpyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
+			if (lenovoyear == '1') {
+				document.getElementById('courier').value = 'DPD';
+				document.getElementById('courimg').src = 'DPD512.jpg';
+				document.getElementById('destimg').src = 'flex.jpg';
+				courierToMatch = 'FLEXTRONICS/LENOVO'}
+			else {	document.getElementById('courier').value = 'DPD';
+				document.getElementById('courimg').src = 'DPD512.jpg';
+				document.getElementById('destimg').src = 'regnersis.jpg';
+				courierToMatch = 'CTDI/REGENERSIS/LENOVO';
+    			}
+			break;
+		case 'HP':
+			var hpyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
+			if (hpyear == '1') {
+				alert("Ensure you have created a claim on HP SPOW if the unit is in the first year prior to collection");
+				}
+			document.getElementById('refType').innerHTML = '<font size=+2>GBB</font>';
+		case 'CTDI':
+		case 'REGEN':
+		case 'RGX':
+		case 'REGENERSIS':
+    			document.getElementById('courier').value = 'DPD';
+			document.getElementById('courimg').src = 'DPD512.jpg';
+			document.getElementById('destimg').src = 'regnersis.jpg';
+			courierToMatch = 'CTDI/REGENERSIS';
+    			break;
 		case 'FLEX':
-			
+		case 'FLX':
 		case 'FLEXTRONICS':
 			if(courierToMatch != 'FLEXTRONICS') {courierToMatch = 'FLEXTRONICS/' + courierToMatch;}
     			document.getElementById('courier').value = 'DPD';
@@ -104,7 +121,8 @@ function autoCourier() {
 		case 'NINTENDO':
 			
 		case 'LINSAR':
-			
+		
+		case 'RT':
 		case 'REPAIRTECH':
 			courierToMatch = 'REPAIRTECH/' + courierToMatch;
 			document.getElementById('destimg').src = 'repairtech.png';
@@ -115,6 +133,7 @@ function autoCourier() {
     			courierToMatch = 'LETMEREPAIR/ASUS';
 		case 'LET ME REPAIR':
 		case 'LET-ME-REPAIR':
+		case 'LMR':
 		case 'LETMEREPAIR':
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
