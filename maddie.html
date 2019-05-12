@@ -51,6 +51,7 @@ function autoCourier() {
 		case 'DK AUDIO':
 			alert("This repair agent usually requires postage via CSS, not collection via courier");
 			break;
+		case 'GOG':
 		case 'GOGGLE BOX':
 		case 'GOGGLEBOX':
     			document.getElementById('courier').value = 'GOGGLEBOX';
@@ -110,6 +111,8 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'flex.jpg';
     			break;
+		case 'KWD':
+		case 'DLG':
 		case 'KENWOOD':
 		case 'DELONGHI':	
 		case 'KENWOOD/DELONGHI':
@@ -144,6 +147,7 @@ function autoCourier() {
     			break;
 		case 'SAMSUNG':
 			courierToMatch = 'DIGICARE/SAMSUNG';
+		case 'DC':
 		case 'DIGICARE':
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
@@ -163,15 +167,21 @@ function autoCourier() {
 			document.getElementById('destimg').src = 'sony.png';
 			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
+		case 'LAZ':
 		case 'LAZARUS':
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('destimg').src = 'lazarus.png';
 			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
+		case 'LG':
+		case 'LG ELECTRONICS':
 		case 'LGE':
     			document.getElementById('courier').value = 'TALUUS';
 			document.getElementById('courimg').src = 'default.jpg';
     			break;
+		case 'MS':
+		case 'MSF':
+		case 'MSFT':
 		case 'MICROSOFT':
     			document.getElementById('courier').value = '';
 			document.getElementById('courimg').src = 'default.jpg';
@@ -191,6 +201,7 @@ function autoCourier() {
     			break;
 		case 'KITCHENAID':
     			courierToMatch = 'WHIRLPOOL/KITCHENAID';
+		case 'WPL':
 		case 'WHIRLPOOL':
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('destimg').src = 'whirlpool.png';
