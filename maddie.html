@@ -78,7 +78,7 @@ function autoCourier() {
 		
 		case 'HP':
 			alert("Ensure you have created a claim on HP SPOW if the unit is in the first year prior to collection");
-		
+			document.getElementById('refType').innerHTML = 'SPOW CSO';
 		case 'LENOVO':
 			
 		case 'FLEX':
@@ -111,9 +111,12 @@ function autoCourier() {
     			break;
 		case 'ASUS':
     			courierToMatch = 'LETMEREPAIR/ASUS';
+		case 'LET ME REPAIR':
 		case 'LETMEREPAIR':
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
+			document.getElementById('destimg').src = 'letmerepair.png';
+			document.getElementById('refType').innerHTML = 'GBB';
     			break;
 		case 'SAMSUNG':
 			courierToMatch = 'DIGICARE/SAMSUNG';
@@ -189,7 +192,7 @@ function autoCourier() {
 	<td class="print-hide" onClick='autoCourier()'>Auto</td>
 </tr>
 <tr>
-	<td style="width:210px;"><font size=+2>Reference</font></td>
+	<td id="refType" style="width:210px;"><font size=+2>Reference</font></td>
 	<td style="width:210px;"><input id="reference" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
 <tr>
