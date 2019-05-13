@@ -25,6 +25,7 @@ function autoDate(){
 	<!-- End of CSSTRICKS code -->
 	}
 function manualLogo() {
+	var courierToMatch = document.getElementById('courier').value.toUpperCase();
 	if (document.getElementById('courier').value == 'DHL') {document.getElementById('courimg').src = 'DHL512.jpg';}
 	else if (document.getElementById('courier').value == 'DPD') {document.getElementById('courimg').src = 'DPD512.jpg';}
 	else if (document.getElementById('courier').value == 'GOGGLEBOX') {document.getElementById('courimg').src = 'gogglebox.png';}
@@ -90,11 +91,21 @@ function autoCourier() {
 		case 'CTDI':
 		case 'REGEN':
 		case 'RGX':
+		case 'REG':
 		case 'REGENERSIS':
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'regnersis.jpg';
 			courierToMatch = 'CTDI/REGENERSIS';
+    			break;
+		case 'REPAIRGUYS':
+		case 'THEREPAIRGUYS':
+		case 'REPAIR GUYS':
+		case 'THE REPAIR GUYS':
+    			document.getElementById('courier').value = 'THE REPAIR GUYS';
+			document.getElementById('courimg').src = 'repairguys.png';
+			document.getElementById('destimg').src = 'repairguys.png';
+			courierToMatch = 'THE REPAIR GUYS';
     			break;
 			
 		case 'HP':
@@ -113,6 +124,7 @@ function autoCourier() {
     			break;
 		case 'KWD':
 		case 'DLG':
+		case 'KDL':
 		case 'KENWOOD':
 		case 'DELONGHI':	
 		case 'KENWOOD/DELONGHI':
