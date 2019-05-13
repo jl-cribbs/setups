@@ -202,7 +202,9 @@ function autoCourier() {
 		case 'MSFT':
 		case 'MICROSOFT':
     			document.getElementById('courier').value = '';
+			document.getElementById('destimg').src = 'default.jpg';
 			document.getElementById('courimg').src = 'default.jpg';
+			courierToMatch = 'MIRCROSOFT';
     			break;
 		case 'HUMAX':
     			document.getElementById('courier').value = 'DHL';
