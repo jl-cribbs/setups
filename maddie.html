@@ -107,8 +107,6 @@ function autoCourier() {
 			document.getElementById('destimg').src = 'repairguys.png';
 			courierToMatch = 'THE REPAIR GUYS';
     			break;
-		case 'PS2':
-			ps2Mode();
 			
 		case 'HP':
 			var hpyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
@@ -233,15 +231,10 @@ function autoCourier() {
 	}
 	document.getElementById('destination').value = courierToMatch;
 }
-function ps2Mode(){
-	 document.getElementById("header").style.background-color="#252420";
-	document.getElementById("header").innerHTML ="<img src="ps2.png"></img>";
-	}
-
 </script>
 
 <!--Title-->
-<div id="header" style="background-color:#92BEBF; width:100%; height:80px;">
+<div style="background-color:#92BEBF; width:100%; height:80px;">
 	<p><h3>Technical Services</h3>
 	<h3>at John Lewis Cribbs Causeway</h3>
 	</p>
@@ -313,7 +306,6 @@ function ps2Mode(){
 	<tr><td>Menu</td></tr>
 	<tr><td><a id="button" class="print-hide" href="javascript:void(window.print())">Print</a></td></tr>
 	<tr><td><a id="button" class="print-hide" href="setupmenu.html">Home</a></td></tr>
-	<tr><td><a id="button" class="print-hide" onClick="ps2Mode()">TEST</a></td></tr>
 </table>
 	
 </body>
