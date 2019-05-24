@@ -24,7 +24,8 @@ function autoDate(){
 	document.querySelector("#date").value = today;
 	<!-- End of CSSTRICKS code -->
 	}
-function coverSheet() {document.getElementById('formtitle').innerHTML = 'Cover Sheet';}
+function coverSheet() {	document.getElementById('formtitle').innerHTML = 'Cover Sheet';
+		     	document.getElementById('courlabel').innerHTML = <textarea width=500px height=280px></textarea>';}
 function manualLogo() {
 	var courierToMatch = document.getElementById('courier').value.toUpperCase();
 	if (document.getElementById('courier').value == 'DHL') {document.getElementById('courimg').src = 'DHL512.jpg';}
