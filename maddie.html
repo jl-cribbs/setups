@@ -24,8 +24,6 @@ function autoDate(){
 	document.querySelector("#date").value = today;
 	<!-- End of CSSTRICKS code -->
 	}
-function coverSheet() {	document.getElementById('formtitle').innerHTML = 'Cover Sheet';
-		     	document.getElementById('courlabel').innerHTML = <textarea width=500px height=280px></textarea>';}
 function manualLogo() {
 	var courierToMatch = document.getElementById('courier').value.toUpperCase();
 	if (document.getElementById('courier').value == 'DHL') {document.getElementById('courimg').src = 'DHL512.jpg';}
@@ -259,9 +257,10 @@ function autoCourier() {
 
 <!--Title-->
 <div style="background-color:#92BEBF; width:100%; height:80px;">
-	<p><h4>Technical Services at John Lewis Cribbs Causeway</h4>
-	<h2 id="formtitle">Recieving Bay</h2>
+	<p><h3>Technical Services</h3>
+	<h3>at John Lewis Cribbs Causeway</h3>
 	</p>
+
 </div>
 
 <div style="float: left; background-color:#92BEBF; width: 400px; border-top:solid 1px #999999; margin:10px; padding:10px;">
@@ -329,7 +328,6 @@ function autoCourier() {
 	<tr><td>Menu</td></tr>
 	<tr><td><a id="button" class="print-hide" href="javascript:void(window.print())">Print</a></td></tr>
 	<tr><td><a id="button" class="print-hide" href="setupmenu.html">Home</a></td></tr>
-	<tr><td><a id="button" class="print-hide" onClick="coverSheet()">Cover</a></td></tr>
 </table>
 	
 </body>
