@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 	<style>
 		body { font-family: 'Roboto Slab', serif;}
-		@media print {    
+		@media print {
     		.print-hide {display: none !important;}
 		}
 		table, td {border: solid 1px #000000;}
@@ -23,6 +23,14 @@ function autoDate(){
 	let today = new Date().toISOString().substr(0, 10);
 	document.querySelector("#date").value = today;
 	<!-- End of CSSTRICKS code -->
+	}
+function coverSheet() {
+	var courlabel = document.getElementById('courlabel');
+	courlabel.style.border = null;
+	document.getElementById('formtitle').innerHTML = 'Cover Sheet';
+	document.getElementById('destimg').src = 'johnlewis512.jpg';
+	document.getElementById('courlabel').innerHTML = '<textarea cols="120" rows="30"> </textarea>';
+
 	}
 function manualLogo() {
 	var courierToMatch = document.getElementById('courier').value.toUpperCase();
@@ -52,6 +60,13 @@ function autoCourier() {
 		case 'DK AUDIO':
 			alert("This repair agent usually requires postage via CSS, not collection via courier");
 			break;
+		case 'JLP':
+		case 'JOHN LEWIS & PARTNERS':
+		case 'JOHNLEWIS':
+		case 'JOHN LEWIS':
+	    document.getElementById('courier').value = 'JOHN LEWIS & PARTNERS';
+			document.getElementById('destimg').src = 'johnlewis512.jpg';
+			break;
 		case 'GOG':
 		case 'GOGGLE BOX':
 		case 'GOGGLEBOX':
@@ -65,7 +80,7 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'DPD512.jpg';
 			document.getElementById('destimg').src = 'cad.png';
     			break;
-		
+
 		case 'ALIENWARE':
 			courierToMatch = 'DELL/ALIENWARE';
 		case 'DELL':
@@ -73,7 +88,7 @@ function autoCourier() {
 			document.getElementById('destimg').src = 'dell.png';
 			document.getElementById('courimg').src = 'UPS512.jpg';
 			break;
-		
+
 		case 'LENOVO':
 			var lenovoyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
 			if (lenovoyear == '1') {
@@ -87,7 +102,7 @@ function autoCourier() {
 				courierToMatch = 'CTDI/REGENERSIS/LENOVO';
     			}
 			break;
-		
+
 		case 'CTDI':
 		case 'REGEN':
 		case 'RGX':
@@ -107,7 +122,7 @@ function autoCourier() {
 			document.getElementById('destimg').src = 'repairguys.png';
 			courierToMatch = 'THE REPAIR GUYS';
     			break;
-			
+
 		case 'HP':
 			var hpyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
 			if (hpyear == '1') {
@@ -126,7 +141,7 @@ function autoCourier() {
 		case 'DLG':
 		case 'KDL':
 		case 'KENWOOD':
-		case 'DELONGHI':	
+		case 'DELONGHI':
 		case 'KENWOOD/DELONGHI':
 			if(courierToMatch != 'KENWOOD/DELONGHI') {courierToMatch = 'KENWOOD/DELONGHI'}
     			document.getElementById('courier').value = 'PARCELFORCE';
@@ -134,11 +149,11 @@ function autoCourier() {
 			document.getElementById('destimg').src = 'default.jpg';
     			break;
 		case 'TOSHIBA':
-			
+
 		case 'NINTENDO':
-			
+
 		case 'LINSAR':
-		
+
 		case 'RT':
 		case 'REPAIRTECH':
 			courierToMatch = 'REPAIRTECH/' + courierToMatch;
@@ -257,10 +272,9 @@ function autoCourier() {
 
 <!--Title-->
 <div style="background-color:#92BEBF; width:100%; height:80px;">
-	<p><h3>Technical Services</h3>
-	<h3>at John Lewis Cribbs Causeway</h3>
+	<p><h3>Technical Services at John Lewis Cribbs Causeway</h3>
+	<h2 id="formtitle">Recieving Bay</h2>
 	</p>
-
 </div>
 
 <div style="float: left; background-color:#92BEBF; width: 400px; border-top:solid 1px #999999; margin:10px; padding:10px;">
@@ -310,12 +324,12 @@ function autoCourier() {
 		<img id="courimg" class="stamp"src="default.jpg" onClick="clearCourimg()" title = 'CLICK TO CLEAR' height=180px width=200px></td>
 		<button class="print-hide" onclick="manualLogo()">Courier Logo</button>
 	</div>
-	
+
 
 </div>
 <br />
 <br />
-<div id="courlabel" style="border: solid 1px #000000; padding-top: 20px; height: 300px;float: left; clear:both; width: 100%; background-color:#92BEBF; display: block; margin-top:10px;">
+<div id="courlabel" style="border: solid 1px #000000; margin-top:60px ;padding-top: 5px; height: 400px;float: left; clear:both; width: 100%; background-color:#92BEBF; display: block; margin-top:10px;">
 <br />
 <br />
 <br />
@@ -326,10 +340,12 @@ function autoCourier() {
 <br />
 <table class="print-hide">
 	<tr><td>Menu</td></tr>
-	<tr><td><a id="button" class="print-hide" href="javascript:void(window.print())">Print</a></td></tr>
-	<tr><td><a id="button" class="print-hide" href="setupmenu.html">Home</a></td></tr>
+	<tr><td><a id="button" class="print-hide" onClick="javascript:void(window.print())">Print</a></td></tr>
+	<tr><td><a id="button" class="print-hide" onClick="window.location.href='setupmenu.html'">Home</a></td></tr>
+	<tr><td><a id="button" class="print-hide" onClick="coverSheet()">Cover</a></td></tr>
+	<tr><td><a id="button" class="print-hide" onClick="window.location.href='maddie.html'">Maddie</a></td></tr>
 </table>
-	
+
 </body>
 
 </html>
