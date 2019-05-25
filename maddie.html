@@ -27,7 +27,6 @@ function autoDate(){
 function coverSheet() {
 	var courlabel = document.getElementById('courlabel');
 	courlabel.style.border = null;
-	courlabel.style.background-color = null;
 	document.getElementById('formtitle').innerHTML = 'Cover Sheet';
 	document.getElementById('destimg').src = 'johnlewis512.jpg';
 	document.getElementById('courlabel').innerHTML = '<textarea cols="120" rows="30"> </textarea>';
@@ -65,7 +64,7 @@ function autoCourier() {
 		case 'JOHN LEWIS & PARTNERS':
 		case 'JOHNLEWIS':
 		case 'JOHN LEWIS':
-	    document.getElementById('courier').value = 'JOHN LEWIS & PARTNERS';
+	    courierToMatch = 'JOHN LEWIS & PARTNERS';
 			document.getElementById('destimg').src = 'johnlewis512.jpg';
 			break;
 		case 'GOG':
@@ -342,7 +341,7 @@ function autoCourier() {
 <table class="print-hide">
 	<tr><td style = "background-color: #92BEBF;">Menu</td></tr>
 	<tr><td class="print-hide" onClick="window.location.href='setupmenu.html'">Home</td></tr>
-	<tr><td class="print-hide" onClick="javascript:void(window.print())">Print</td></tr>	
+	<tr><td class="print-hide" onClick="javascript:void(window.print())">Print</td></tr>
 	<tr><td class="print-hide" onClick="coverSheet()">Cover</a></td></tr>
 	<tr><td class="print-hide" onClick="window.location.href='maddie.html'">Maddie</a></td></tr>
 </table>
