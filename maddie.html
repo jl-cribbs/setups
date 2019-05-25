@@ -3,7 +3,7 @@
 <!-- Modified from original at www.drearytales.com/jlhomepage/maddie.html (04/12/2018) -->
 
 <head>
-<title>MADDIE</title>
+<title>UniMaddie</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 	<style>
 		body { font-family: 'Roboto Slab', serif;}
@@ -27,6 +27,7 @@ function autoDate(){
 function coverSheet() {
 	var courlabel = document.getElementById('courlabel');
 	courlabel.style.border = null;
+	courlabel.style.background-color = null;
 	document.getElementById('formtitle').innerHTML = 'Cover Sheet';
 	document.getElementById('destimg').src = 'johnlewis512.jpg';
 	document.getElementById('courlabel').innerHTML = '<textarea cols="120" rows="30"> </textarea>';
@@ -339,11 +340,11 @@ function autoCourier() {
 </div>
 <br />
 <table class="print-hide">
-	<tr><td>Menu</td></tr>
-	<tr><td><a id="button" class="print-hide" onClick="javascript:void(window.print())">Print</a></td></tr>
-	<tr><td><a id="button" class="print-hide" onClick="window.location.href='setupmenu.html'">Home</a></td></tr>
-	<tr><td><a id="button" class="print-hide" onClick="coverSheet()">Cover</a></td></tr>
-	<tr><td><a id="button" class="print-hide" onClick="window.location.href='maddie.html'">Maddie</a></td></tr>
+	<tr><td style = "background-color: #92BEBF;">Menu</td></tr>
+	<tr><td class="print-hide" onClick="window.location.href='setupmenu.html'">Home</td></tr>
+	<tr><td class="print-hide" onClick="javascript:void(window.print())">Print</td></tr>	
+	<tr><td class="print-hide" onClick="coverSheet()">Cover</a></td></tr>
+	<tr><td class="print-hide" onClick="window.location.href='maddie.html'">Maddie</a></td></tr>
 </table>
 
 </body>
