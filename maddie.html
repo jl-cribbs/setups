@@ -3,7 +3,7 @@
 <!-- Modified from original at www.drearytales.com/jlhomepage/maddie.html (04/12/2018) -->
 
 <head>
-<title>UniMaddie</title>
+<title>Maddie</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 	<style>
 		body { font-family: 'Roboto Slab', serif;}
@@ -29,13 +29,15 @@ function coverSheet() {
 	courlabel.style.border = null;
 	document.getElementById('formtitle').innerHTML = 'Cover Sheet';
 	document.getElementById('destimg').src = 'johnlewis512.jpg';
-	document.getElementById('courlabel').innerHTML = '<textarea cols="120" rows="40"> </textarea>';
+	document.getElementById('courlabel').innerHTML = '<textarea cols="100" rows="40"> </textarea>';
 
 	}
 function manualLogo() {
-	var courierToMatch = document.getElementById('courier').value.toUpperCase();
+	document.getElementById('courier').value = document.getElementById('courier').value.toUpperCase();
+	var courierToMatch = document.getElementById('courier').value;
 	if (document.getElementById('courier').value == 'DHL') {document.getElementById('courimg').src = 'DHL512.jpg';}
 	else if (document.getElementById('courier').value == 'DPD') {document.getElementById('courimg').src = 'DPD512.jpg';}
+	else if (document.getElementById('courier').value == 'PARCELFORCE') {document.getElementById('courimg').src = 'parcelforce.png';}
 	else if (document.getElementById('courier').value == 'GOGGLEBOX') {document.getElementById('courimg').src = 'gogglebox.png';}
 	else if (document.getElementById('courier').value == 'UPS') {document.getElementById('courimg').src = 'UPS512.jpg';}
 	else {document.getElementById('courimg').src = 'default.jpg';}
