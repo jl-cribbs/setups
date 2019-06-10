@@ -24,6 +24,16 @@ function autoDate(){
 	document.querySelector("#date").value = today;
 	<!-- End of CSSTRICKS code -->
 	}
+function custom(){
+	var customdest = prompt("Destination");
+	var customdestimg = prompt("http address of custom destination image");
+	var customcour = prompt("Courier");
+	var customcourimg = prompt("http address of custom destination image");
+	document.getElementById('destination').value = 'customdest';
+	document.getElementById('destimg').src = 'customdestimg';
+	document.getElementById('courier').value = 'customcour';
+	document.getElementById('courimg').src = 'customcourimg';
+	}
 function coverSheet() {
 	var courlabel = document.getElementById('courlabel');
 	courlabel.style.border = null;
@@ -347,6 +357,7 @@ function autoCourier() {
 	<tr><td class="print-hide" onClick="javascript:void(window.print())">Print</td></tr>
 	<tr><td class="print-hide" onClick="coverSheet()">Cover</a></td></tr>
 	<tr><td class="print-hide" onClick="window.location.href='maddie.html'">Maddie</a></td></tr>
+	<tr><td class="print-hide" onClick="custom()">Custom</a></td></tr>
 </table>
 
 </body>
