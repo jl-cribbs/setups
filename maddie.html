@@ -163,6 +163,16 @@ function autoCourier() {
     			document.getElementById('courier').value = 'DPD';
 			document.getElementById('courimg').src = 'DPD512.jpg';
     			break;
+		case 'BW':
+		case 'B&W':
+		case 'B & W'
+		case 'BOWERS AND WILKINS'
+		case 'BOWERS & WILKINS':
+			document.getElementById('destimg').src = 'bw.png';
+    			document.getElementById('courier').value = 'UPS';
+			document.getElementById('courimg').src = 'UPS512.jpg';
+			courierToMatch = 'BOWERS & WILKINS';
+    			break;
 		case 'ASUS':
     			courierToMatch = 'LETMEREPAIR/ASUS';
 		case 'LET ME REPAIR':
