@@ -86,11 +86,19 @@ function autoCourier() {
     			break;
 		case 'CAD REPAIRS':
 		case 'CAD':
-    			document.getElementById('courier').value = 'DPD';
-			document.getElementById('courimg').src = 'DPD512.jpg';
-			document.getElementById('destimg').src = 'cad.png';
-    			break;
-		
+			var cadcour = prompt("From 29th July 2019, CAD will switch to using UPS for their collections. Please enter which courier this repair will be collected by. ");
+			cadcour = cadcour.toUpperCase();
+			if (cadcour == 'DPD') {
+				document.getElementById('courier').value = 'DPD';
+				document.getElementById('courimg').src = 'DPD512.jpg';
+				document.getElementById('destimg').src = 'cad.png';
+				courierToMatch = 'CAD'}
+			if (cadcour == 'UPS') {	document.getElementById('courier').value = 'DPD';
+				document.getElementById('courimg').src = 'UPS512.jpg';
+				document.getElementById('destimg').src = 'cad.png';
+				courierToMatch = 'CAD';
+    			}
+			break;
 		case 'BOWERS/WILKINS':
 		case 'BW':
     			document.getElementById('courier').value = 'UPS';
