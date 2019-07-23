@@ -113,15 +113,13 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'UPS512.jpg';
 			break;
 		case 'LENOVO':
-			var lenovoyear = prompt("From the 5th of August 2019, 2nd year Lenovo repairs move to Flextronics. Which repair agent does this repair need to use?");
-			lenovoyear = lenovoyear.toUpperCase();
-			if (lenovoyear == 'FLEXTRONICS') {
+			var lenovoyear = prompt("Which year of the guarantee is the unit in? 1,2,3,4...");
+			if (lenovoyear == '1') {
 				document.getElementById('courier').value = 'DPD';
 				document.getElementById('courimg').src = 'DPD512.jpg';
 				document.getElementById('destimg').src = 'flex.jpg';
 				courierToMatch = 'FLEXTRONICS/LENOVO'}
-			if (lenovoyear == 'REGENERSIS' {
-			    	document.getElementById('courier').value = 'DPD';
+			else {	document.getElementById('courier').value = 'DPD';
 				document.getElementById('courimg').src = 'DPD512.jpg';
 				document.getElementById('destimg').src = 'regnersis.jpg';
 				courierToMatch = 'CTDI/REGENERSIS/LENOVO';
