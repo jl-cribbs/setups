@@ -113,7 +113,8 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'UPS512.jpg';
 			break;
 		case 'LENOVO':
-			var lenovoyear = prompt("From 5th August 2019, Lenovo move to Flextronics for both 1st and second year. Which repair agent does this need to be booked in with? FLEXTRONICS or REGENERSIS?");
+			<!-- var lenovoyear = prompt("From 5th August 2019, Lenovo move to Flextronics for both 1st and second year. Which repair agent does this need to be booked in with? FLEXTRONICS or REGENERSIS?"); -->
+			var lenovoyear = 'FLEXTRONICS';
 			if (lenovoyear == 'FLEXTRONICS') {
 				document.getElementById('courier').value = 'DPD';
 				document.getElementById('courimg').src = 'DPD512.jpg';
