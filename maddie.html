@@ -113,7 +113,6 @@ function autoCourier() {
 			document.getElementById('courimg').src = 'UPS512.jpg';
 			break;
 		case 'LENOVO':
-			<!-- NO LONGER REQUIRED
 			var lenovoyear = prompt("From 5th August 2019, Lenovo move to Flextronics for both 1st and second year. Which repair agent does this need to be booked in with? FLEXTRONICS or REGENERSIS?");
 			if (lenovoyear == 'FLEXTRONICS') {
 				document.getElementById('courier').value = 'DPD';
@@ -126,11 +125,11 @@ function autoCourier() {
 				document.getElementById('destimg').src = 'regnersis.jpg';
 				courierToMatch = 'CTDI/REGENERSIS/LENOVO';
     			}
-			NO LONGER REQUIRED -->
-				document.getElementById('courier').value = 'DPD';
+			else {	document.getElementById('courier').value = 'DPD';
 				document.getElementById('courimg').src = 'DPD512.jpg';
 				document.getElementById('destimg').src = 'flex.jpg';
 				courierToMatch = 'FLEXTRONICS LENOVO';
+    			}
 			break;
 		case 'CTDI':
 		case 'REGEN':
