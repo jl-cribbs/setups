@@ -18,6 +18,23 @@
 <body onLoad="autoDate()">
 
 <script>
+function ants() { var userBT = document.getElementById('bt').value;
+		var userNAME = document.getElementById('partner').value.toUpperCase();
+		switch(userBT) {
+		default:
+			break;
+		case '8041':
+			document.getElementById('courimg').src = 'ant1.png';
+			break;
+		}
+		switch(userNAME) {
+		default:
+			break;
+		case 'JANET':
+			document.getElementById('destimg').src = 'ant2.png';
+			break;	
+		}		
+	}
 function autoDate(){
 	<!-- Following courtesy of CSSTRICKS -->
 	let today = new Date().toISOString().substr(0, 10);
