@@ -30,11 +30,16 @@ function ants() { var userBT = document.getElementById('bt').value;
 		switch(userNAME) {
 		default:
 			break;
+		case 'ROB':
+		case 'RR':	
+		case 'RIGGERS':
+			document.getElementById('courlabel').innerHTML = '<center><img src="rob.png"></center>';
+		
 		case 'CHRIS':
 			document.getElementById('destimg').src = 'ant2.png';
 			break;	
 		case 'CHARLIE':
-			document.getElementById('courlabel').innerHTML = '<center><img 				src="charlie.png"></center>';
+			document.getElementById('courlabel').innerHTML = '<center><img src="charlie.png"></center>';
 		}		
 	}
 function autoDate(){
