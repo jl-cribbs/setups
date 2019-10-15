@@ -15,7 +15,7 @@
 </head>
 
 
-<body onLoad="autoDate()" onchange="ants()">
+<body onLoad="autoDate()">
 
 <script>
 function ants() { var userBT = document.getElementById('bt').value;
@@ -358,7 +358,7 @@ function autoCourier() {
 	<td style="width:210px;"><font size=+2>Date</font></td>
 	<td style="width:210px;"><input  type="date" id="date" type="text" style="width:200px; height:30px;" maxlength="50" /></td>
 </tr>
-<tr>
+<tr onchange="ants()">
 	<td style="width:210px;"><font size=+2>Partner/BT</font></td>
 	<td style="width:210px;"><input id="partner" name=my Text value="" style="width:200px; height:30px;" maxlength="50" />
 	<input id="bt" type="text" style="width:100px; height:30px;" maxlength="4" /></td>
