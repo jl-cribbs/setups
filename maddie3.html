@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Maddie 3.x</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab&display=swap" rel="stylesheet">
+<script>
+function ants() {
+	switch(document.getElementById('destination').value.toUpperCase()){
+	// CASE OR CASES (ENFORCED VERSION LAST)
+	// ENFORCE NAME
+	// SET DESTINATION IMAGE
+	// SET COURIER NAME
+	
+	// WHERE DESTINATION AND COURIER ARE THE SAME		
+		case 'JL':
+		case 'JLP':
+		case 'JOHNLEWIS':
+		case 'JOHN LEWIS':
+		case 'JOHN LEWIS & PARTNERS':
+			document.getElementById('destination').value = 'JOHN LEWIS & PARTNERS';
+			document.getElementById('destIMG').src = 'graphics/johnlewis.jpg';
+			document.getElementById('courier').value = 'JLP';
+			break;
+		case 'RG':		
+		case 'TRG':
+		case 'REPAIR GUYS':
+		case 'THE REPAIR GUYS':
+			document.getElementById('destination').value = 'THE REPAIR GUYS';
+			document.getElementById('destIMG').src = 'graphics/repairguys.png';
+			document.getElementById('courier').value = 'TRG';
+			break;
+		case 'GOG':
+		case 'GOGGLE BOX':
+		case 'GOGGLEBOX':
+			document.getElementById('destination').value = 'GOGGLEBOX';
+			document.getElementById('destIMG').src = 'graphics/gogglebox.png';
+			document.getElementById('courier').value = 'GOG';
+			break;
+		case 'GOG':
+		case 'GOGGLE BOX':
+		case 'GOGGLEBOX':
+			document.getElementById('destination').value = 'GOGGLEBOX';
+			document.getElementById('destIMG').src = 'graphics/gogglebox.png';
+			document.getElementById('courier').value = 'GOG';
+			break;
+	// FLEXTRONICS 
+		case 'HP':
+			
+		case 'HEWLETT PACKARD':
+			var hpYear = confirm("Is this a first year HP repair?");
+			if (hpYear) {
+				alert("First year HP repairs must be booked in through SPOW and supplied with a CSO prior to collection.");
+				document.getElementById('referenceLabel').innerHTML = 'SPOW CSO';
+					}
+		case 'LENOVO':
+		case 'FLX':		
+		case 'FLEX':
+		case 'FLEXTRONICS':
+			document.getElementById('destination').value = 'FLEXTRONICS';
+			document.getElementById('destIMG').src = 'graphics/flextronics.jpg';
+			document.getElementById('courier').value = 'DPD';
+			break;
+	// WHERE DESTINATION AND COURIER ARE DIFFERENT
+		case 'CAD REPAIRS':	
+		case 'CAD':
+			document.getElementById('destination').value = 'CAD';
+			document.getElementById('destIMG').src = 'graphics/cad.png';
+			document.getElementById('courier').value = 'DPD';
+			break;
+		case 'RGN':		
+		case 'REGEN':
+		case 'REGENERSIS':	
+		case 'CTDI':
+		case 'CTDI/REGENERSIS':
+			document.getElementById('destination').value = 'CTDI/REGENERSIS';
+			document.getElementById('destIMG').src = 'graphics/regenersis.jpg';
+			document.getElementById('courier').value = 'DPD';
+			break;
+		case 'ALIENWARE':
+		case 'DELL':
+			document.getElementById('destination').value = 'DELL';
+			document.getElementById('destIMG').src = 'graphics/dell.png';
+			document.getElementById('courier').value = 'UPS';
+			break;
+		case 'SONY':
+		case 'SONY CENTRAL SERVICE':
+			document.getElementById('destination').value = 'SONY CENTRAL SERVICE';
+			document.getElementById('destIMG').src = 'graphics/sony.png';
+			document.getElementById('courier').value = 'DPD';
+			break;
+		case 'LG':
+		case 'LGE':
+		case 'LG Electronics':
+			document.getElementById('destination').value = 'LG Electronics';
+			document.getElementById('destIMG').src = 'graphics/lge.png';
+			document.getElementById('courier').value = 'DPD';
+			break;
+		case 'TOSHIBA':
+		case 'LINSAR':
+		case 'NINTENDO':
+		case 'RT':
+		case 'REPAIR TECH':
+		case 'REPAIRTECH':
+			document.getElementById('destination').value = 'REPAIRTECH';
+			document.getElementById('destIMG').src = 'graphics/repairtech.png';
+			document.getElementById('courier').value = 'DPD';
+			break;
+		case 'ASUS':
+		case 'LMR':
+		case 'LETMEREPAIR':
+		case 'LET ME REPAIR':
+			document.getElementById('destination').value = 'LETMEREPAIR';
+			document.getElementById('destIMG').src = 'graphics/letmerepair.png';
+			document.getElementById('courier').value = 'DPD';
+			document.getElementById('referenceLabel').innerHTML = 'GBB';
+			break;
+		case 'SAMSUNG':
+		case 'DC':
+		case 'DIGICARE':
+			document.getElementById('destination').value = 'DIGICARE';
+			document.getElementById('destIMG').src = 'graphics/digicare.png';
+			document.getElementById('courier').value = 'DPD';
+			break;
+		case 'MS':
+		case 'MSFT':
+		case 'MICROSOFT':
+			document.getElementById('destination').value = 'MICROSOFT';
+			document.getElementById('destIMG').src = 'graphics/microsoft.png';
+			document.getElementById('courier').value = 'UPS';
+			break;
+		case 'TELEPLAN':
+			document.getElementById('destination').value = 'TELEPLAN';
+			document.getElementById('destIMG').src = 'graphics/default.jpg';
+			document.getElementById('courier').value = 'UPS';
+			break;
+		case 'HUMAX':
+			document.getElementById('destination').value = 'HUMAX';
+			document.getElementById('destIMG').src = 'graphics/humax.png';
+			document.getElementById('courier').value = 'DHL';
+			break;
+		case 'KITCHENAID':
+		case 'KITCHEN AID':
+		case 'WPL':
+		case 'WHIRLPOOL':
+			document.getElementById('destination').value = 'WHIRLPOOL';
+			document.getElementById('destIMG').src = 'graphics/whirlpool.png';
+			document.getElementById('courier').value = 'DPD';
+			break;
+		case 'LAZ':
+		case 'LAZARUS':
+			document.getElementById('destination').value = 'LAZARUS';
+			document.getElementById('destIMG').src = 'graphics/lazarus.png';
+			document.getElementById('courier').value = 'DPD';
+			break;
+		case 'BOSE':
+			document.getElementById('destination').value = 'BOSE';
+			document.getElementById('destIMG').src = 'graphics/bose.png';
+			document.getElementById('courier').value = 'UPS';
+			break;
+		case 'KENWOOD':
+		case 'DELONGHI':
+		case 'KENWOOD DELONGHI':
+		case 'KENWOOD/DELONGHI':
+			document.getElementById('destination').value = 'KENWOOD/DELONGHI';
+			document.getElementById('destIMG').src = 'graphics/kenwood.png';
+			document.getElementById('courier').value = 'DPD';
+			break;
+		case 'STAFFORDS':
+			document.getElementById('destination').value = 'STAFFORDS';
+			document.getElementById('destIMG').src = 'graphics/staffords.png';
+			document.getElementById('courier').value = '';
+			break;
+		case 'BW':		
+		case 'B&W':		
+		case 'BOWERS AND WILKINS':		
+		case 'BOWERS & WILKINS':
+			document.getElementById('destination').value = 'BOWERS AND WILKINS';
+			document.getElementById('destIMG').src = 'graphics/bowerswilkins.png';
+			document.getElementById('courier').value = 'UPS';
+			break;
+		case 'OLYMPIC':
+		case 'OLYMPIC SHAVER CENTER':
+		case 'OLYMPIC SHAVER CENTRE':
+			document.getElementById('destination').value = 'OLYMPIC SHAVER CENTRE';
+			document.getElementById('destIMG').src = 'graphics/olympic.png';
+			document.getElementById('courier').value = 'PF';
+			break;
+		case 'RR':
+			document.getElementById('destination').value = 'RR';
+			document.getElementById('destIMG').src = 'graphics/default.jpg';
+			document.getElementById('courier').value = '';
+			document.getElementById('stage').innerHTML = '<br><br><center><img src="graphics/rob.png"></center>';
+			break;
+		case 'CC':
+			document.getElementById('destination').value = 'CC';
+			document.getElementById('destIMG').src = 'graphics/adam.gif';
+			document.getElementById('courier').value = '';
+			document.getElementById('stage').innerHTML = '<br><br><center><img src="graphics/adam.gif"></center>';
+			break;
+	// WHERE POSTAGE MUST BE PROCESSED THROUGH CSS
+		case 'DK':
+		case 'DK AUDIO':
+		case 'GP':
+		case 'GP SERVICES':
+		case 'ANOVO':
+			alert("Postage to this repair agent usually requires postage to be processed through CSS");
+			break;
+	// WHERE POSTAGE IS ARRANGED SEPERATELY
+		case 'SBE':
+			alert("Postage to this repair agent usually requires a prepaid SBE envelope");
+			break;
+		default:
+			break;
+		}
+	courImgSet();
+	}
+
+function courImgClear(){document.getElementById('courIMG').src = 'graphics/default.jpg';}
+function destImgClear(){document.getElementById('destIMG').src = 'graphics/default.jpg';}
+function customImgSet(){document.getElementById('courIMG').src = document.getElementById('customCourImg').value;
+	document.getElementById('destIMG').src = document.getElementById('customDestImg').value;}
+</script>
+<script>
+
+function courImgSet(){
+	var varcour = document.getElementById('courier').value.toUpperCase();
+	switch(varcour){
+		case 'DPD':
+			document.getElementById('courIMG').src = 'graphics/dpd.jpg';
+			break;
+		case 'DHL':
+			document.getElementById('courIMG').src = 'graphics/dhl.jpg';
+			break;
+		case 'FEDEX':
+			document.getElementById('courIMG').src = 'graphics/fedex.jpg';
+			break;
+		case 'UPS':
+			document.getElementById('courIMG').src = 'graphics/ups.jpg';
+			break;
+		case 'PF':
+		case 'PARCEL FORCE':
+		case 'PARCELFORCE':
+			varcour = 'PARCELFORCE';
+			document.getElementById('courIMG').src = 'graphics/parcelforce.png';
+			break;
+		case 'RM':
+		case 'ROYALMAIL':
+		case 'ROYAL MAIL':
+			varcour = 'ROYAL MAIL';
+			document.getElementById('courIMG').src = 'graphics/royalmail.jpg';
+			break;
+		case 'JL':
+		case 'JLP':
+		case 'JOHNLEWIS':
+		case 'JOHN LEWIS':
+		case 'JOHN LEWIS & PARTNERS':
+			varcour = 'JOHN LEWIS & PARTNERS';
+			document.getElementById('courIMG').src = 'graphics/johnlewis.jpg';
+			break;
+		case 'GVF':
+		case 'GREENVAN':
+		case 'GREEN VAN':
+		case 'GREEN VAN FLEET':
+			varcour = 'GREEN VAN FLEET';
+			document.getElementById('courIMG').src = 'graphics/greenvan.png';
+			break;
+		case 'GOG':
+		case 'GOGGLE BOX':
+		case 'GOGGLEBOX':
+			varcour = 'GOGGLEBOX';
+			document.getElementById('courIMG').src = 'graphics/gogglebox.png';
+			break;
+		case 'RG':		
+		case 'TRG':
+		case 'REPAIR GUYS':
+		case 'THE REPAIR GUYS':
+			varcour = 'THE REPAIR GUYS';
+			document.getElementById('courIMG').src = 'graphics/repairguys.png';
+			break;
+		default:
+			varcour = 'N/A';
+			document.getElementById('courIMG').src = 'graphics/default.jpg';
+			break;
+		}
+		document.getElementById('courier').value = varcour;
+	
+}
+
+
+function autoDate(){
+	<!-- Following courtesy of CSSTRICKS -->
+	let today = new Date().toISOString().substr(0, 10);
+	document.querySelector("#date").value = today;
+	<!-- End of CSSTRICKS code -->
+	}
+
+</script>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+<style>
+  body            { background-color: #00807F;
+                    font-family: 'Roboto Slab', serif;
+
+                    }
+  p               { font-size: 20px;
+                    padding: 0px;
+                    margin: 0px;}
+  .bordered-light   { border: 2px black solid;}
+  .navigation     { height: 45px; width: 100%;
+                    background-color: #004F4F;
+                    left: 0; top: 0;
+                    position: fixed;}
+  .main   { float:left;
+            margin-top: 58px;
+            margin-right: 10px;
+            padding: 5px;
+            border-bottom: 40px black solid;
+            border-top: 5px black solid;
+            border-left: 5px black solid;
+            border-right: 5px black solid;
+            background-color: white;
+
+            display: block;}
+  .logos  { float:left;
+            margin-top: 58px;
+            margin-right: 10px;
+            padding: 5px;
+            border-bottom: 40px black solid;
+            border-top: 5px black solid;
+            border-left: 5px black solid;
+            border-right: 5px black solid;
+            background-color: white;
+            margin-bottom: 25px;
+            display: block;}
+  .sidenav {  float:left;
+              margin-top: 58px;
+              border-bottom: 40px black solid;
+              border-top: 5px black solid;
+              border-left: 5px black solid;
+              border-right: 5px black solid;
+              background-color: white;}
+  .stage    { margin: 0px;
+              height: 400px;
+              width: 700px;
+              border-bottom: 40px black solid;
+              border-top: 5px black solid;
+              	border-left: 5px black solid;
+              border-right: 5px black solid;
+              background-color: white;
+              clear: both;}
+.container {border: 20px red solid; height: 700px;
+            clear: both;}
+
+  .bordered-solid {border-bottom: 20px black solid;
+  border-top: 5px black solid;
+  border-left: 5px black solid;
+  border-right: 5px black solid;}
+
+#toptable { margin-bottom: 8px; } 
+
+  @media print {
+          
+      		.sidenav {display: none !important;}
+          .main {border-bottom: 20px black solid;
+                  height: 400px !important;
+                  margin-top: 45px !important;}
+          .logos {border-bottom: 20px black solid;
+                  height: 400px !important;
+                  margin-bottom: 15px !important;
+                  margin-top: 45px !important;}
+          .bordered-solid {border-bottom: 10px black solid;}
+	.print-hide { display:none;}
+	#toptable { margin-bottom: 3px;}
+  		}
+#destIMG { margin-bottom: 10px;}
+  		}
+	
+
+</style>
+</head>
+<body onLoad="autoDate();">
+  <div class="navigation" style = "padding-left: 30px; padding-top: 6px; font-size: 12pt;">
+    	<span>Technical Services at John Lewis Cribbs Causeway<br>
+	Receiving Bay
+	</span>
+  </div>
+  <center><div class="top">
+      <div class="main" style="padding-left: 5px; padding-right: 15px; width: 450px; height: 450px;">
+        <table id="toptable" class="bordered-solid" style="margin-left: 5px; margin-right: 5px; width: 100%;">
+          <tr>
+            <td style="width: 135px;">
+              <p>Destination</p>
+            </td>
+            <td class="bordered-light">
+              <input id="destination" style="width: 99%; font-family: 'Roboto Mono';font-size: 18pt; display: table-cell; border: none; padding: 0px; margin-top: 0px;">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Courier</p>
+            </td>
+            <td class="bordered-light">
+              <input id="courier"style="width: 99%; font-family: 'Roboto Mono';font-size: 18pt; display: table-cell; border: none;">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p id="referenceLabel">Reference</p>
+            </td>
+            <td class="bordered-light">
+              <input id="reference" style="width: 99%; font-family: 'Roboto Mono';font-size: 18pt; display: table-cell; border: none;">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Date</p>
+            </td>
+            <td class="bordered-light">
+              <input id="date" style="width: 99%; font-family: 'Roboto Mono';font-size:17pt; display: table-cell; border: none;" type="date">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Partner</p>
+            </td>
+            <td class="bordered-light">
+              <input id="partner" style="width: 99%; font-family: 'Roboto Mono';font-size: 18pt; display: table-cell; border: none;">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>BT</p>
+            </td>
+            <td class="bordered-light">
+              <input id="bt" style="width: 99%; font-family: 'Roboto Mono'; font-size:18pt; display: table-cell; border: none;">
+            </td>
+          </tr>
+        </table>
+        
+        <table id="bottomtable" class="bordered-solid" style="margin-left: 5px; margin-right: 5px; width: 100%;">
+          <tr>
+            <td style="width: 135px">
+              <p>ServicePower</p>
+            </td>
+            <td class="bordered-light">
+              <input id="servicepower" style="width: 99%; font-family: 'Roboto Mono'; font-size:18pt; display: table-cell; border: none;">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Serial</p>
+            </td>
+            <td class="bordered-light">
+              <input id="serial" style="width: 99%; font-size:12pt; font-family: 'Roboto Mono', monospace; display: table-cell; border: none;">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Customer</p>
+            </td>
+            <td class="bordered-light">
+              <input id="customer" style="width: 99%; font-family: 'Roboto Mono'; font-size:18pt; display: table-cell; border: none;">
+            </td>
+          </tr>
+        </table>
+  </div><!--/div class="main"-->
+      <div class="logos" style="width: 200px; height: 450px">
+        <image id="destIMG" width="90%" class="bordered-solid" style="margin-bottom: 5px" src="default.jpg" onClick="destImgClear()">
+          <br>
+        <image id="courIMG" width="90%" class="bordered-solid" src="default.jpg" onClick="courImgClear()">
+          <br>
+        <p class="print-hide" style="font-size:9pt;">click an image to reset it</p>
+      </div>
+      <div class="sidenav" style="width: 200px;">
+        <table style="width: 100%;">
+          <tr>
+            <td style="background-color: black; color: white;">
+              Navigation
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Version 1.x
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Version 2.x
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Main Menu
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color: black; color: white;">
+              Actions
+            </td>
+          </tr>
+          <tr>
+            <td onClick="ants();">
+              Auto
+            </td>
+          </tr>
+	  <tr>
+            <td onClick="courImgSet(document.getElementById('courier').value)">
+              AutoCourier
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color: grey; color: white;" title="Not Available">
+              Cover
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Print
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color: black; color: white;">
+              Custom
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Destination Image
+            </td>
+          </tr>
+          <tr>
+            <td style = "border-bottom: 2px black solid;">
+              <input id="customDestImg" style="display: table-cell; width: 92%; border: 0px">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Courier Image
+            </td>
+          </tr>
+          <tr>
+            <td style = "border-bottom: 2px black solid;">
+              <input id="customCourImg"style="display: table-cell; width: 92%; border: 0px">
+            </td>
+          </tr>
+          <tr>
+            <td style="border: 2px black solid;" onClick="customImgSet()">
+              Set
+            </td>
+          </tr>
+        </table>
+      </div>
+
+
+
+  </center> </div>
+  <div id="stage" class="stage">
+  </div>
+</body>
+</html>
