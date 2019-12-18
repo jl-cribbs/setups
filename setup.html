@@ -573,7 +573,7 @@ function accept() {
 					<option value="17">AMAZON TABLET / EREADER SET UP</option>
 					<option value="7">IPHONE SET UP</option>
 					<option value="8">ANDROID PHONE SET UP</option>
-					<option value="9">MICROSOFT PHONE SET UP</option>
+					<option value="9">WEARABLE SET UP</option>
 					<option value="14">SOFTWARE INSTALLATION ONLY</option>
 					<option disabled=""></option>
 					<option value="10">HEALTH CHECK AND FIX</option>
@@ -3370,25 +3370,20 @@ function accept() {
 <!-- ################################################################################## -->
 <!-- ################################################################################## -->
 <!-- SECTION 9 -->
-<!-- Microsoft Phone Section 9 -->
-<!-- End of Microsoft phone section -->
+<!--  Wearable Set Up Section 9 -->
+<!--  WAS Microsoft Phone Section 9 -->
+<!-- End of Wearable section -->
 
 
 <div style="display:none" id="service9">
 	<div>
 		<table cellspacing="0" cellpadding="0">
 			<tbody><tr>
-				<th colspan="5">MOBILE PHONE SETUP - WINDOWS / MICROSOFT</th>
+				<th colspan="5">WEARABLE SETUP - FITBIT/GARMIN</th>
 			</tr>
 			<tr>
-				<td width="15%"><img width="100%" src="barcode - mobile.png"><br>£30 87540102</td>
+				<td width="15%"><img width="100%" src="barcode - wearable.PNG"><br>£20 875 40105</td>
 				<td colspan="2" width="50%"><strong class="small">Set up user account(s). Prepare Laptop or desktop for first use. Installation of any manufacturer updates or operating system updates available. Configure or create email address (if available). Activate &amp; update pre installed Antivirus software. Set up inbuilt Parental Controls (if required). Brief explanation of how to use the device and download apps.</strong></td>
-				<td width="18%">PUT IN CASE?<br><select onchange="done(this)">
-				<option selected="">[-- SELECT --]</option>
-				<option>YES</option>
-				<option>NO</option>
-				<option>NOT APPLICABLE</option>
-				</select></td>
 				<td>PAID FOR?<br>
 				<select onchange="done(this)">
 					<option selected="">--SELECT--</option>
@@ -3404,18 +3399,36 @@ function accept() {
 				<td colspan="4" class="small"><textarea rows="4" tip="Any other relevant info. I.E. Unique requests by customer such as multiple users or parental controls."></textarea></td>
 			</tr>
 		</tbody></table>
-
+		<table width="100%">
+			<tbody><tr>
+				<td class="small">GENDER</td>
+				<td class="small" colspan="5">
+				<input tip="A Microsoft account is any &#39;live&#39;, &#39;msn&#39;, &#39;hotmail&#39; or &#39;outlook&#39; email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. As a customer&#39;s first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
+			</tr>
+			<tr>
+				<td>HEIGHT</td>
+				<td class="small" colspan="3">
+					<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td>WEIGHT</td>
+				<td class="small" colspan="3">
+					<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
+				</td>
+			</tr>
+		</tbody></table>
 
 		<table cellspacing="0" cellpadding="0">
 			<tbody><tr>
-				<th colspan="4">MICROSOFT ACCOUNT</th>
+				<th colspan="4">FITBIT/GARMIN ACCOUNT</th>
 			</tr>
 			<tr>
 				<td colspan="4">
 				<select id="msphoneswitch" onchange="switching(&#39;msphoneswitch&#39;)" tip="Ask if they already have an account.">
 					<option value="" selected="">[-- CREATE NEW OR USE EXISTING ACCOUNT? --]</option>
-					<option value="1">CREATE NEW MICROSOFT ACCOUNT</option>
-					<option value="2">USE EXISTING MICROSOFT ACCOUNT</option>
+					<option value="1">CREATE NEW ACCOUNT</option>
+					<option value="2">USE EXISTING ACCOUNT</option>
 				</select>
 				</td>
 			</tr>
@@ -3424,33 +3437,14 @@ function accept() {
 					<div style="display:none" id="msphoneswitch1">
 						<table>
 							<tbody><tr>
-								<td width="30%">DESIRED ACCOUNT EMAIL</td>
-								<td class="small" colspan="3">i.e John.Smith@Outlook.com. The first choice may not be available. We may have to put a number on the end or swap the names around.
+								<td width="30%">NEW ACCOUNT EMAIL</td>
+								<td class="small" colspan="3">i.e John.Smith@Outlook.com.
 								<input tip="A Microsoft account is any &#39;live&#39;, &#39;msn&#39;, &#39;hotmail&#39; or &#39;outlook&#39; email. The customer may already have one of these and not realise it is anything to do with Microsoft. We can only use an existing Microsoft account when setting up a pc, not another like gmail etc. As a customer&#39;s first choice may not be available, discuss a couple of possible addresses with the customer, i.e. Johnsmith13@ or johnathan.smith@ and place them here." maxlength="40"></td>
 							</tr>
 							<tr>
-								<td>DESIRED ACCOUNT PASSWORD</td>
+								<td>NEW ACCOUNT PASSWORD</td>
 								<td class="small" colspan="3">8 characters long and mixture of upper &amp; lower case letters / numbers.
 									<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
-								</td>
-							</tr>
-							<tr>
-								<td>RECOVERY EMAIL</td>
-								<td class="small" colspan="3"><input tip="Used for password recovery." maxlength="40"></td>
-							</tr>
-							<tr>
-								<td>SECURITY QUESTION</td>
-								<td class="small" colspan="4">Required when creating a new account.
-									<select onchange="done(this)">
-										<option>-- Select Question --</option>
-										<option>Mother's birthplace</option>
-										<option>Best childhood friend</option>
-										<option>Name of first pet</option>
-										<option>Favourite teacher</option>
-										<option>Favourite historical person</option>
-										<option>Grandfather's occupation</option>
-									</select>
-									<input tip="Type answer exactly how customer wishes it to be set up with Microsoft." maxlength="25">
 								</td>
 							</tr>
 						</tbody></table>
@@ -3466,36 +3460,17 @@ function accept() {
 							</tr>
 							<tr>
 								<td>EXISTING ACCOUNT PASSWORD</td>
-								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="http://mail.live.com/" target="_blank">'MAIL.LIVE.COM'.</a>
+								<td class="small" colspan="3">Confirm the account email and password are correct by signing in at <a href="http://www.fitbit.com/" target="_blank">'www.fitbit.com'</a> or <a href="http://www.garmin.com/" target="_blank">'www.garmin.com'.</a>
 								<input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm. You can always ensure account name and password are correct by signing into Windows mail at mail.live.com." maxlength="40">
 								</td>
 							</tr>
 						</tbody></table>
 					</div>
-					<table>
-						<tbody><tr><th colspan="2">(OPTIONAL) ADDITIONAL PRE-EXISTING EMAIL SET UP</th></tr>
-						<tr><td colspan="2">If the customer has another email address that they would like us to try and add, please put the details here. <br><strong>We cannot guarantee that we will be able to do this though as some types of email are more difficult than others to configure and archived emails that exist only on the customer's original machine, rather than in the cloud/web may not be transferable.</strong></td></tr>
 
-						<tr>
-							<td width="30%">EXISTING EMAIL ADDRESS</td>
-							<td class="small" colspan="3"><input tip="If the customer is unsure of any details, it is better to leave this whole area blank." maxlength="40">
-							</td>
-						</tr>
-						<tr>
-							<td>EXISTING EMAIL PASSWORD</td>
-							<td class="small" colspan="3"><input tip="Remember to type it exactly as the customer says, using upper and lower case letters. Read it back to customer to confirm." maxlength="40">
-							</td>
-						</tr>
-					</tbody></table>
 					<div class="noprint">
 						<table style="width:100%">
 							<tbody><tr>
 								<td>
-								<select id="msphonelogin" onchange="switching(&#39;msphonelogin&#39;)" tip="How would the customer like to log into their machine?">
-								<option value="" selected="">[-- HOW WOULD CUSTOMER LIKE TO LOG IN? --]</option>
-								<option value="1">USE MICROSOFT ACCOUNT EMAIL AND PASSWORD TO LOG IN</option>
-								<option value="2">USE A PASSCODE TO LOG IN</option>
-								</select>
 								</td>
 							</tr>
 						</tbody></table>
@@ -3518,7 +3493,7 @@ function accept() {
 	<div class="avoidbreak">
 		<table cellspacing="0" cellpadding="0">
 			<tbody><tr>
-				<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS &amp; PARTNERS PARTNER</th>
+				<th colspan="4">ACTIONS TAKEN BY JOHN LEWIS &amp; PARTNERS</th>
 			</tr>
 			<tr>
 				<td width="10%">PARTNER</td>
@@ -3539,75 +3514,50 @@ function accept() {
 
 		<table cellspacing="0" cellpadding="0">
 			<tbody><tr>
-				<th>MOBILE PHONE SETUP - MICROSOFT / WINDOWS</th>
+				<th>WEARABLE</th>
 				<th>COMMENTS</th>
 				<th>✓ DONE</th>
 			</tr>
 			<tr>
-				<td class="small">Unpack and check contents of new phone.</td>
+				<td class="small">&nbsp;</td>
 				<td width="40%">&nbsp;</td>
 				<td width="10%">&nbsp;</td>
-		    </tr>
+		  </tr>
 			<tr>
-				<td class="small">Set  language, agree terms, register.</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
+				<td class="small">&nbsp;</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		  </tr>
 			<tr>
-				<td class="small">Create new or use existing Microsoft account.</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
-		    <tr>
-				<td class="small">Restore settings from another MS phone (optional).</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
+				<td class="small">&nbsp;</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		  </tr>
 			<tr>
-				<td class="small">Activate Cortana.</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
-		    <tr>
-				<td class="small">Use phone transfer tool to transfer contacts and images from an old phone (optional).</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
+				<td class="small">&nbsp;</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		  </tr>
 			<tr>
-				<td class="small">Download and install all Windows app updates.</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
+				<td class="small">&nbsp;</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		  </tr>
 			<tr>
-				<td class="small">Set up email app.</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
+				<td class="small">&nbsp;</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		  </tr>
 			<tr>
-				<td class="small">Create additional users (if required).</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
+				<td class="small">&nbsp;</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		  </tr>
 			<tr>
-				<td class="small">Set parental controls (if required).</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
-			<tr>
-				<td class="small">Repack contents.</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
-			<tr>
-				<td class="small">Contact customer if no agreed eta.</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
-			<tr>
-				<td class="small">Handover to customer, explaining what has been done.</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-		    </tr>
+				<td class="small">&nbsp;</td>
+				<td width="40%">&nbsp;</td>
+				<td width="10%">&nbsp;</td>
+		  </tr>
 		</tbody></table>
 		<hr class="slip" align="centre">
 		<centre><p>To be retained in branch for 6 months</p></centre>
