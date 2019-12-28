@@ -1,0 +1,149 @@
+<html>
+<head>
+<style>
+BODY, BODY * {
+	font-family:		calibri;
+	}
+BODY {
+	margin:				0mm;
+	padding:			0mm;
+	}
+DIV.page {
+	width:				191mm;
+	overflow:			hidden;
+	}
+DIV.footnote {
+	width:				100%;
+	height:				1px;
+	text-align:			right;
+	letter-spacing:		0.5em;
+	font-family:		Courier New, monospace;
+	overflow:			visible;
+	}
+DIV.labelmedium {
+	border:				1px dashed black;
+	float:				left;
+	height:				153mm;
+	width:				102mm;
+	margin-right:		1mm;
+	margin-bottom:		4mm;
+	}
+DIV.labelpad {
+	margin:				2mm;
+	width:				auto;
+	}
+TABLE, TR, TD {
+	border:				0px;
+	padding:			0px;
+	margin:				0px;
+	}
+HR {
+	margin-top:			1mm;
+	margin-bottom:		1mm;
+	padding:			0px;
+	border:				1px solid gray;
+	}
+H1, H2, P {
+	margin:				0px;
+	}
+H1 {
+	display:			block;
+	text-align:			center;
+	font-weight:		bold;
+	font-size:			24pt;
+	text-align:			right;
+	font-family:		tahoma;
+	}
+H2 {
+	display:			block;
+	text-align:			center;
+	font-weight:		normal;
+	font-size:			17pt;
+	text-align:			left;
+	}
+LABEL {
+	font-size:			12pt!important;
+	}
+INPUT , TEXTAREA {
+	background-color:	#ccf;
+	border:				0px;
+	width:				auto;
+	font-family:		inherit;
+	font-size:			inherit;
+	font-weight:		inherit;
+	resize:				none;
+	text-align:			inherit;
+	width:				100%;
+	}
+TEXTAREA.twocol {
+	width:				49%;
+	float:				left;
+	}
+DIV.twocolgap {
+	float:				left;
+	min-width:			1%;
+	}
+DIV.copy INPUT, DIV.copy TEXTAREA{
+	background-color:	white;
+	}
+DIV.vert {
+	float:				left;
+	width:				1px
+	height:				1px;
+	overflow:			visible;
+	margin-bottom:		-6mm;
+	}
+DIV.vert INPUT {
+	display:			block;
+	width:				69mm;
+	height:				auto;
+	white-space:		nowrap;
+	transform-origin:	70mm 1mm;
+	transform:			rotate(270deg) translate(0px, -69mm);
+	font-family:		Courier New, monospace;
+	text-align:			center;
+	text-indent:		10mm;
+	}
+
+.c { text-align:		center;	}
+.l { text-align:		left;	}
+.r { text-align:		right;	}
+.fl { float:			left;	}
+.fr { float:			right;	}
+
+@media print and (width: 21cm) and (height: 29.7cm) {
+	@page {
+		margin:	10.16mm;
+		}
+	* {
+		background-color:transparent!important;
+		}
+	}
+</style>
+<script type="text/javascript">
+function clicka(src) {
+	if (src.value.substring(0,1)=="[") src.value = "";
+}
+</script>
+</head>
+
+<body><div class="page">
+
+<p style="font-size:24pt">Set LAYOUT to PORTRAIT to<br>ensure correct print out.</p><br>
+
+<div class="labelmedium"><div class="labelpad">
+	<div class="fl vert"><input id="z1" onFocus="clicka(this)" value="[Code]"></div>
+	<div class="fr" style="width:92mm">
+		<h2><textarea id="a1" onFocus="clicka(this)" >[Product]</textarea></h2>
+		<hr>
+		<h1><input id="b1" onFocus="clicka(this)" value="[£ Price]"></h1>
+		<hr>
+		<textarea id="c1"  onFocus="clicka(this)" style="height:112mm">[Notes]</textarea>
+		<div class="footnote">TEMPORARY TICKET</div>
+	</div>
+</div></div>
+
+</div></body>
+</html>
+<!-- Mirror -->
+<!-- As source on www.drearytales.com/jlhomepage/Ticket%206x4.html -->
