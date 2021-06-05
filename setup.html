@@ -480,7 +480,7 @@ function accept() {
 <title>SETUP FORM 1.3</title>
 </head>
 
-<body onload="setup(); accept();" onchange="resetWatchdog();">
+<body onload="setup(); accept(); alert("This version of the setup form is due to be discontinued. Please use the local version.");" onchange="resetWatchdog();">
 <div id="watchdog" style="display:block-inline;">
 	<p style="color: white;float:left;"><strong>WATCHDOG </strong><a id='resetAlert'></a><a><span id="min">00</span>:<span id="sec">00</span></a>	</p>
 	<p style="color: white;float:right;"><strong><a onclick="resetWatchdog()">RESET TIMER</a>	 </strong></p>
